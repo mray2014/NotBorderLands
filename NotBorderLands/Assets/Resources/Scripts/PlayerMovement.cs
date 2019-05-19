@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     public float speed = 10;
+    public float jumpForce = 4;
     public float maxLookUpAngle;
     public float minLookDownAngle;
     [Range(1,10)]
@@ -11,11 +12,12 @@ public class PlayerMovement : MonoBehaviour {
     [Range(1, 10)]
     public float yAxisSensitivity = 10;
 
-
+    Rigidbody myRigidbody;
     Camera playerCamera;
 	// Use this for initialization
 	void Start () {
         playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<Camera>();
+        myRigidbody = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 	
@@ -41,6 +43,13 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += (transform.right * speed * Time.deltaTime);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (Physics.Raycast(transform.position,Vector3.up * -1, transform.localScale.x + 0.4f))
+            {
+                myRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
         }
     }
     void TrackMouse()
