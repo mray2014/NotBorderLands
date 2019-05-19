@@ -65,7 +65,6 @@ public class PlayerMovement : MonoBehaviour {
         eulerRotX = (eulerRotX > 180) ? eulerRotX - 360 : eulerRotX;
 
         eulerRotX *= -1;
-        Debug.Log(eulerRotX);
         if (eulerRotX > maxLookUpAngle || eulerRotX < minLookDownAngle)
         {
             playerCamera.transform.Rotate(-yAxis * yAxisSensitivity, 0, 0);
