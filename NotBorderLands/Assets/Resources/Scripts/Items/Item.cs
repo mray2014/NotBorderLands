@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mike4ruls.Player;
 
 namespace Mike4ruls.Items
 {
@@ -27,18 +28,18 @@ namespace Mike4ruls.Items
         public GameObject gunCollider;
         public bool isEquippable = false;
 
-        // Hidden Vars 
-        [HideInInspector]
-        public bool itemPickedUp = false;
-        [HideInInspector]
-        public bool pullIn = false;
+        // Protected Vars
+        protected PlayerBase _playerBase;
 
         // Private Vars 
         private Rigidbody myRigidbody;
+        private bool itemPickedUp = false;
+        private bool pullIn = false;
 
         // Use this for initialization
         public void Awake()
         {
+            _playerBase = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBase>();
             myRigidbody = GetComponent<Rigidbody>();
         }
 
@@ -102,6 +103,14 @@ namespace Mike4ruls.Items
             }
 
 
+        }
+        public bool HasItemBeenPickedUp()
+        {
+            return itemPickedUp;
+        }
+        public bool IsPullingIn()
+        {
+            return pullIn;
         }
     }
 }

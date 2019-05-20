@@ -22,6 +22,7 @@ namespace Mike4ruls.Player
         private GunBase[] weaponHolster;
         private PlayerBase _playerBase;
         private Camera playerCamera;
+        private SheildBase curSheild = null;
         private int curWeapon = 0;
         private int currentInventorySpace = 0;
         private int maxInventorySpace = 10;
@@ -78,7 +79,7 @@ namespace Mike4ruls.Player
                 {
                     hitInteractable = true;
                     Item item = hit.transform.GetComponent<Item>();
-                    if (item.pullIn)
+                    if (item.IsPullingIn())
                     {
                         return;
                     }
@@ -120,6 +121,10 @@ namespace Mike4ruls.Player
 
         public void PickUpItem(Item itemToPickUp)
         {
+            if (currentInventorySpace >= maxInventorySpace)
+            {
+                return;
+            }
             switch (itemToPickUp.itemType)
             {
                 case ItemType.Weapon:
@@ -185,6 +190,17 @@ namespace Mike4ruls.Player
             weaponHolster[curWeapon] = null;
             DropItem(weapon);
         }
-
+        public SheildBase GetCurrentSheild()
+        {
+            return curSheild;
+        }
+        public bool IsWearingASheild()
+        {
+            if (curSheild == null)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
