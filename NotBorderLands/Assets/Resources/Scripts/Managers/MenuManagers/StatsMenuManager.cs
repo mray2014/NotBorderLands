@@ -18,17 +18,21 @@ namespace Mike4ruls.General.Managers
        private PlayerInventory _playeyInventory;
        private bool initFinished = false;
         // Use this for initialization
-        void Start()
+        void Awake()
         {
-
+            UpdateText();
         }
 
         // Update is called once per frame
         void Update()
         {
+            UpdateText();
+        }
+        void UpdateText()
+        {
             if (initFinished)
             {
-                playerLevelText.text = "Player Lvl: " +_playerBase.playerLvl;
+                playerLevelText.text = "Player Lvl: " + _playerBase.playerLvl;
                 healthText.text = "Health: " + _playerBase.health + "/" + _playerBase.maxHealth;
                 sheildText.text = "Sheild: ";
                 if (_playeyInventory.IsWearingASheild())
@@ -39,7 +43,7 @@ namespace Mike4ruls.General.Managers
                 {
                     sheildText.text += "NONE";
                 }
-                
+
                 moneyText.text = "Money: " + _playerBase.money;
             }
         }

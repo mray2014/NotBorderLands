@@ -22,6 +22,7 @@ namespace Mike4ruls.General.Items
     {
         // Public Vars 
         public WeaponType weaponType = WeaponType.Pistol;
+        public ElementType elementType = ElementType.Normal;
         public FireMode fireMode = FireMode.Automatic;
         public Vector2 rateOfFireRange, burstRateOfFireRange, reloadSpeedRange, recoilRange, accuracyRange, bulletRangeRange;
 
@@ -35,19 +36,6 @@ namespace Mike4ruls.General.Items
         protected float accuracy;
         protected float bulletRange;
         protected int burstNum = 3;
-
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
 
         public void GenerateWeapon()
         {

@@ -19,12 +19,21 @@ namespace Mike4ruls.General
         Epic,
         Legendary
     }
+    public enum ElementType
+    {
+        Normal,
+        Fire,
+        Ice,
+        Explosion,
+        Acid,
+        Electric
+    }
     public class Item : MonoBehaviour
     {
         // Public Vars 
         public RarityType rewardType = RarityType.Common;
         public ItemType itemType = ItemType.Weapon;
-        public GameObject gunCollider;
+        public GameObject itemCollider;
         public bool isEquippable = false;
 
         // Protected Vars
@@ -52,7 +61,7 @@ namespace Mike4ruls.General
             Vector3 dirToTarget = (target.transform.position - transform.position).normalized;
 
             StartCoroutine(PullInLogic(target));
-            gunCollider.SetActive(false);
+            itemCollider.SetActive(false);
             pullIn = true;
         }
         public void PickUp(Vector3 pos)
@@ -62,20 +71,22 @@ namespace Mike4ruls.General
             myRigidbody.useGravity = false;
             myRigidbody.angularDrag = 0;
             myRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-            gunCollider.SetActive(false);
+            itemCollider.SetActive(false);
             transform.position = pos;
+            this.gameObject.SetActive(false);
         }
         public void ThrowAway(Vector3 pos, Vector3 throwDirection)
         {
             itemPickedUp = false;
             myRigidbody.useGravity = true;
             myRigidbody.constraints = RigidbodyConstraints.None;
-            gunCollider.SetActive(true);
+            itemCollider.SetActive(true);
             transform.position = pos;
             transform.parent = null;
             float twistX = Random.Range(-1, 1);
             float twistZ = Random.Range(-1, 1);
             myRigidbody.AddForceAtPosition(throwDirection, pos - new Vector3(twistX, -1, twistZ), ForceMode.Force);
+            this.gameObject.SetActive(true);
             //myRigidbody.AddExplosionForce(200, pos, 2);
         }
         IEnumerator PullInLogic(GameObject target)
@@ -95,6 +106,7 @@ namespace Mike4ruls.General
             if (distToTarget.magnitude < 1)
             {
                 PickUp(new Vector3(0, 99999, 0));
+                this.gameObject.SetActive(false);
             }
             else
             {

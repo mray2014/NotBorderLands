@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace Mike4ruls.General.Items
 {
-    public class SheildBase : MonoBehaviour
+    public class SheildBase : Item
     {
+        public ElementType elementType = ElementType.Normal;
         public float sheildHealth = 100;
         public float sheildCapacity = 100;
         public float rechargeWaitTimeAfterDepeletion = 5;
@@ -19,14 +20,8 @@ namespace Mike4ruls.General.Items
 
         private float rechargeRateTimer = 0;
         private float rechargeWaitTimer = 0;
-        // Use this for initialization
-        void Start()
-        {
 
-        }
-
-        // Update is called once per frame
-        void Update()
+        protected void RechargeUpdate()
         {
             if (isRecharging)
             {
@@ -35,7 +30,7 @@ namespace Mike4ruls.General.Items
                 {
                     ChargeSheild(sheildRechargeAmmount);
                     rechargeRateTimer = 0;
-                }             
+                }
             }
             else
             {
@@ -52,7 +47,6 @@ namespace Mike4ruls.General.Items
                     }
                 }
             }
-
         }
         public float TakeDamage(float damage)
         {
