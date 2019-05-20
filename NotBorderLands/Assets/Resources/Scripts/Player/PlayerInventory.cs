@@ -227,7 +227,6 @@ namespace Mike4ruls.General.Player
 
         public void DropItem(Item itemToDrop)
         {
-            itemToDrop.transform.parent = null;
             Vector3 throwDir = new Vector3(playerCamera.transform.forward.x, 1, playerCamera.transform.forward.z) * throwItemForce;
             itemToDrop.ThrowAway(gunSpawnPoint.transform.position, throwDir);
         }

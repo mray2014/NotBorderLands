@@ -31,7 +31,7 @@ namespace Mike4ruls.General
     public class Item : MonoBehaviour
     {
         // Public Vars 
-        public RarityType rewardType = RarityType.Common;
+        public RarityType rarityType = RarityType.Common;
         public ItemType itemType = ItemType.Weapon;
         public GameObject itemCollider;
         public bool isEquippable = false;
@@ -39,7 +39,9 @@ namespace Mike4ruls.General
         // Protected Vars
         protected PlayerBase _playerBase;
 
-        // Private Vars 
+        // Private Vars
+        private Managers.PoolManager rarityParticleEffectPool;
+        private GameObject enviornment;
         private Rigidbody myRigidbody;
         private bool itemPickedUp = false;
         private bool pullIn = false;
@@ -47,8 +49,17 @@ namespace Mike4ruls.General
         // Use this for initialization
         public void Awake()
         {
+            rarityParticleEffectPool = GameObject.FindGameObjectWithTag("RarityParticleEffectPool").GetComponent<Managers.PoolManager>();
             _playerBase = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBase>();
             myRigidbody = GetComponent<Rigidbody>();
+            enviornment = GameObject.FindGameObjectWithTag("Enviornment");
+
+
+            Items.RarityParticleEffectScript particleEffect = rarityParticleEffectPool.GetAvailableObj().GetComponent<Items.RarityParticleEffectScript>();
+            if (particleEffect != null)
+            {
+                particleEffect.ActivateRarityEffect(this);
+            }
         }
 
         // Update is called once per frame
@@ -82,11 +93,17 @@ namespace Mike4ruls.General
             myRigidbody.constraints = RigidbodyConstraints.None;
             itemCollider.SetActive(true);
             transform.position = pos;
-            transform.parent = null;
+            transform.parent = enviornment.transform;
             float twistX = Random.Range(-1, 1);
             float twistZ = Random.Range(-1, 1);
             myRigidbody.AddForceAtPosition(throwDirection, pos - new Vector3(twistX, -1, twistZ), ForceMode.Force);
             this.gameObject.SetActive(true);
+
+            Items.RarityParticleEffectScript particleEffect = rarityParticleEffectPool.GetAvailableObj().GetComponent<Items.RarityParticleEffectScript>();
+            if (particleEffect != null)
+            {
+                particleEffect.ActivateRarityEffect(this);
+            }
             //myRigidbody.AddExplosionForce(200, pos, 2);
         }
         IEnumerator PullInLogic(GameObject target)
