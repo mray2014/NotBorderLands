@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mike4ruls.Items;
+using Mike4ruls.General.Items;
+using Mike4ruls.General.Player;
 
-namespace Mike4ruls.Player
+namespace Mike4ruls.General
 {
     public class PlayerBase : MonoBehaviour
     {

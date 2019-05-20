@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mike4ruls.Player;
 
-namespace Mike4ruls.Items
+namespace Mike4ruls.General
 {
     public enum ItemType
     {

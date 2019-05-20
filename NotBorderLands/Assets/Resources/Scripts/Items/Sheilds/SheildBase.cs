@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mike4ruls.Items
+namespace Mike4ruls.General.Items
 {
     public class SheildBase : MonoBehaviour
     {

@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Mike4ruls.Player
+
+namespace Mike4ruls.General.Player
 {
     public class PlayerMovement : MonoBehaviour
     {

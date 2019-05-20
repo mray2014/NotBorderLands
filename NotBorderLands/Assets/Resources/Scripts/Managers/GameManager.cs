@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mike4ruls.Player;
 
-namespace Mike4ruls.Managers
+namespace Mike4ruls.General
 {
 
     public enum GameState

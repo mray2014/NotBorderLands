@@ -2,29 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Mike4ruls.Player;
+using Mike4ruls.General.Player;
 
-namespace Mike4ruls.Managers
+namespace Mike4ruls.General.Managers
 {
-
+    public enum PauseMenuState
+    {
+        PlayerStatsMenu = 0,
+        InventoryMenu,
+        SkillsMenu,
+        MissionsMenu
+    }
     public class UIManager : MonoBehaviour
     {
         // Public Vars 
         public GameObject gameUI;
         public GameObject onScreenUI;
         public GameObject pauseMenuUI;
+        public GameObject playerStatsUI;
+        public GameObject inventoryUI;
+        public GameObject skillsUI;
+        public GameObject missionsUI;
+
         public Image reticle;
 
         // Private Vars 
-        GameManager _gameManager;
-        PlayerBase player1;
-
-
+        private PauseMenuState currentPauseMenuState = PauseMenuState.PlayerStatsMenu;
+        private GameManager _gameManager;
+        private PlayerBase player1;
         // Use this for initialization
         void Start()
         {
             _gameManager = GetComponent<GameManager>();
             player1 = _gameManager.GetPlayer1();
+
+            playerStatsUI.GetComponent<StatsMenuManager>().Initialize(player1);
+            inventoryUI.GetComponent<InventoryMenuManager>().Initialize(player1);
+            skillsUI.GetComponent<SkillsMenuManager>().Initialize(player1);
+            missionsUI.GetComponent<MissionsMenuManager>().Initialize(player1);
 
         }
 
@@ -42,8 +57,7 @@ namespace Mike4ruls.Managers
                         reticle.gameObject.SetActive(player1.GetComponent<PlayerInventory>().hitInteractable);
                         if (!gameUI.activeInHierarchy)
                         {
-                            gameUI.SetActive(true);
-                            pauseMenuUI.SetActive(false);
+                            HidePauseMenu();
                         }
                         break;
                     }
@@ -51,13 +65,61 @@ namespace Mike4ruls.Managers
                     {
                         if (!pauseMenuUI.activeInHierarchy)
                         {
-                            gameUI.SetActive(false);
-                            pauseMenuUI.SetActive(true);
+                            DisplayPauseMenu();
                         }
                         break;
                     }
+            }           
+        }
+
+        void DisplayPauseMenu()
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            gameUI.SetActive(false);
+            pauseMenuUI.SetActive(true);
+        }
+        void HidePauseMenu()
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            gameUI.SetActive(true);
+            pauseMenuUI.SetActive(false);
+
+        }
+        public void DisplayPauseMenuUI(int state)
+        {
+            playerStatsUI.SetActive(false);
+            inventoryUI.SetActive(false);
+            skillsUI.SetActive(false);
+            missionsUI.SetActive(false);
+
+            PauseMenuState newState = (PauseMenuState)state;
+
+            switch (newState)
+            {
+                case PauseMenuState.PlayerStatsMenu:
+                    {
+                        playerStatsUI.SetActive(true);
+                        break;
+                    }
+                case PauseMenuState.InventoryMenu:
+                    {
+                        inventoryUI.SetActive(true);
+                        break;
+                    }
+                case PauseMenuState.SkillsMenu:
+                    {
+                        skillsUI.SetActive(true);
+                        break;
+                    }
+                case PauseMenuState.MissionsMenu:
+                    {
+                        missionsUI.SetActive(true);
+                        break;
+                    }
             }
-            
+            currentPauseMenuState = newState;
         }
     }
 }
