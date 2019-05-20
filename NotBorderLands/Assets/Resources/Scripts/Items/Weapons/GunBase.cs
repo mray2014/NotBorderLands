@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunBase : Item {
-
+namespace Mike4ruls.Items
+{
     public enum WeaponType
     {
         Pistol,
@@ -18,70 +18,71 @@ public class GunBase : Item {
         Burst,
         Automatic
     }
-
-    public WeaponType weaponType = WeaponType.Pistol;
-
-    public FireMode fireMode = FireMode.Automatic;
-
-
-    public Vector2 rateOfFireRange, burstRateOfFireRange, reloadSpeedRange, recoilRange, accuracyRange, bulletRangeRange;
-
-    protected int weaponLevel = 1;
-    protected float damage;
-    protected float rateOfFire;
-    protected float burstRateOfFire;
-    protected float reloadSpeed;
-    protected float recoil;
-    protected float accuracy;
-    protected float bulletRange;
-
-
-    protected int burstNum = 3;
-
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void GenerateWeapon()
+    public class GunBase : Item
     {
-        DecideFireMode();
-        damage = weaponLevel * 3;
-        rateOfFire = Random.Range(rateOfFireRange.x, rateOfFireRange.y);
-        burstRateOfFire = Random.Range(burstRateOfFireRange.x, burstRateOfFireRange.y);
-        reloadSpeed = Random.Range(reloadSpeedRange.x, reloadSpeedRange.y);
-        recoil = Random.Range(recoilRange.x, recoilRange.y);
-        accuracy = Random.Range(accuracyRange.x, accuracyRange.y);
-        bulletRange = Random.Range(bulletRangeRange.x, bulletRangeRange.y);
-    }
-    void DecideFireMode()
-    {
+        // Public Vars 
+        public WeaponType weaponType = WeaponType.Pistol;
+        public FireMode fireMode = FireMode.Automatic;
+        public Vector2 rateOfFireRange, burstRateOfFireRange, reloadSpeedRange, recoilRange, accuracyRange, bulletRangeRange;
 
-        int ranNum = Random.Range(0, 101);
+        // Protected Vars 
+        protected int weaponLevel = 1;
+        protected float damage;
+        protected float rateOfFire;
+        protected float burstRateOfFire;
+        protected float reloadSpeed;
+        protected float recoil;
+        protected float accuracy;
+        protected float bulletRange;
+        protected int burstNum = 3;
 
-        switch (ranNum)
+
+        // Use this for initialization
+        void Start()
         {
-            case 33:
-                {
-                    fireMode = FireMode.SemiAuto;
-                    break;
-                }
-            case 66:
-                {
-                    fireMode = FireMode.Burst;
-                    break;
-                }
-            default:
-                {
-                    fireMode = FireMode.Automatic;
-                    break;
-                }
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        public void GenerateWeapon()
+        {
+            DecideFireMode();
+            damage = weaponLevel * 3;
+            rateOfFire = Random.Range(rateOfFireRange.x, rateOfFireRange.y);
+            burstRateOfFire = Random.Range(burstRateOfFireRange.x, burstRateOfFireRange.y);
+            reloadSpeed = Random.Range(reloadSpeedRange.x, reloadSpeedRange.y);
+            recoil = Random.Range(recoilRange.x, recoilRange.y);
+            accuracy = Random.Range(accuracyRange.x, accuracyRange.y);
+            bulletRange = Random.Range(bulletRangeRange.x, bulletRangeRange.y);
+        }
+        void DecideFireMode()
+        {
+
+            int ranNum = Random.Range(0, 101);
+
+            switch (ranNum)
+            {
+                case 33:
+                    {
+                        fireMode = FireMode.SemiAuto;
+                        break;
+                    }
+                case 66:
+                    {
+                        fireMode = FireMode.Burst;
+                        break;
+                    }
+                default:
+                    {
+                        fireMode = FireMode.Automatic;
+                        break;
+                    }
+            }
         }
     }
 }

@@ -2,24 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mike4ruls.Player;
 
-public class UIManager : MonoBehaviour {
+namespace Mike4ruls.Managers
+{
 
-    GameManager _gameManager;
-    PlayerBase player1;
-
-    public Image reticle;
-
-	// Use this for initialization
-	void Start () {
-        _gameManager = GetComponent<GameManager>();
-        player1 = _gameManager.GetPlayer1();
-
-    }
-	
-	// Update is called once per frame
-	void Update ()
+    public class UIManager : MonoBehaviour
     {
-         reticle.gameObject.SetActive(player1.hitInteractable);
-	}
+        // Public Vars 
+        public Image reticle;
+
+        // Private Vars 
+        GameManager _gameManager;
+        PlayerBase player1;
+
+
+        // Use this for initialization
+        void Start()
+        {
+            _gameManager = GetComponent<GameManager>();
+            player1 = _gameManager.GetPlayer1();
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            reticle.gameObject.SetActive(player1.GetComponent<PlayerInventory>().hitInteractable);
+        }
+    }
 }

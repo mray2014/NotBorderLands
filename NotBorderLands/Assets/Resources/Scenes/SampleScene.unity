@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1304,6 +1304,7 @@ GameObject:
   - component: {fileID: 1997191490}
   - component: {fileID: 1997191494}
   - component: {fileID: 1997191493}
+  - component: {fileID: 1997191495}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1388,10 +1389,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5507620b1140f1246b1ba6d8d6fe436c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1997191495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997191488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d85b08bdbeab7b4daf1d160cdac93e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   gunSpawnPoint: {fileID: 441560763}
   holdDownToEquipTime: 0.5
   throwItemForce: 200
   hitInteractable: 0
+  weaponsInventory: []
+  sheildsInventory: []
+  itemsInventory: []
   playerActive: 1
 --- !u!1001 &2090364408
 Prefab:
