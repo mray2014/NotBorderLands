@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270550571309736}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 8.79, y: 0.49, z: 10.8}
+  m_LocalPosition: {x: 2.8764515, y: 0, z: 6.828728}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,11 +53,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc4ba8419e89ac4794f21af0cbe4067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commonRarityColor: {r: 1, g: 1, b: 1, a: 0}
-  unCommonRarityColor: {r: 0.025392056, g: 1, b: 0, a: 0}
-  rareRarityColor: {r: 0, g: 0.07253456, b: 1, a: 0}
-  epicRarityColor: {r: 0.622107, g: 0, b: 1, a: 0}
-  legendaryRarityColor: {r: 1, g: 0.44479144, b: 0, a: 0}
+  commonRarityColor: {r: 1, g: 1, b: 1, a: 0.5882353}
+  unCommonRarityColor: {r: 0.025392056, g: 1, b: 0, a: 0.5882353}
+  rareRarityColor: {r: 0, g: 0.07253456, b: 1, a: 0.5882353}
+  epicRarityColor: {r: 0.622107, g: 0, b: 1, a: 0.5882353}
+  legendaryRarityColor: {r: 1, g: 0.44479144, b: 0, a: 0.5882353}
 --- !u!198 &198434327982246514
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -137,7 +137,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -306,7 +306,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.4
+      scalar: 0.07
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -623,7 +623,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     maxNumParticles: 1000
-    size3D: 1
+    size3D: 0
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
@@ -770,7 +770,7 @@ ParticleSystem:
           m_RotationOrder: 4
     arc:
       value: 360
-      mode: 3
+      mode: 1
       spread: 0
       speed:
         serializedVersion: 2
@@ -831,7 +831,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 400
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1269,8 +1269,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.8467264, b: 0, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
+        key0: {r: 0.7199974, g: 0, b: 1, a: 1}
+        key1: {r: 0.72156864, g: 0, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -4631,7 +4631,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.1
+  m_MaxParticleSize: 2
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
