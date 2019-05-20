@@ -34,3 +34,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+NotBorderLands/Assets/TextMesh Pro/Examples & Extras/
+NotBorderLands/Assets/TextMesh Pro/Documentation/
+NotBorderLands/Assets/TextMesh Pro/Documentation.meta
+NotBorderLands/Assets/TextMesh Pro/Examples & Extras.meta

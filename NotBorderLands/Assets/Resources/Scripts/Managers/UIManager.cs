@@ -10,6 +10,9 @@ namespace Mike4ruls.Managers
     public class UIManager : MonoBehaviour
     {
         // Public Vars 
+        public GameObject gameUI;
+        public GameObject onScreenUI;
+        public GameObject pauseMenuUI;
         public Image reticle;
 
         // Private Vars 
@@ -28,7 +31,33 @@ namespace Mike4ruls.Managers
         // Update is called once per frame
         void Update()
         {
-            reticle.gameObject.SetActive(player1.GetComponent<PlayerInventory>().hitInteractable);
+            switch (_gameManager.GetGameState())
+            {
+                case GameState.GameStart:
+                    {
+                        break;
+                    }
+                case GameState.Game:
+                    {
+                        reticle.gameObject.SetActive(player1.GetComponent<PlayerInventory>().hitInteractable);
+                        if (!gameUI.activeInHierarchy)
+                        {
+                            gameUI.SetActive(true);
+                            pauseMenuUI.SetActive(false);
+                        }
+                        break;
+                    }
+                case GameState.GamePause:
+                    {
+                        if (!pauseMenuUI.activeInHierarchy)
+                        {
+                            gameUI.SetActive(false);
+                            pauseMenuUI.SetActive(true);
+                        }
+                        break;
+                    }
+            }
+            
         }
     }
 }

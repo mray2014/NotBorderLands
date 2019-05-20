@@ -16,9 +16,10 @@ namespace Mike4ruls.Managers
     public class GameManager : MonoBehaviour
     {
         // Public Vars 
-        public GameState currentGameState = GameState.GameStart;
+        public bool pauseEntireGame = false;
 
         // Private Vars 
+        private GameState currentGameState = GameState.GameStart;
         private PlayerBase player1;
 
         // Use this for initialization
@@ -43,6 +44,10 @@ namespace Mike4ruls.Managers
                     {
                         if (Input.GetKeyDown(KeyCode.Escape))
                         {
+                            if (pauseEntireGame)
+                            {
+                                Time.timeScale = 0;
+                            }
                             player1.SetPlayerActive(false);
                             currentGameState = GameState.GamePause;
                         }
@@ -52,6 +57,10 @@ namespace Mike4ruls.Managers
                     {
                         if (Input.GetKeyDown(KeyCode.Escape))
                         {
+                            if (pauseEntireGame)
+                            {
+                                Time.timeScale = 1;
+                            }
                             player1.SetPlayerActive(true);
                             currentGameState = GameState.Game;
                         }
@@ -67,6 +76,10 @@ namespace Mike4ruls.Managers
                 player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBase>();
             }
             return player1;
+        }
+        public GameState GetGameState()
+        {
+            return currentGameState;
         }
     }
 }
