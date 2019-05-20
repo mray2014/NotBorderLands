@@ -49,7 +49,6 @@ namespace Mike4ruls.Player
 
             if (_playerBase.GetPlayerActive())
             {
-                CheckForInteraction();
                 if (Input.GetKeyDown(KeyCode.Tab) && weaponHolster[curWeapon] != null)
                 {
                     DropCurrentlyEquippedWeapon();
@@ -63,9 +62,40 @@ namespace Mike4ruls.Player
                 {
                     pickUpTimer = 0;
                 }
+                CheckPlayerInput();
+                CheckForInteraction();
             }
 
 
+        }
+        #region Input Check Functionality
+
+        void CheckPlayerInput()
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                LeftToggleWeaponHolster();
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                RightToggleWeaponHolster();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                SetWeaponHolster(0);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                SetWeaponHolster(1);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                SetWeaponHolster(2);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                SetWeaponHolster(3);
+            }
         }
 
         void CheckForInteraction()
@@ -83,7 +113,7 @@ namespace Mike4ruls.Player
                     {
                         return;
                     }
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKeyDown(KeyCode.F))
                     {
                         unHoverStillPressingECheck = true;
                         if (item.isEquippable)
@@ -91,7 +121,7 @@ namespace Mike4ruls.Player
                             startEquipTimeCheck = true;
                         }
                     }
-                    else if (Input.GetKeyUp(KeyCode.E) && unHoverStillPressingECheck)
+                    else if (Input.GetKeyUp(KeyCode.F) && unHoverStillPressingECheck)
                     {
                         PickUpItem(item);
                         startEquipTimeCheck = false;
@@ -100,7 +130,7 @@ namespace Mike4ruls.Player
 
                     if ((pickUpTimer >= holdDownToEquipTime))
                     {
-                        EquipItem(item);
+                        QuickEquipItem(item);
                         startEquipTimeCheck = false;
                     }
                 }
@@ -119,6 +149,47 @@ namespace Mike4ruls.Player
             }
         }
 
+        #endregion
+
+        #region Weapon Toggle Functionality
+
+        void LeftToggleWeaponHolster()
+        {
+            int toggle = curWeapon - 1;
+            if (toggle < 0)
+            {
+                toggle = 3;
+            }
+            SetWeaponHolster(toggle);
+        }
+        void RightToggleWeaponHolster()
+        {
+            int toggle = curWeapon + 1;
+            if (toggle > 3)
+            {
+                toggle = 0;
+            }
+            SetWeaponHolster(toggle);
+        }
+        void SetWeaponHolster(int weaponSlot)
+        {
+            StowAwayEquippedWeapon();
+
+            curWeapon = weaponSlot;
+
+            GunBase gunToEquip = weaponHolster[curWeapon];
+            if (gunToEquip != null)
+            {
+                gunToEquip.transform.parent = gunSpawnPoint.transform;
+                gunToEquip.PickUp(gunSpawnPoint.transform.position);
+                gunToEquip.transform.forward = playerCamera.transform.forward;
+                gunToEquip.gameObject.SetActive(true);
+            }
+        }
+
+        #endregion
+
+        #region Item PickUp/Drop Functionality
         public void PickUpItem(Item itemToPickUp)
         {
             if (currentInventorySpace >= maxInventorySpace)
@@ -146,13 +217,22 @@ namespace Mike4ruls.Player
             currentInventorySpace++;
             itemToPickUp.PickUp(this.gameObject);
         }
-        void EquipItem(Item equipItem)
+
+        public void DropItem(Item itemToPickUp)
+        {
+            Vector3 throwDir = new Vector3(playerCamera.transform.forward.x, 1, playerCamera.transform.forward.z) * throwItemForce;
+            itemToPickUp.ThrowAway(gunSpawnPoint.transform.position, throwDir);
+        }
+        #endregion
+
+        #region Equipping Item Functionality
+        void QuickEquipItem(Item equipItem)
         {
             switch (equipItem.itemType)
             {
                 case ItemType.Weapon:
                     {
-                        EquipWeapon((GunBase)equipItem);
+                        QuickEquipWeapon((GunBase)equipItem);
                         break;
                     }
                 case ItemType.Sheild:
@@ -162,27 +242,42 @@ namespace Mike4ruls.Player
                     }
             }
         }
-
-        void EquipWeapon(GunBase gunToEquip)
+        void EquipWeapon(GunBase gunToEquip, int slot)
+        {
+            if (weaponHolster[slot] != null)
+            {
+                PickUpItem(weaponHolster[slot]);
+            }
+            gunToEquip.transform.parent = gunSpawnPoint.transform;
+            weaponHolster[slot] = gunToEquip;
+            StowAwayEquippedWeapon(slot);
+            SetWeaponHolster(curWeapon);
+        }
+        void QuickEquipWeapon(GunBase gunToEquip)
         {
             if (weaponHolster[curWeapon] != null)
             {
-
                 DropCurrentlyEquippedWeapon();
-
-                //Stowing Weapon in inventory
-                //weaponHolster[curWeapon].transform.parent = null;
-                //PickUpItem(weaponHolster[curWeapon]);
             }
-            weaponHolster[curWeapon] = gunToEquip;
             gunToEquip.transform.parent = gunSpawnPoint.transform;
-            gunToEquip.PickUp(gunSpawnPoint.transform.position);
-            gunToEquip.transform.forward = playerCamera.transform.forward;
+            weaponHolster[curWeapon] = gunToEquip;
+            SetWeaponHolster(curWeapon);
         }
-        public void DropItem(Item itemToPickUp)
+        void StowAwayEquippedWeapon()
         {
-            Vector3 throwDir = new Vector3(playerCamera.transform.forward.x, 1, playerCamera.transform.forward.z) * throwItemForce;
-            itemToPickUp.ThrowAway(gunSpawnPoint.transform.position, throwDir);
+            if (weaponHolster[curWeapon] != null)
+            {
+                weaponHolster[curWeapon].transform.position = new Vector3(0,9999,0);
+                weaponHolster[curWeapon].gameObject.SetActive(false);
+            }
+        }
+        void StowAwayEquippedWeapon(int slot)
+        {
+            if (weaponHolster[slot] != null)
+            {
+                weaponHolster[slot].transform.position = new Vector3(0, 9999, 0);
+                weaponHolster[slot].gameObject.SetActive(false);
+            }
         }
         void DropCurrentlyEquippedWeapon()
         {
@@ -190,6 +285,9 @@ namespace Mike4ruls.Player
             weaponHolster[curWeapon] = null;
             DropItem(weapon);
         }
+        #endregion
+
+        #region Getters and Setters
         public SheildBase GetCurrentSheild()
         {
             return curSheild;
@@ -202,5 +300,6 @@ namespace Mike4ruls.Player
             }
             return true;
         }
+        #endregion
     }
 }
