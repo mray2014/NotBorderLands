@@ -18,15 +18,21 @@ namespace Mike4ruls.General.Managers
        private PlayerInventory _playeyInventory;
        private bool initFinished = false;
         // Use this for initialization
-        void Awake()
+        void OnEnable()
         {
-            UpdateText();
+            if (initFinished)
+            {
+                UpdateText();
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
-            UpdateText();
+            if (initFinished)
+            {
+                UpdateText();
+            }
         }
         void UpdateText()
         {

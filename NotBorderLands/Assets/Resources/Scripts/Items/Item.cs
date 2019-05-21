@@ -97,8 +97,9 @@ namespace Mike4ruls.General
             transform.parent = enviornment.transform;
             float twistX = Random.Range(-1, 1);
             float twistZ = Random.Range(-1, 1);
-            myRigidbody.AddForceAtPosition(throwDirection, pos - new Vector3(twistX, -1, twistZ), ForceMode.Force);
             this.gameObject.SetActive(true);
+
+            myRigidbody.AddForceAtPosition(throwDirection, pos - new Vector3(twistX, -1, twistZ), ForceMode.Force);
 
             Items.RarityParticleEffectScript particleEffect = rarityParticleEffectPool.GetAvailableObj().GetComponent<Items.RarityParticleEffectScript>();
             if (particleEffect != null)

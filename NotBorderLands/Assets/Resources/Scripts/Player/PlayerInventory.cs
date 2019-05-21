@@ -193,6 +193,21 @@ namespace Mike4ruls.General.Player
                 gunToEquip.gameObject.SetActive(true);
             }
         }
+        int IsGunInHolster(GunBase gun)
+        {
+            int index = -1;
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (weaponHolster[i] != null && weaponHolster[i] == gun)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
+        }
 
         #endregion
 
@@ -227,6 +242,8 @@ namespace Mike4ruls.General.Player
 
         public void DropItem(Item itemToDrop)
         {
+            //float ranDirX = Random.Range(-1, 1);
+            //float ranDirZ = Random.Range(-1, 1);
             Vector3 throwDir = new Vector3(playerCamera.transform.forward.x, 1, playerCamera.transform.forward.z) * throwItemForce;
             itemToDrop.ThrowAway(gunSpawnPoint.transform.position, throwDir);
         }
@@ -255,6 +272,10 @@ namespace Mike4ruls.General.Player
         {
             if (curSheild != null)
             {
+                if (curSheild == sheildToEquip)
+                {
+                    return;
+                }
                 StowAwayEquippedSheild();
             }
             if (sheildToEquip != null)
@@ -282,7 +303,7 @@ namespace Mike4ruls.General.Player
                 curSheild = null;
             }
         }
-        void DropCurrentlyEquippedSheild()
+        public void DropCurrentlyEquippedSheild()
         {
             Item sheild = curSheild;
             curSheild = null;
@@ -299,8 +320,18 @@ namespace Mike4ruls.General.Player
         #region WeaponFunctionality
         public void EquipWeapon(GunBase gunToEquip, int slot)
         {
+            int index = IsGunInHolster(gunToEquip);
+            if (index >= 0)
+            {
+                StowAwayEquippedWeapon(index);
+            }
+
             if (weaponHolster[slot] != null)
             {
+                if (gunToEquip == weaponHolster[slot])
+                {
+                    return;
+                }
                 StowAwayEquippedWeapon(slot);
             }
             if (gunToEquip != null)
@@ -338,10 +369,16 @@ namespace Mike4ruls.General.Player
                 weaponHolster[slot] = null;
             }
         }
-        void DropCurrentlyEquippedWeapon()
+        public void DropCurrentlyEquippedWeapon()
         {
             Item weapon = weaponHolster[curWeapon];
             weaponHolster[curWeapon] = null;
+            DropItem(weapon);
+        }
+        public void DropEquippedWeapon(int slot)
+        {
+            Item weapon = weaponHolster[slot];
+            weaponHolster[slot] = null;
             DropItem(weapon);
         }
         #endregion

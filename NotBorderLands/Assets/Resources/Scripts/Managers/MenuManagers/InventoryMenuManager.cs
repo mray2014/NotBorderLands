@@ -18,6 +18,7 @@ namespace Mike4ruls.General.Managers
         public Vector3 sheildSpacing = new Vector3(0, -25, 0);
         public Vector3 inventorySpacing = new Vector3(0, -50, 0);
 
+        private bool dropItem = false;
         private PlayerBase _playerBase;
         private PlayerInventory _playerInventory;
         bool initFinished = false;
@@ -28,7 +29,7 @@ namespace Mike4ruls.General.Managers
             if (initFinished)
             {
                 UpdateUI();
-                SetSpacing(inventorySpacing);
+                SetSpacing();
             }
         }
         // Update is called once per frame
@@ -36,6 +37,36 @@ namespace Mike4ruls.General.Managers
         {
             if (initFinished)
             {
+                if (ItemIconScript.dragEnded)
+                {
+                    Item itemToDrop = ItemIconScript.swap1.GetItem();
+                    if (dropItem && itemToDrop != null)
+                    {
+                        if (ItemIconScript.swap1.GetParent() == equipmentPoolManager.gameObject)
+                        {
+                            switch (itemToDrop.itemType)
+                            {
+                                case ItemType.Weapon:
+                                    {
+                                        _playerInventory.DropEquippedWeapon(ItemIconScript.swap1.transform.GetSiblingIndex());
+                                        break;
+                                    }
+                                case ItemType.Sheild:
+                                    {
+                                        _playerInventory.DropCurrentlyEquippedSheild();
+                                        break;
+                                    }
+                            }
+                        }
+                        else
+                        {
+                            _playerInventory.DropItem(itemToDrop);
+                        }
+                        UpdateUI();
+                        dropItem = false;
+                    }
+                    ItemIconScript.dragEnded = false;
+                }
                 if (ItemIconScript.rdyToSwap)
                 {
                     Item item1 = ItemIconScript.swap1.GetItem();
@@ -180,10 +211,10 @@ namespace Mike4ruls.General.Managers
 
             equipmentPoolManager.Initialize(5, false);
             inventoryPoolManager.Initialize(_playerInventory.GetMaxInventorySpace(), false);
-            SetSpacing(inventorySpacing);
+            SetSpacing();
             initFinished = true;
         }
-        public void SetSpacing(Vector3 spacing)
+        public void SetSpacing()
         {
             Vector3 rectPosition = equipmentPoolManager.transform.position;
             equipmentPoolManager.transform.GetChild(0).GetComponent<ItemIconScript>().SetLastPosition(rectPosition);
@@ -195,7 +226,7 @@ namespace Mike4ruls.General.Managers
             for (int i = 0; i < inventoryPoolManager.transform.childCount; i++)
             {
                 ItemIconScript obj = inventoryPoolManager.transform.GetChild(i).gameObject.GetComponent<ItemIconScript>();
-                obj.SetLastPosition(inventoryPoolManager.GetComponent<RectTransform>().position + (spacing * i));
+                obj.SetLastPosition(inventoryPoolManager.GetComponent<RectTransform>().position + (inventorySpacing * i));
             }
         }
         void UpdatePlayerInventory()
@@ -206,6 +237,14 @@ namespace Mike4ruls.General.Managers
                 _playerInventory.EquipWeapon((GunBase)newItem, i);
             }
             _playerInventory.EquipSheild((SheildBase)equipmentPoolManager.transform.GetChild(4).GetComponent<ItemIconScript>().GetItem());
+        }
+        public void StartDroppingItem()
+        {
+            dropItem = true;
+        }
+        public void StopDroppingItem()
+        {
+            dropItem =false;
         }
     }
 }

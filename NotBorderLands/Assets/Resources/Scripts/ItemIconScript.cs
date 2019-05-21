@@ -13,6 +13,7 @@ namespace Mike4ruls.General.UI
         static public ItemIconScript swap1;
         static public ItemIconScript swap2;
         static public bool rdyToSwap = false;
+        static public bool dragEnded = false;
 
         static public void SwapItemIconsContents()
         {
@@ -59,12 +60,14 @@ namespace Mike4ruls.General.UI
         private Vector3 offset;
         private bool followMouseCursor;
 
-        private ItemIconScript hitItemIcon = null;
-
         // Use this for initialization
         void Awake()
         {
-            lastPosition = transform.position;
+            if (lastPosition == null)
+            {
+                lastPosition = transform.position;
+            }
+
             buttonImage = transform.GetChild(0).GetComponent<Image>();
             myText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         }
@@ -100,6 +103,7 @@ namespace Mike4ruls.General.UI
         public void DropIcon()
         {
             rdyToSwap = (swap1 != null) && (swap2 != null);
+            dragEnded = true;
             //SwapItemIcons();
             buttonImage.raycastTarget = true;
             followMouseCursor = false;
