@@ -14,6 +14,19 @@ namespace Mike4ruls.General.UI
         static public ItemIconScript swap2;
         static public bool rdyToSwap = false;
 
+        static public void SwapItemIconsContents()
+        {
+            if (swap1 != null && swap2 != null)
+            {
+                Item oldItem = swap1.myItem;
+
+                swap1.StoreItem(swap2.myItem);
+                swap2.StoreItem(oldItem);
+            }
+
+            WipeSwap();
+        }
+
         static public void SwapItemIcons()
         {
             if (swap1 != null && swap2 != null)
@@ -39,7 +52,7 @@ namespace Mike4ruls.General.UI
             rdyToSwap = false;
         }
 
-        private Item myItem;
+        private Item myItem = null;
         private TextMeshProUGUI myText;
         private Image buttonImage;
         private Vector3 lastPosition;
@@ -119,6 +132,10 @@ namespace Mike4ruls.General.UI
         public Item GetItem()
         {
             return myItem;
+        }
+        public GameObject GetParent()
+        {
+            return this.transform.parent.gameObject;
         }
     }
 }

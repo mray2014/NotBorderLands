@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mike4ruls.General.Items;
 using Mike4ruls.General.Player;
 using Mike4ruls.General.UI;
 
@@ -9,11 +10,7 @@ namespace Mike4ruls.General.Managers
 {
     public class InventoryMenuManager : MonoBehaviour
     {
-        public ItemIconScript weaponHolsterIcon1;
-        public ItemIconScript weaponHolsterIcon2;
-        public ItemIconScript weaponHolsterIcon3;
-        public ItemIconScript weaponHolsterIcon4;
-        public ItemIconScript sheildIcon;
+        public PoolManager equipmentPoolManager;
 
         public PoolManager inventoryPoolManager;
 
@@ -44,6 +41,13 @@ namespace Mike4ruls.General.Managers
                     Item item1 = ItemIconScript.swap1.GetItem();
                     Item item2 = ItemIconScript.swap2.GetItem();
 
+                    bool slotCheckOk = true;
+
+                    if (ItemIconScript.swap1.GetParent() == inventoryPoolManager.gameObject && ItemIconScript.swap2.GetParent() == inventoryPoolManager.gameObject)
+                    {
+                        slotCheckOk = false;
+                    }
+
                     bool isAnOpenSlot = item1 == null || item2 == null;
                     bool isSameItemType = false;
 
@@ -51,10 +55,65 @@ namespace Mike4ruls.General.Managers
                     {
                         isSameItemType = item1.itemType == item2.itemType;
                     }
-
-                    if (isSameItemType || isAnOpenSlot)
+                    else if(item1 != null || item2 != null)
                     {
+                        if (ItemIconScript.swap1.GetParent() == equipmentPoolManager.gameObject && ItemIconScript.swap2.GetParent() == equipmentPoolManager.gameObject)
+                        {
+                            if (ItemIconScript.swap1.transform.GetSiblingIndex() > 3 || ItemIconScript.swap2.transform.GetSiblingIndex() > 3)
+                            {
+                                slotCheckOk = false;
+                            }
+                        }
+                        else if(slotCheckOk)
+                        {
+                            ItemIconScript onEquipmentSideIcon = ItemIconScript.swap1.GetParent() == equipmentPoolManager.gameObject ? ItemIconScript.swap1: ItemIconScript.swap2;
+                            ItemIconScript hasItemIcon = item1 == null ? ItemIconScript.swap2 : ItemIconScript.swap1;
+                            //ItemIconScript doestHaveItemIcon = item1 == null ? ItemIconScript.swap1 : ItemIconScript.swap2;
+
+                            if (onEquipmentSideIcon != hasItemIcon)
+                            {
+                                switch (hasItemIcon.GetItem().itemType)
+                                {
+                                    case ItemType.Weapon:
+                                        {
+                                            if (onEquipmentSideIcon.transform.GetSiblingIndex() > 3)
+                                            {
+                                                slotCheckOk = false;
+                                            }
+                                            break;
+                                        }
+                                    case ItemType.Sheild:
+                                        {
+                                            if (onEquipmentSideIcon.transform.GetSiblingIndex() < 4)
+                                            {
+                                                slotCheckOk = false;
+                                            }
+                                            break;
+                                        }
+                                    default:
+                                        {
+                                            slotCheckOk = false;
+                                            break;
+                                        }
+                                }
+                            }
+                        }
+                    }
+
+                    if (slotCheckOk && (isSameItemType || isAnOpenSlot))
+                    {
+                        int icon1Index = ItemIconScript.swap1.transform.GetSiblingIndex();
+                        int icon2Index = ItemIconScript.swap2.transform.GetSiblingIndex();
+
+                        Transform parent = ItemIconScript.swap1.transform.parent;
+                        ItemIconScript.swap1.transform.SetParent(ItemIconScript.swap2.transform.parent);
+                        ItemIconScript.swap2.transform.SetParent(parent);
+
+                        ItemIconScript.swap1.transform.SetSiblingIndex(icon2Index);
+                        ItemIconScript.swap2.transform.SetSiblingIndex(icon1Index);
+                        UpdatePlayerInventory();
                         ItemIconScript.SwapItemIcons();
+                        UpdateUI();
                     }
                     else
                     {
@@ -65,12 +124,21 @@ namespace Mike4ruls.General.Managers
         }
         void UpdateUI()
         {
+            equipmentPoolManager.transform.GetChild(0).GetComponent<ItemIconScript>().StoreItem(_playerInventory.GetWeaponFromHolster(0));
+            equipmentPoolManager.transform.GetChild(1).GetComponent<ItemIconScript>().StoreItem(_playerInventory.GetWeaponFromHolster(1));
+            equipmentPoolManager.transform.GetChild(2).GetComponent<ItemIconScript>().StoreItem(_playerInventory.GetWeaponFromHolster(2));
+            equipmentPoolManager.transform.GetChild(3).GetComponent<ItemIconScript>().StoreItem(_playerInventory.GetWeaponFromHolster(3));
+            equipmentPoolManager.transform.GetChild(4).GetComponent<ItemIconScript>().StoreItem(_playerInventory.GetCurrentSheild());
+
+
+            for (int i = 0; i < inventoryPoolManager.transform.childCount; i++)
+            {
+                ItemIconScript icon = inventoryPoolManager.transform.GetChild(i).GetComponent<ItemIconScript>();
+
+                icon.StoreItem(null);
+            }
+
             int iconCount = 0;
-            weaponHolsterIcon1.StoreItem(_playerInventory.GetWeaponFromHolster(0));
-            weaponHolsterIcon2.StoreItem(_playerInventory.GetWeaponFromHolster(1));
-            weaponHolsterIcon3.StoreItem(_playerInventory.GetWeaponFromHolster(2));
-            weaponHolsterIcon4.StoreItem(_playerInventory.GetWeaponFromHolster(3));
-            sheildIcon.StoreItem(_playerInventory.GetCurrentSheild());
 
             GameObject inventory = _playerInventory.weaponsInventoryObj;
 
@@ -110,23 +178,34 @@ namespace Mike4ruls.General.Managers
             _playerBase = player1;
             _playerInventory = _playerBase.GetComponent<PlayerInventory>();
 
+            equipmentPoolManager.Initialize(5, false);
             inventoryPoolManager.Initialize(_playerInventory.GetMaxInventorySpace(), false);
             SetSpacing(inventorySpacing);
             initFinished = true;
         }
         public void SetSpacing(Vector3 spacing)
         {
-            Vector3 rectPosition = weaponHolsterIcon1.GetComponent<RectTransform>().position;
-            weaponHolsterIcon2.SetLastPosition(rectPosition + (weaponSpacing * 1));
-            weaponHolsterIcon3.SetLastPosition(rectPosition + (weaponSpacing * 2));
-            weaponHolsterIcon4.SetLastPosition(rectPosition + (weaponSpacing * 3));
-            sheildIcon.SetLastPosition(rectPosition + (weaponSpacing * 3) + sheildSpacing);
+            Vector3 rectPosition = equipmentPoolManager.transform.position;
+            equipmentPoolManager.transform.GetChild(0).GetComponent<ItemIconScript>().SetLastPosition(rectPosition);
+            equipmentPoolManager.transform.GetChild(1).GetComponent<ItemIconScript>().SetLastPosition(rectPosition + (weaponSpacing * 1));
+            equipmentPoolManager.transform.GetChild(2).GetComponent<ItemIconScript>().SetLastPosition(rectPosition + (weaponSpacing * 2));
+            equipmentPoolManager.transform.GetChild(3).GetComponent<ItemIconScript>().SetLastPosition(rectPosition + (weaponSpacing * 3));
+            equipmentPoolManager.transform.GetChild(4).GetComponent<ItemIconScript>().SetLastPosition(rectPosition + (weaponSpacing * 3) + sheildSpacing);
 
             for (int i = 0; i < inventoryPoolManager.transform.childCount; i++)
             {
                 ItemIconScript obj = inventoryPoolManager.transform.GetChild(i).gameObject.GetComponent<ItemIconScript>();
                 obj.SetLastPosition(inventoryPoolManager.GetComponent<RectTransform>().position + (spacing * i));
             }
+        }
+        void UpdatePlayerInventory()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                Item newItem = equipmentPoolManager.transform.GetChild(i).GetComponent<ItemIconScript>().GetItem();
+                _playerInventory.EquipWeapon((GunBase)newItem, i);
+            }
+            _playerInventory.EquipSheild((SheildBase)equipmentPoolManager.transform.GetChild(4).GetComponent<ItemIconScript>().GetItem());
         }
     }
 }

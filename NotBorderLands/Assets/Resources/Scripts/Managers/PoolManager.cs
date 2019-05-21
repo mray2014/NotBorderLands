@@ -18,23 +18,25 @@ namespace Mike4ruls.General.Managers
         // Use this for initialization
         void Start()
         {
-            if (!initFinished)
-            {
-                Initialize();
-            }
-
+            Initialize();
         }
         void Initialize()
         {
-            SpawnAmmount(numOfInstantiatedObjects, turnOffObjs);
-            initFinished = true;
+            if (!initFinished)
+            {
+                SpawnAmmount(numOfInstantiatedObjects, turnOffObjs);
+                initFinished = true;
+            }
         }
         public void Initialize(int numToSpawn, bool turnOff)
         {
-            numOfInstantiatedObjects = numToSpawn;
-            turnOffObjs = turnOff;
-            SpawnAmmount(numOfInstantiatedObjects, turnOffObjs);
-            initFinished = true;
+            if (!initFinished)
+            {
+                numOfInstantiatedObjects = numToSpawn;
+                turnOffObjs = turnOff;
+                SpawnAmmount(numOfInstantiatedObjects, turnOffObjs);
+                initFinished = true;
+            }
         }
 
         public GameObject GetAvailableObj()
