@@ -13,13 +13,17 @@ namespace Mike4ruls.General.Items
         public float sheildRechargeRate = 1;
         public float sheildRechargeAmmount = 1;
 
-
         protected bool isDepleted = false;
         protected bool isRecharging = false;
         protected bool isFullyCharged = true;
 
         private float rechargeRateTimer = 0;
         private float rechargeWaitTimer = 0;
+
+        public void GenerateSheild()
+        {
+
+        }
 
         protected void RechargeUpdate()
         {
@@ -94,5 +98,6 @@ namespace Mike4ruls.General.Items
             isFullyCharged = true;
         }
         #endregion
+
     }
 }

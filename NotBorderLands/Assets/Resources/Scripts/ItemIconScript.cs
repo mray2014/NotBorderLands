@@ -14,6 +14,7 @@ namespace Mike4ruls.General.UI
         static public ItemIconScript swap2;
         static public bool rdyToSwap = false;
         static public bool dragEnded = false;
+        static public bool clicked = false;
 
         static public void SwapItemIconsContents()
         {
@@ -143,6 +144,14 @@ namespace Mike4ruls.General.UI
         public GameObject GetParent()
         {
             return this.transform.parent.gameObject;
+        }
+        public void IsClicking()
+        {
+            swap1 = this;
+            if (transform.position == lastPosition)
+            {
+                clicked = true;
+            }
         }
     }
 }

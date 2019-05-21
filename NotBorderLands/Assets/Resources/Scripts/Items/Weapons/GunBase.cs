@@ -48,6 +48,7 @@ namespace Mike4ruls.General.Items
             accuracy = Random.Range(accuracyRange.x, accuracyRange.y);
             bulletRange = Random.Range(bulletRangeRange.x, bulletRangeRange.y);
         }
+        
         void DecideFireMode()
         {
 
@@ -72,6 +73,7 @@ namespace Mike4ruls.General.Items
                     }
             }
         }
+        
     }
 }
 

@@ -14,10 +14,14 @@ namespace Mike4ruls.General.Managers
 
         public PoolManager inventoryPoolManager;
 
+        public PoolManager inspectionPoolManager;
+
         public Vector3 weaponSpacing = new Vector3(0, -25, 0);
         public Vector3 sheildSpacing = new Vector3(0, -25, 0);
         public Vector3 inventorySpacing = new Vector3(0, -50, 0);
 
+        private int iconCount = 0;
+        private bool inspectionON = false;
         private bool dropItem = false;
         private PlayerBase _playerBase;
         private PlayerInventory _playerInventory;
@@ -66,6 +70,11 @@ namespace Mike4ruls.General.Managers
                         dropItem = false;
                     }
                     ItemIconScript.dragEnded = false;
+                }
+                if (ItemIconScript.clicked)
+                {
+                    ToggleInspectEquipment(ItemIconScript.swap1.GetItem());
+                    ItemIconScript.clicked = false;
                 }
                 if (ItemIconScript.rdyToSwap)
                 {
@@ -175,32 +184,22 @@ namespace Mike4ruls.General.Managers
                 icon.emptyText = "NONE";
             }
 
-            int iconCount = 0;
+            iconCount = 0;
 
-            GameObject inventory = _playerInventory.weaponsInventoryObj;
+            SetItemsIntoIcons(_playerInventory.weaponsInventoryObj);
 
-            for (int i = 0; i < inventory.transform.childCount; i++)
-            {
-                Item item = inventory.transform.GetChild(i).GetComponent<Item>();
-                ItemIconScript icon = inventoryPoolManager.transform.GetChild(iconCount).GetComponent<ItemIconScript>();
+            SetItemsIntoIcons(_playerInventory.sheildInventoryObj);
 
-                icon.StoreItem(item);
-                iconCount++;
-            }
+            SetItemsIntoIcons(_playerInventory.weaponModInventoryObj);
 
-            inventory = _playerInventory.sheildInventoryObj;
+            SetItemsIntoIcons(_playerInventory.sheildModInventoryObj);
 
-            for (int i = 0; i < inventory.transform.childCount; i++)
-            {
-                Item item = inventory.transform.GetChild(i).GetComponent<Item>();
-                ItemIconScript icon = inventoryPoolManager.transform.GetChild(iconCount).GetComponent<ItemIconScript>();
+            SetItemsIntoIcons(_playerInventory.itemInventoryObj);
 
-                icon.StoreItem(item);
-                iconCount++;
-            }
-
-            inventory = _playerInventory.itemInventoryObj;
-
+            
+        }
+        void SetItemsIntoIcons(GameObject inventory)
+        {
             for (int i = 0; i < inventory.transform.childCount; i++)
             {
                 Item item = inventory.transform.GetChild(i).GetComponent<Item>();
@@ -217,6 +216,7 @@ namespace Mike4ruls.General.Managers
 
             equipmentPoolManager.Initialize(5, false);
             inventoryPoolManager.Initialize(_playerInventory.GetMaxInventorySpace(), false);
+            inspectionPoolManager.Initialize(8, false);
             SetSpacing();
             initFinished = true;
         }
@@ -251,6 +251,53 @@ namespace Mike4ruls.General.Managers
         public void StopDroppingItem()
         {
             dropItem =false;
+        }
+        public void ToggleInspectEquipment(Item item)
+        {
+            inspectionON = inspectionPoolManager.gameObject.activeInHierarchy ? false : true;
+            if (item == null)
+            {
+                return;
+            }
+            Vector3 centerPosition = inspectionPoolManager.transform.position;
+            ItemIconScript gunIcon = inspectionPoolManager.transform.GetChild(0).GetComponent<ItemIconScript>();
+
+            if (gunIcon.GetItem() != null && inspectionPoolManager.gameObject.activeInHierarchy)
+            {
+                inspectionON = gunIcon.GetItem() != item;
+            }
+
+            gunIcon.SetLastPosition(centerPosition);
+            gunIcon.StoreItem(item);
+
+            for (int i = 1; i < inspectionPoolManager.transform.childCount; i++)
+            {
+                ItemIconScript modIcon = inspectionPoolManager.transform.GetChild(i).GetComponent<ItemIconScript>();
+                int slotNum = i - 1;
+                if (slotNum < item.numOfModSlots)
+                {
+                    ModBase mod = item.itemMods[slotNum];
+                    if (mod != null)
+                    {
+                        modIcon.StoreItem(mod);
+                    }
+                    else
+                    {
+                        modIcon.emptyText = "Mod Component " + (i);
+                    }
+
+                    Vector3 dirToNewPos =  Quaternion.Euler(0,0,360.0f * ((float)slotNum / (float)item.numOfModSlots)) * (Vector3.up * 75);
+                    Vector3 positionOffset = new Vector3(0,-15,0);
+                    modIcon.SetLastPosition(centerPosition + positionOffset + dirToNewPos);
+                }
+                else
+                {
+                    modIcon.SetLastPosition(new Vector3(0,9999,0));
+                }
+            }
+
+            inspectionPoolManager.gameObject.SetActive(inspectionON);
+            equipmentPoolManager.gameObject.SetActive(!inspectionON);
         }
     }
 }

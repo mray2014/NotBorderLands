@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mike4ruls.General.Items;
 
 namespace Mike4ruls.General
 {
     public enum ItemType
     {
-        Weapon,
+        Weapon = 0,
         Sheild,
+        Mod,
         HealthPickUp,
         SheildBattery
     }
@@ -36,9 +38,11 @@ namespace Mike4ruls.General
         public ItemType itemType = ItemType.Weapon;
         public GameObject itemCollider;
         public bool isEquippable = false;
+        public ModBase[] itemMods;
 
         // Protected Vars
         protected PlayerBase _playerBase;
+        public int numOfModSlots = 0;
 
         // Private Vars
         private Managers.PoolManager rarityParticleEffectPool;
@@ -46,6 +50,7 @@ namespace Mike4ruls.General
         private Rigidbody myRigidbody;
         private bool itemPickedUp = false;
         private bool pullIn = false;
+        private bool initFinished = false;
 
         // Use this for initialization
         public void Awake()
@@ -61,13 +66,34 @@ namespace Mike4ruls.General
             {
                 particleEffect.ActivateRarityEffect(this);
             }
+            
+             Initialize();
+           
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Initialize()
         {
-
+            if (!initFinished)
+            {
+                switch (itemType)
+                {
+                    case ItemType.Weapon:
+                        {
+                            DecideModSlots();
+                            GetComponent<GunBase>().GenerateWeapon();
+                            break;
+                        }
+                    case ItemType.Sheild:
+                        {
+                            DecideModSlots();
+                            GetComponent<SheildBase>().GenerateSheild();
+                            break;
+                        }
+                }
+                initFinished = true;
+            }
         }
+
         public void PickUp(GameObject target)
         {
             Vector3 dirToTarget = (target.transform.position - transform.position).normalized;
@@ -134,6 +160,69 @@ namespace Mike4ruls.General
 
 
         }
+        protected void DecideModSlots()
+        {
+            switch (rarityType)
+            {
+                case RarityType.Rare:
+                    {
+                        numOfModSlots = Random.Range(0, 2);
+                        break;
+                    }
+                case RarityType.Epic:
+                    {
+                        numOfModSlots = Random.Range(0, 3);
+                        break;
+                    }
+                case RarityType.Legendary:
+                    {
+                        numOfModSlots = Random.Range(3, 4);
+                        break;
+                    }
+            }
+            itemMods = new ModBase[numOfModSlots];
+        }
+        public bool InsertMod(ModBase mod)
+        {
+            bool succesful = false;
+
+            if (numOfModSlots == 0 || ((int)mod.modType != (int)itemType))
+            {
+                return false;
+            }
+            for (int i = 0; i < numOfModSlots; i++)
+            {
+                if (itemMods[i] == null)
+                {
+                    itemMods[i] = mod;
+                    succesful = true;
+                    break;
+                }
+            }
+
+            return succesful;
+        }
+        public ModBase InsertMod(ModBase mod, int slot)
+        {
+            ModBase modSwap = null;
+            if (numOfModSlots == 0 || ((int)mod.modType != (int)itemType))
+            {
+                return null;
+            }
+
+            if (itemMods[slot] == null)
+            {
+                itemMods[slot] = mod;
+            }
+            else
+            {
+                modSwap = itemMods[slot];
+                itemMods[slot] = mod;
+            }
+            return modSwap;
+        }
+
+
         public bool HasItemBeenPickedUp()
         {
             return itemPickedUp;
@@ -156,6 +245,24 @@ namespace Mike4ruls.General
                 case ItemType.Sheild:
                     {
                         finalText += "Sheild: ";
+                        break;
+                    }
+                case ItemType.Mod:
+                    {
+                        switch (GetComponent<ModBase>().modType)
+                        {
+                            case ModType.WeaponMod:
+                                {
+                                    finalText += "Weapon ";
+                                    break;
+                                }
+                            case ModType.SheildMod:
+                                {
+                                    finalText += "Sheild ";
+                                    break;
+                                }
+                        }
+                        finalText += "Mod: ";
                         break;
                     }
                 default:

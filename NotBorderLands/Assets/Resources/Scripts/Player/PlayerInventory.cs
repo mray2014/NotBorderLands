@@ -11,6 +11,8 @@ namespace Mike4ruls.General.Player
         // Public Vars
         public GameObject weaponsInventoryObj;
         public GameObject sheildInventoryObj;
+        public GameObject weaponModInventoryObj;
+        public GameObject sheildModInventoryObj;
         public GameObject itemInventoryObj;
         public GameObject gunSpawnPoint;
         public float holdDownToEquipTime = 1;
@@ -231,6 +233,24 @@ namespace Mike4ruls.General.Player
                         itemToPickUp.transform.SetParent( sheildInventoryObj.transform);
                         break;
                     }
+                case ItemType.Mod:
+                    {
+                        switch (itemToPickUp.GetComponent<Items.ModBase>().modType)
+                        {
+                            case Items.ModType.WeaponMod:
+                                {
+                                    itemToPickUp.transform.SetParent(weaponModInventoryObj.transform);
+                                    break;
+                                }
+                            case Items.ModType.SheildMod:
+                                {
+                                    itemToPickUp.transform.SetParent(sheildModInventoryObj.transform);
+                                    break;
+                                }
+                        }
+                    
+                        break;
+                    }
                 default:
                     {
                         itemToPickUp.transform.SetParent( itemInventoryObj.transform);
@@ -262,6 +282,24 @@ namespace Mike4ruls.General.Player
                 case ItemType.Sheild:
                     {
                         QuickEquipSheild((SheildBase)equipItem);
+                        break;
+                    }
+                case ItemType.Mod:
+                    {
+                        switch (equipItem.GetComponent<Items.ModBase>().modType)
+                        {
+                            case Items.ModType.WeaponMod:
+                                {
+                                    QuickEquipWeaponMod((ModBase)equipItem);
+                                    break;
+                                }
+                            case Items.ModType.SheildMod:
+                                {
+                                    QuickEquipSheildMod((ModBase)equipItem);
+                                    break;
+                                }
+                        }
+
                         break;
                     }
             }
@@ -383,6 +421,58 @@ namespace Mike4ruls.General.Player
         }
         #endregion
 
+        public bool EquipMod(Item item, ModBase mod)
+        {
+            bool succesful = item.InsertMod(mod); ;
+
+            return succesful;
+        }
+        public void EquipMod(Item item, ModBase mod, int slot)
+        {
+            ModBase oldMod = item.InsertMod(mod, slot); ;
+
+            if (oldMod != null)
+            {
+                StowAwayMod(oldMod);
+            }
+        }
+
+        public void QuickEquipWeaponMod(ModBase weaponMod)
+        {
+            if (weaponHolster[curWeapon] != null && weaponHolster[curWeapon].InsertMod(weaponMod))
+            {
+                StowAwayMod(weaponMod);
+                weaponMod.transform.SetParent(weaponHolster[curWeapon].transform);
+                weaponMod.gameObject.SetActive(true);
+            }
+        }
+        public void QuickEquipSheildMod(ModBase sheildMod)
+        {
+            if (curSheild != null && curSheild.InsertMod(sheildMod))
+            {
+                StowAwayMod(sheildMod);
+                sheildMod.transform.SetParent(curSheild.transform);
+                sheildMod.gameObject.SetActive(true);
+            }
+        }
+        void StowAwayMod(ModBase mod)
+        {
+            switch (mod.modType)
+            {
+                case ModType.WeaponMod:
+                    {
+                        mod.transform.SetParent(weaponModInventoryObj.transform);
+                        break;
+                    }
+                case ModType.SheildMod:
+                    {
+                        mod.transform.SetParent(sheildModInventoryObj.transform);
+                        break;
+                    }
+            }
+            mod.PickUp(new Vector3(0, 9999, 0));
+            mod.gameObject.SetActive(false);
+        }
 
         #endregion
 
