@@ -26,24 +26,14 @@ namespace Mike4ruls.General.Managers
         }
         void Initialize()
         {
-            for (int i = 0; i < numOfInstantiatedObjects; i++)
-            {
-                GameObject obj = Instantiate(object2Spawn, this.transform);
-
-                if (objectMat != null)
-                {
-                    obj.GetComponent<Renderer>().material = objectMat;
-                }
-                //AudioSource sfx = obj.GetComponent<AudioSource>();
-                //if (sfx != null)
-                //{
-                //    GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoundManager>().AddToSFX(sfx);
-                //}
-                if (turnOffObjs)
-                {
-                    obj.SetActive(false);
-                }
-            }
+            SpawnAmmount(numOfInstantiatedObjects, turnOffObjs);
+            initFinished = true;
+        }
+        public void Initialize(int numToSpawn, bool turnOff)
+        {
+            numOfInstantiatedObjects = numToSpawn;
+            turnOffObjs = turnOff;
+            SpawnAmmount(numOfInstantiatedObjects, turnOffObjs);
             initFinished = true;
         }
 
@@ -67,5 +57,35 @@ namespace Mike4ruls.General.Managers
         void Update() {
 
         }
+        public void SpawnAmmount(int numToSpawn, bool turnOff)
+        {
+            for (int i = 0; i < numToSpawn; i++)
+            {
+                GameObject obj = Instantiate(object2Spawn, this.transform);
+
+                if (objectMat != null)
+                {
+                    obj.GetComponent<Renderer>().material = objectMat;
+                }
+                //AudioSource sfx = obj.GetComponent<AudioSource>();
+                //if (sfx != null)
+                //{
+                //    GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoundManager>().AddToSFX(sfx);
+                //}
+                if (turnOff)
+                {
+                    obj.SetActive(false);
+                }
+            }
+        }
+        //public void SetSpacing(Vector3 spacing)
+        //{
+        //    for (int i = 0; i < transform.childCount; i++)
+        //    {
+        //        GameObject obj = transform.GetChild(i).gameObject;
+        //        obj.transform.position = transform.position + (spacing * i);
+        //    }
+        //}
     }
+
 }

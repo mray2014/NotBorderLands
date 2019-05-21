@@ -31,6 +31,7 @@ namespace Mike4ruls.General
     public class Item : MonoBehaviour
     {
         // Public Vars 
+        public string name = "";
         public RarityType rarityType = RarityType.Common;
         public ItemType itemType = ItemType.Weapon;
         public GameObject itemCollider;
@@ -139,6 +140,31 @@ namespace Mike4ruls.General
         public bool IsPullingIn()
         {
             return pullIn;
+        }
+        public string ItemToString()
+        {
+            string finalText = "";
+
+            switch (itemType)
+            {
+                case ItemType.Weapon:
+                    {
+                        finalText += "Weapon: ";
+                        break;
+                    }
+                case ItemType.Sheild:
+                    {
+                        finalText += "Sheild: ";
+                        break;
+                    }
+                default:
+                    {
+                        finalText += "Item: ";
+                        break;
+                    }
+            }
+
+            return finalText + name;
         }
     }
 }

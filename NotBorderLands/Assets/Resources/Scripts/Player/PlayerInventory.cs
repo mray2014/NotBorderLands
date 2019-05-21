@@ -340,6 +340,10 @@ namespace Mike4ruls.General.Player
         {
             return curSheild;
         }
+        public int GetMaxInventorySpace()
+        {
+            return maxInventorySpace;
+        }
         public bool IsWearingASheild()
         {
             if (curSheild == null)
@@ -347,6 +351,14 @@ namespace Mike4ruls.General.Player
                 return false;
             }
             return true;
+        }
+        public Item GetWeaponFromHolster(int pos)
+        {
+            if (weaponHolster[pos] != null)
+            {
+                return weaponHolster[pos];
+            }
+            return null;
         }
         #endregion
     }
