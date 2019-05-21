@@ -2370,7 +2370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624796deb3f5afe4e8246aa745d58bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  name: Rusty Pistol
   rarityType: 1
   itemType: 0
   itemCollider: {fileID: 1018177455}
@@ -4400,7 +4400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624796deb3f5afe4e8246aa745d58bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  name: Ray Gun
   rarityType: 4
   itemType: 0
   itemCollider: {fileID: 1227480928}
@@ -5425,7 +5425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85fdc2ea7acb9bd449fac6463b29c930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  name: Basic Sheild
   rarityType: 3
   itemType: 1
   itemCollider: {fileID: 801601078}

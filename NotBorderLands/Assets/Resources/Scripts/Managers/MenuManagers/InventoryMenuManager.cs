@@ -161,12 +161,18 @@ namespace Mike4ruls.General.Managers
             equipmentPoolManager.transform.GetChild(3).GetComponent<ItemIconScript>().StoreItem(_playerInventory.GetWeaponFromHolster(3));
             equipmentPoolManager.transform.GetChild(4).GetComponent<ItemIconScript>().StoreItem(_playerInventory.GetCurrentSheild());
 
+            equipmentPoolManager.transform.GetChild(0).GetComponent<ItemIconScript>().emptyText = "WEAPON SLOT 1";
+            equipmentPoolManager.transform.GetChild(1).GetComponent<ItemIconScript>().emptyText = "WEAPON SLOT 2";
+            equipmentPoolManager.transform.GetChild(2).GetComponent<ItemIconScript>().emptyText = "WEAPON SLOT 3";
+            equipmentPoolManager.transform.GetChild(3).GetComponent<ItemIconScript>().emptyText = "WEAPON SLOT 4";
+            equipmentPoolManager.transform.GetChild(4).GetComponent<ItemIconScript>().emptyText = "SHEILD SLOT";
+
 
             for (int i = 0; i < inventoryPoolManager.transform.childCount; i++)
             {
                 ItemIconScript icon = inventoryPoolManager.transform.GetChild(i).GetComponent<ItemIconScript>();
-
                 icon.StoreItem(null);
+                icon.emptyText = "NONE";
             }
 
             int iconCount = 0;

@@ -53,6 +53,9 @@ namespace Mike4ruls.General.UI
             rdyToSwap = false;
         }
 
+        [HideInInspector]
+        public string emptyText = "NONE";
+
         private Item myItem = null;
         private TextMeshProUGUI myText;
         private Image buttonImage;
@@ -90,7 +93,7 @@ namespace Mike4ruls.General.UI
             }
             else
             {
-                myText.text = "NONE";
+                myText.text = emptyText;
             }
         }
         public void PickUpIcon()
