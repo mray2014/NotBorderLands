@@ -424,12 +424,22 @@ namespace Mike4ruls.General.Player
         public bool EquipMod(Item item, ModBase mod)
         {
             bool succesful = item.InsertMod(mod); ;
+            if (succesful)
+            {
+                mod.transform.SetParent(item.transform);
+            }
 
             return succesful;
         }
         public void EquipMod(Item item, ModBase mod, int slot)
         {
+            
             ModBase oldMod = item.InsertMod(mod, slot); ;
+
+            if (mod != null)
+            {
+                mod.transform.SetParent(item.transform);
+            }
 
             if (oldMod != null)
             {
@@ -443,6 +453,15 @@ namespace Mike4ruls.General.Player
             {
                 StowAwayMod(weaponMod);
                 weaponMod.transform.SetParent(weaponHolster[curWeapon].transform);
+                weaponMod.gameObject.SetActive(true);
+            }
+        }
+        public void QuickEquipSpecificMod(Item item ,ModBase weaponMod)
+        {
+            if (item != null && item.InsertMod(weaponMod))
+            {
+                StowAwayMod(weaponMod);
+                weaponMod.transform.SetParent(item.transform);
                 weaponMod.gameObject.SetActive(true);
             }
         }
@@ -472,6 +491,16 @@ namespace Mike4ruls.General.Player
             }
             mod.PickUp(new Vector3(0, 9999, 0));
             mod.gameObject.SetActive(false);
+        }
+        public void DropSpecificModOnItem(Item item, int modSlot)
+        {
+            if (item.itemMods[modSlot] != null)
+            {
+                Item mod = item.itemMods[modSlot];
+                item.itemMods[modSlot] = null;
+                DropItem(mod);
+            }
+            
         }
 
         #endregion

@@ -176,7 +176,7 @@ namespace Mike4ruls.General
                     }
                 case RarityType.Legendary:
                     {
-                        numOfModSlots = Random.Range(3, 4);
+                        numOfModSlots = Random.Range(0, 4);
                         break;
                     }
             }
@@ -190,6 +190,15 @@ namespace Mike4ruls.General
             {
                 return false;
             }
+
+
+            int hasModIndex = HasMod(mod);
+            if (hasModIndex > 0)
+            {
+                itemMods[hasModIndex] = null;
+            }
+
+
             for (int i = 0; i < numOfModSlots; i++)
             {
                 if (itemMods[i] == null)
@@ -205,10 +214,17 @@ namespace Mike4ruls.General
         public ModBase InsertMod(ModBase mod, int slot)
         {
             ModBase modSwap = null;
-            if (numOfModSlots == 0 || ((int)mod.modType != (int)itemType))
+            if (numOfModSlots == 0 || (mod != null &&((int)mod.modType != (int)itemType)))
             {
                 return null;
             }
+
+            int hasModIndex = HasMod(mod);
+            if (hasModIndex > 0)
+            {
+                itemMods[hasModIndex] = null;
+            }
+
 
             if (itemMods[slot] == null)
             {
@@ -221,7 +237,19 @@ namespace Mike4ruls.General
             }
             return modSwap;
         }
-
+        public int HasMod(ModBase mod)
+        {
+            int index = -1;
+            for (int i = 0; i < numOfModSlots; i++)
+            {
+                if (itemMods[i] == mod)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
 
         public bool HasItemBeenPickedUp()
         {

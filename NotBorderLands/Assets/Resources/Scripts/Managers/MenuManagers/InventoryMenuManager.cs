@@ -20,6 +20,8 @@ namespace Mike4ruls.General.Managers
         public Vector3 sheildSpacing = new Vector3(0, -25, 0);
         public Vector3 inventorySpacing = new Vector3(0, -50, 0);
 
+        private ItemIconScript referenceToOriginalIcon = null;
+        private ItemIconScript itemBeingInspectedIcon = null;
         private int iconCount = 0;
         private bool inspectionON = false;
         private bool dropItem = false;
@@ -34,6 +36,7 @@ namespace Mike4ruls.General.Managers
             {
                 UpdateUI();
                 SetSpacing();
+                TurnOffInspection();
             }
         }
         // Update is called once per frame
@@ -43,37 +46,67 @@ namespace Mike4ruls.General.Managers
             {
                 if (ItemIconScript.dragEnded)
                 {
+
                     Item itemToDrop = ItemIconScript.swap1.GetItem();
+
                     if (dropItem && itemToDrop != null)
                     {
-                        if (ItemIconScript.swap1.GetParent() == equipmentPoolManager.gameObject)
+                        ItemIconScript itemIconToDrop = ItemIconScript.swap1;
+                        ItemIconScript modIcon = ItemIconScript.swap1;
+                        if (inspectionON)
+                        {
+                            itemIconToDrop = referenceToOriginalIcon;                           
+                        }
+                        bool isAMod = false;
+                        bool notUnderInventoryObj = itemIconToDrop.GetParent() != inventoryPoolManager.gameObject;
+                        if (!notUnderInventoryObj && inspectionON)
+                        {
+                            isAMod = ItemIconScript.swap1.GetItem().itemType == ItemType.Mod; 
+                        }
+                        if (notUnderInventoryObj || isAMod)
                         {
                             switch (itemToDrop.itemType)
                             {
                                 case ItemType.Weapon:
                                     {
-                                        _playerInventory.DropEquippedWeapon(ItemIconScript.swap1.transform.GetSiblingIndex());
+                                        _playerInventory.DropEquippedWeapon(itemIconToDrop.transform.GetSiblingIndex());
+                                        TurnOffInspection();
                                         break;
                                     }
                                 case ItemType.Sheild:
                                     {
                                         _playerInventory.DropCurrentlyEquippedSheild();
+                                        TurnOffInspection();
+                                        break;
+                                    }
+                                case ItemType.Mod:
+                                    {
+                                        _playerInventory.DropSpecificModOnItem(itemIconToDrop.GetItem(), modIcon.transform.GetSiblingIndex()-2);
                                         break;
                                     }
                             }
                         }
                         else
                         {
+                            if (inspectionON && (ItemIconScript.swap1 == referenceToOriginalIcon || ItemIconScript.swap1 == itemBeingInspectedIcon))
+                            {
+                                TurnOffInspection();
+                            }
                             _playerInventory.DropItem(itemToDrop);
                         }
                         UpdateUI();
+                        if (inspectionON)
+                        {
+                            UpdateInspectionUI();
+                        }
+                        
                         dropItem = false;
                     }
                     ItemIconScript.dragEnded = false;
                 }
                 if (ItemIconScript.clicked)
                 {
-                    ToggleInspectEquipment(ItemIconScript.swap1.GetItem());
+                    ToggleInspectEquipment(ItemIconScript.swap1);
                     ItemIconScript.clicked = false;
                 }
                 if (ItemIconScript.rdyToSwap)
@@ -91,9 +124,45 @@ namespace Mike4ruls.General.Managers
                     bool isAnOpenSlot = item1 == null || item2 == null;
                     bool isSameItemType = false;
 
+
                     if (!isAnOpenSlot)
                     {
                         isSameItemType = item1.itemType == item2.itemType;
+
+                        if (inspectionON && itemBeingInspectedIcon == ItemIconScript.swap2)
+                        {
+                            if (itemBeingInspectedIcon.GetItem() != item1)
+                            {
+                                ToggleInspectEquipment(ItemIconScript.swap1);
+                            }
+                            slotCheckOk = false;
+
+                        }
+
+                        if (isSameItemType)
+                        {
+                            if (item1.itemType == ItemType.Mod)
+                            {
+                                ModBase mod1  = item1.GetComponent<ModBase>();
+                                ModBase mod2 = item2.GetComponent<ModBase>();
+                                isSameItemType = mod1.modType == mod2.modType;
+                            }
+                        }
+                        else if (item1.itemType == ItemType.Mod || item2.itemType == ItemType.Mod)
+                        {
+                            Item isAMod = item1.itemType == ItemType.Mod ? item1 : item2;
+                            Item notAMod = item1.itemType == ItemType.Mod ? item2 : item1;
+
+                            int hasModIndex = notAMod.HasMod((ModBase)isAMod);
+                            if (hasModIndex == -1)
+                            {
+                                if ((int)notAMod.itemType == (int)isAMod.GetComponent<ModBase>().modType)
+                                {
+                                    _playerInventory.QuickEquipSpecificMod(notAMod, (ModBase)isAMod);
+                                }
+                            }
+                           
+                        }
                     }
                     else if(item1 != null || item2 != null)
                     {
@@ -106,37 +175,57 @@ namespace Mike4ruls.General.Managers
                         }
                         else if(slotCheckOk)
                         {
-                            ItemIconScript onEquipmentSideIcon = ItemIconScript.swap1.GetParent() == equipmentPoolManager.gameObject ? ItemIconScript.swap1: ItemIconScript.swap2;
-                            ItemIconScript hasItemIcon = item1 == null ? ItemIconScript.swap2 : ItemIconScript.swap1;
-                            //ItemIconScript doestHaveItemIcon = item1 == null ? ItemIconScript.swap1 : ItemIconScript.swap2;
-
-                            if (onEquipmentSideIcon != hasItemIcon)
+                            if (inspectionON)
                             {
-                                switch (hasItemIcon.GetItem().itemType)
+                                ItemIconScript onInspectionSideIcon = ItemIconScript.swap1.GetParent() == inspectionPoolManager.gameObject ? ItemIconScript.swap1 : ItemIconScript.swap2;
+                                ItemIconScript hasItemIcon1 = item1 == null ? ItemIconScript.swap2 : ItemIconScript.swap1;
+                                if (onInspectionSideIcon != hasItemIcon1)
                                 {
-                                    case ItemType.Weapon:
-                                        {
-                                            if (onEquipmentSideIcon.transform.GetSiblingIndex() > 3)
-                                            {
-                                                slotCheckOk = false;
-                                            }
-                                            break;
-                                        }
-                                    case ItemType.Sheild:
-                                        {
-                                            if (onEquipmentSideIcon.transform.GetSiblingIndex() < 4)
-                                            {
-                                                slotCheckOk = false;
-                                            }
-                                            break;
-                                        }
-                                    default:
-                                        {
-                                            slotCheckOk = false;
-                                            break;
-                                        }
+                                   if (hasItemIcon1.GetItem().itemType != ItemType.Mod)
+                                    {
+                                        slotCheckOk = false;
+                                    }
+                                   else if ((int)itemBeingInspectedIcon.GetItem().itemType != (int)hasItemIcon1.GetItem().GetComponent<ModBase>().modType)
+                                    {
+                                        slotCheckOk = false;
+                                    }
+                                    
                                 }
                             }
+                            else
+                            {
+                                ItemIconScript onEquipmentSideIcon = ItemIconScript.swap1.GetParent() == equipmentPoolManager.gameObject ? ItemIconScript.swap1 : ItemIconScript.swap2;
+                                ItemIconScript hasItemIcon = item1 == null ? ItemIconScript.swap2 : ItemIconScript.swap1;
+                                //ItemIconScript doestHaveItemIcon = item1 == null ? ItemIconScript.swap1 : ItemIconScript.swap2;
+
+                                if (onEquipmentSideIcon != hasItemIcon)
+                                {
+                                    switch (hasItemIcon.GetItem().itemType)
+                                    {
+                                        case ItemType.Weapon:
+                                            {
+                                                if (onEquipmentSideIcon.transform.GetSiblingIndex() > 3)
+                                                {
+                                                    slotCheckOk = false;
+                                                }
+                                                break;
+                                            }
+                                        case ItemType.Sheild:
+                                            {
+                                                if (onEquipmentSideIcon.transform.GetSiblingIndex() < 4)
+                                                {
+                                                    slotCheckOk = false;
+                                                }
+                                                break;
+                                            }
+                                        default:
+                                            {
+                                                slotCheckOk = false;
+                                                break;
+                                            }
+                                    }
+                                }
+                            }                           
                         }
                     }
 
@@ -153,11 +242,15 @@ namespace Mike4ruls.General.Managers
                         ItemIconScript.swap2.transform.SetSiblingIndex(icon1Index);
                         UpdatePlayerInventory();
                         ItemIconScript.SwapItemIcons();
-                        UpdateUI();
                     }
                     else
                     {
                         ItemIconScript.WipeSwap();
+                    }
+                    UpdateUI();
+                    if (inspectionON)
+                    {
+                        UpdateInspectionUI();
                     }
                 }
             }
@@ -242,6 +335,15 @@ namespace Mike4ruls.General.Managers
                 Item newItem = equipmentPoolManager.transform.GetChild(i).GetComponent<ItemIconScript>().GetItem();
                 _playerInventory.EquipWeapon((GunBase)newItem, i);
             }
+            if (inspectionON)
+            {
+                for (int i = 0; i < referenceToOriginalIcon.GetItem().numOfModSlots; i++)
+                {
+                    Item mod = inspectionPoolManager.transform.GetChild(i+2).GetComponent<ItemIconScript>().GetItem();
+                    _playerInventory.EquipMod(referenceToOriginalIcon.GetItem(), (ModBase)mod, i);
+                }
+            }
+           
             _playerInventory.EquipSheild((SheildBase)equipmentPoolManager.transform.GetChild(4).GetComponent<ItemIconScript>().GetItem());
         }
         public void StartDroppingItem()
@@ -252,27 +354,46 @@ namespace Mike4ruls.General.Managers
         {
             dropItem =false;
         }
-        public void ToggleInspectEquipment(Item item)
+        public void ToggleInspectEquipment(ItemIconScript itemIcon)
         {
+            referenceToOriginalIcon = itemIcon;
+            Item item = itemIcon.GetItem();
             inspectionON = inspectionPoolManager.gameObject.activeInHierarchy ? false : true;
             if (item == null)
             {
                 return;
             }
             Vector3 centerPosition = inspectionPoolManager.transform.position;
-            ItemIconScript gunIcon = inspectionPoolManager.transform.GetChild(1).GetComponent<ItemIconScript>();
+            itemBeingInspectedIcon = inspectionPoolManager.transform.GetChild(1).GetComponent<ItemIconScript>();
+            Item itemBeingInspected = itemBeingInspectedIcon.GetItem();
 
-            if (gunIcon.GetItem() != null && inspectionPoolManager.gameObject.activeInHierarchy)
+            if (itemBeingInspected != null && inspectionPoolManager.gameObject.activeInHierarchy)
             {
-                inspectionON = gunIcon.GetItem() != item;
+                inspectionON = itemBeingInspected != item;
             }
 
-            gunIcon.SetLastPosition(centerPosition);
-            gunIcon.StoreItem(item);
+
+            UpdateInspectionUI();
+
+            inspectionPoolManager.gameObject.SetActive(inspectionON);
+            equipmentPoolManager.gameObject.SetActive(!inspectionON);
+        }
+        void UpdateInspectionUI()
+        {
+            Item item = referenceToOriginalIcon.GetItem();
+            if (item == null)
+            {
+                return;
+            }
+            Vector3 centerPosition = inspectionPoolManager.transform.position;
+
+            itemBeingInspectedIcon.SetLastPosition(centerPosition);
+            itemBeingInspectedIcon.StoreItem(item);
 
             for (int i = 2; i < inspectionPoolManager.transform.childCount; i++)
             {
                 ItemIconScript modIcon = inspectionPoolManager.transform.GetChild(i).GetComponent<ItemIconScript>();
+                modIcon.StoreItem(null);
                 int slotNum = i - 2;
                 if (slotNum < item.numOfModSlots)
                 {
@@ -286,18 +407,15 @@ namespace Mike4ruls.General.Managers
                         modIcon.emptyText = "Mod Component " + (slotNum + 1);
                     }
 
-                    Vector3 dirToNewPos =  Quaternion.Euler(0,0,360.0f * ((float)slotNum / (float)item.numOfModSlots)) * (Vector3.up * 75);
-                    Vector3 positionOffset = new Vector3(0,-15,0);
+                    Vector3 dirToNewPos = Quaternion.Euler(0, 0, 360.0f * ((float)slotNum / (float)item.numOfModSlots)) * (Vector3.up * 75);
+                    Vector3 positionOffset = new Vector3(0, -15, 0);
                     modIcon.SetLastPosition(centerPosition + positionOffset + dirToNewPos);
                 }
                 else
                 {
-                    modIcon.SetLastPosition(new Vector3(0,9999,0));
+                    modIcon.SetLastPosition(new Vector3(0, 9999, 0));
                 }
             }
-
-            inspectionPoolManager.gameObject.SetActive(inspectionON);
-            equipmentPoolManager.gameObject.SetActive(!inspectionON);
         }
         public void TurnOffInspection()
         {
