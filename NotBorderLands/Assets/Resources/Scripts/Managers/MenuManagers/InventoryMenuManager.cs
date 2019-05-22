@@ -260,7 +260,7 @@ namespace Mike4ruls.General.Managers
                 return;
             }
             Vector3 centerPosition = inspectionPoolManager.transform.position;
-            ItemIconScript gunIcon = inspectionPoolManager.transform.GetChild(0).GetComponent<ItemIconScript>();
+            ItemIconScript gunIcon = inspectionPoolManager.transform.GetChild(1).GetComponent<ItemIconScript>();
 
             if (gunIcon.GetItem() != null && inspectionPoolManager.gameObject.activeInHierarchy)
             {
@@ -270,10 +270,10 @@ namespace Mike4ruls.General.Managers
             gunIcon.SetLastPosition(centerPosition);
             gunIcon.StoreItem(item);
 
-            for (int i = 1; i < inspectionPoolManager.transform.childCount; i++)
+            for (int i = 2; i < inspectionPoolManager.transform.childCount; i++)
             {
                 ItemIconScript modIcon = inspectionPoolManager.transform.GetChild(i).GetComponent<ItemIconScript>();
-                int slotNum = i - 1;
+                int slotNum = i - 2;
                 if (slotNum < item.numOfModSlots)
                 {
                     ModBase mod = item.itemMods[slotNum];
@@ -283,7 +283,7 @@ namespace Mike4ruls.General.Managers
                     }
                     else
                     {
-                        modIcon.emptyText = "Mod Component " + (i);
+                        modIcon.emptyText = "Mod Component " + (slotNum + 1);
                     }
 
                     Vector3 dirToNewPos =  Quaternion.Euler(0,0,360.0f * ((float)slotNum / (float)item.numOfModSlots)) * (Vector3.up * 75);
@@ -296,6 +296,12 @@ namespace Mike4ruls.General.Managers
                 }
             }
 
+            inspectionPoolManager.gameObject.SetActive(inspectionON);
+            equipmentPoolManager.gameObject.SetActive(!inspectionON);
+        }
+        public void TurnOffInspection()
+        {
+            inspectionON = false;
             inspectionPoolManager.gameObject.SetActive(inspectionON);
             equipmentPoolManager.gameObject.SetActive(!inspectionON);
         }
