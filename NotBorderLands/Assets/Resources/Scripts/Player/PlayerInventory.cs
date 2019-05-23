@@ -20,7 +20,7 @@ namespace Mike4ruls.General.Player
         public bool hitInteractable = false;
 
         // Private Vars 
-        private GunBase[] weaponHolster;
+        private Gun[] weaponHolster;
         private PlayerBase _playerBase;
         private Camera playerCamera;
         private SheildBase curSheild = null;
@@ -38,7 +38,7 @@ namespace Mike4ruls.General.Player
         {
             playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<Camera>();
             _playerBase = GetComponent<PlayerBase>();
-            weaponHolster = new GunBase[4];
+            weaponHolster = new Gun[4];
         }
 
         // Update is called once per frame
@@ -186,7 +186,7 @@ namespace Mike4ruls.General.Player
 
             curWeapon = weaponSlot;
 
-            GunBase gunToEquip = weaponHolster[curWeapon];
+            Gun gunToEquip = weaponHolster[curWeapon];
             if (gunToEquip != null)
             {
                 gunToEquip.transform.SetParent( gunSpawnPoint.transform);
@@ -195,7 +195,7 @@ namespace Mike4ruls.General.Player
                 gunToEquip.gameObject.SetActive(true);
             }
         }
-        int IsGunInHolster(GunBase gun)
+        int IsGunInHolster(Gun gun)
         {
             int index = -1;
 
@@ -276,7 +276,7 @@ namespace Mike4ruls.General.Player
             {
                 case ItemType.Weapon:
                     {
-                        QuickEquipWeapon((GunBase)equipItem);
+                        QuickEquipWeapon((Gun)equipItem);
                         break;
                     }
                 case ItemType.Sheild:
@@ -356,7 +356,7 @@ namespace Mike4ruls.General.Player
         #endregion
 
         #region WeaponFunctionality
-        public void EquipWeapon(GunBase gunToEquip, int slot)
+        public void EquipWeapon(Gun gunToEquip, int slot)
         {
             int index = IsGunInHolster(gunToEquip);
             if (index >= 0)
@@ -379,7 +379,7 @@ namespace Mike4ruls.General.Player
                 SetWeaponHolster(curWeapon);
             }
         }
-        void QuickEquipWeapon(GunBase gunToEquip)
+        void QuickEquipWeapon(Gun gunToEquip)
         {
             if (weaponHolster[curWeapon] != null)
             {

@@ -10,8 +10,7 @@ namespace Mike4ruls.General
         Weapon = 0,
         Sheild,
         Mod,
-        HealthPickUp,
-        SheildBattery
+        Item
     }
     public enum RarityType
     {
@@ -20,6 +19,15 @@ namespace Mike4ruls.General
         Rare,
         Epic,
         Legendary
+    }
+    public enum Manufacturer
+    {
+        MotherNature = 0,
+        NoxelCorp, // Why shoot fast when you can kill them in one hit?
+        DysfunctionalHQ, // I have no fucking clue what's going on, Is.. Is that a gun? you tell me, It's either hot trash or the best thing to ever exist
+        MidnightIntelligence, //
+        IronPaw, // A revolution is won through reliability, accuracy, and trust. I can give you 2 outta of the three tops.
+        JerrysCakenBakery // I totally sell cakes and stuff
     }
     public enum ElementType
     {
@@ -35,6 +43,7 @@ namespace Mike4ruls.General
         // Public Vars 
         public string name = "";
         public RarityType rarityType = RarityType.Common;
+        public Manufacturer manufacturer = Manufacturer.MotherNature;
         public ItemType itemType = ItemType.Weapon;
         public GameObject itemCollider;
         public bool isEquippable = false;
@@ -52,6 +61,10 @@ namespace Mike4ruls.General
         private bool pullIn = false;
         private bool initFinished = false;
 
+        private void Start()
+        {
+            Initialize();
+        }
         // Use this for initialization
         public void Awake()
         {
@@ -66,8 +79,7 @@ namespace Mike4ruls.General
             {
                 particleEffect.ActivateRarityEffect(this);
             }
-            
-             Initialize();
+           
            
         }
 
@@ -80,7 +92,7 @@ namespace Mike4ruls.General
                     case ItemType.Weapon:
                         {
                             DecideModSlots();
-                            GetComponent<GunBase>().GenerateWeapon();
+                            GetComponent<Gun>().GenerateWeapon();
                             break;
                         }
                     case ItemType.Sheild:
@@ -120,7 +132,7 @@ namespace Mike4ruls.General
             myRigidbody.constraints = RigidbodyConstraints.None;
             itemCollider.SetActive(true);
             transform.position = pos;
-            transform.parent = enviornment.transform;
+            transform.SetParent(enviornment.transform);
             float twistX = Random.Range(-1, 1);
             float twistZ = Random.Range(-1, 1);
             this.gameObject.SetActive(true);

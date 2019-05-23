@@ -333,7 +333,7 @@ namespace Mike4ruls.General.Managers
             for (int i = 0; i < 4; i++)
             {
                 Item newItem = equipmentPoolManager.transform.GetChild(i).GetComponent<ItemIconScript>().GetItem();
-                _playerInventory.EquipWeapon((GunBase)newItem, i);
+                _playerInventory.EquipWeapon((Gun)newItem, i);
             }
             if (inspectionON)
             {

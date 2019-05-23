@@ -7,6 +7,7 @@ TagManager:
   - PlayerCamera
   - RarityParticleEffectPool
   - Enviornment
+  - ItemList
   layers:
   - Default
   - TransparentFX

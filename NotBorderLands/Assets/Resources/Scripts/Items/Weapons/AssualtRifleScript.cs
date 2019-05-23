@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Mike4ruls.General.Items.Weapons
 {
-    public class AssualtRifleScript : GunBase
+    public class AssualtRifleScript : Gun
     {
 
         // Use this for initialization
