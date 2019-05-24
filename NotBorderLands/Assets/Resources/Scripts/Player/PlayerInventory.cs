@@ -111,32 +111,29 @@ namespace Mike4ruls.General.Player
 
             if (Physics.Raycast(newRay, out hit, 500))
             {
-                if (hit.transform.gameObject.GetComponent<Item>() != null)
+                if (hit.transform.gameObject.GetComponent<IInteractable>() != null)
                 {
                     hitInteractable = true;
-                    Item item = hit.transform.GetComponent<Item>();
-                    if (item.IsPullingIn())
-                    {
-                        return;
-                    }
+                   
                     if (Input.GetKeyDown(KeyCode.F))
                     {
                         unHoverStillPressingECheck = true;
-                        if (item.isEquippable)
-                        {
-                            startEquipTimeCheck = true;
-                        }
+                        startEquipTimeCheck = true;
                     }
                     else if (Input.GetKeyUp(KeyCode.F) && unHoverStillPressingECheck)
                     {
-                        PickUpItem(item);
+                        hit.transform.GetComponent<IInteractable>().Interact(_playerBase);
                         startEquipTimeCheck = false;
                         pickUpTimer = 0;
                     }
 
                     if ((pickUpTimer >= holdDownToEquipTime))
                     {
-                        QuickEquipItem(item);
+                        if (hit.transform.gameObject.GetComponent<Item>() != null)
+                        {
+                            Item item = hit.transform.GetComponent<Item>();
+                            QuickEquipItem(item);                          
+                        }
                         startEquipTimeCheck = false;
                     }
                 }

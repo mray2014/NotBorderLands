@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 50325271}
   - component: {fileID: 50325272}
   - component: {fileID: 50325273}
+  - component: {fileID: 50325274}
   m_Layer: 0
   m_Name: Itembox
   m_TagString: Untagged
@@ -262,6 +263,10 @@ Transform:
   m_LocalScale: {x: 1.0763861, y: 0.31684092, z: 0.53671}
   m_Children:
   - {fileID: 1602318411}
+  - {fileID: 1969168945}
+  - {fileID: 495045848}
+  - {fileID: 1330419058}
+  - {fileID: 94798354}
   m_Father: {fileID: 548849319}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -345,6 +350,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e1ddf628d218542b865a979dfe1158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerChanceSettings:
+    _4Spawners: 51
+    _2Spawners: 96
+    _1Spawners: 100
+    _4SpawnersDropChance: 51%
+    _2SpawnersDropChance: 45%
+    _1SpawnersDropChance: 4%
+  debugON: 1
 --- !u!65 &50325273
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -357,6 +370,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &50325274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 50325266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &51344740
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +409,193 @@ Transform:
   m_Father: {fileID: 965393174}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &66815387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1940467945821576, guid: cec20d0d809cf4548bae6be1cfe2f4c7,
+    type: 2}
+  m_PrefabInternal: {fileID: 813151503}
+--- !u!114 &66815388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 66815387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f5649ced4d4304cabc28fd1e37fe61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  rarityType: 0
+  manufacturer: 1
+  itemType: 0
+  itemCollider: {fileID: 1349505881}
+  initOnStartUp: 0
+  isEquippable: 1
+  itemMods: []
+  numOfModSlots: 0
+  weaponType: 1
+  elementType: 0
+  fireMode: 3
+  hasFallOffDamage: 1
+  weaponLevel: 1
+  damageMultiplyer: 1
+  damage: 0
+  bulletVelocity: 0
+  rateOfFire: 0
+  burstRateOfFire: 0
+  reloadSpeed: 0
+  recoil: 0
+  accuracy: 0
+  bulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletRange: 0
+  burstNum: 3
+  magazine: 0
+  magazineSize: 0
+  ammoReserves: 0
+  maxAmmo: 0
+--- !u!114 &66815389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 66815387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplierRange: {x: 1, y: 1}
+  damageRange: {x: 0, y: 0}
+  bulletVelocityRange: {x: 0, y: 0}
+  rateOfFireRange: {x: 0, y: 0}
+  burstRateOfFireRange: {x: 0, y: 0}
+  burstNumRange: {x: 3, y: 5}
+  reloadSpeedRange: {x: 0, y: 0}
+  recoilRange: {x: 0, y: 0}
+  accuracyRange: {x: 0, y: 0}
+  magazineSizeRange: {x: 0, y: 0}
+  minBulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeSettings:
+    semiAuto: 0
+    burst: 0
+    fullAutoBurst: 0
+    automatic: 100
+    semiAutoDropChance: 0%
+    burstDropChance: 0%
+    fullAutoBurstDropChance: 0%
+    automaticDropChance: 100%
+  elementalChanceSettings:
+    normal: 0
+    fire: 0
+    ice: 0
+    explosion: 0
+    acid: 0
+    electric: 0
+    normalDropChance: 0%
+    fireDropChance: 0%
+    iceBurstDropChance: 0%
+    explosionDropChance: 0%
+    acidBurstDropChance: 0%
+    electricDropChance: 0%
+--- !u!114 &66815390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 66815387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &89751240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1629742889541200, guid: f86afbcfb52fea4459363d5737cf1a11,
+    type: 2}
+  m_PrefabInternal: {fileID: 661298976}
+--- !u!1 &94798353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 94798354}
+  - component: {fileID: 94798355}
+  - component: {fileID: 94798356}
+  m_Layer: 0
+  m_Name: spawner (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &94798354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 94798353}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.33, y: 1.32, z: -0.35}
+  m_LocalScale: {x: 1.0000036, y: 0.99999714, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 50325267}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &94798355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 94798353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd3388679c2de3499446dad63026093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemdropChance: 100
+  spawnItemSettings:
+    item: 0
+    weapon: 100
+    sheild: 100
+    weaponMod: 100
+    sheildMod: 100
+    itemDropChance: 0%
+    weaponDropChance: 100%
+    sheildDropChance: 0%
+    weaponModDropChance: 0%
+    sheildModDropChance: 0%
+  rarityChanceSettings:
+    common: 49
+    unCommon: 63
+    rare: 84
+    epic: 99
+    legendary: 100
+    commonDropChance: 49%
+    unCommonDropChance: 14%
+    rareDropChance: 21%
+    epicDropChance: 15%
+    legendaryDropChance: 1%
+  manufacturerSettings:
+    noxelCorpON: 1
+    dysfunctionalHqON: 0
+    midnightIntelligenceON: 0
+    ironPawON: 0
+    jerrysCakenBakeryON: 0
+--- !u!114 &94798356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 94798353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &95384845
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +897,11 @@ Prefab:
       propertyPath: rarityType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114915609775663350, guid: a15a5ec5f1eb82a498b73a31132cd714,
+        type: 2}
+      propertyPath: initOnStartUp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a15a5ec5f1eb82a498b73a31132cd714, type: 2}
   m_IsPrefabAsset: 0
@@ -723,6 +939,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &153564819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1326767184698224, guid: 00f0ef8064f242e488d868eef628453c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1796325992}
 --- !u!1 &157671366
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,6 +1159,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114995592428037438, guid: 7469c037265473e45b6e80cbcfe6ca33,
+        type: 2}
+      propertyPath: initOnStartUp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7469c037265473e45b6e80cbcfe6ca33, type: 2}
   m_IsPrefabAsset: 0
@@ -1073,6 +1299,112 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4028273948407024, guid: 417c3846e59f6af4ebd536e8956ea2b2,
     type: 2}
   m_PrefabInternal: {fileID: 1529451622}
+--- !u!1 &404667823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1363725826561222, guid: 417c3846e59f6af4ebd536e8956ea2b2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1529451622}
+--- !u!114 &404667824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404667823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f5649ced4d4304cabc28fd1e37fe61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  rarityType: 0
+  manufacturer: 1
+  itemType: 0
+  itemCollider: {fileID: 404667825}
+  initOnStartUp: 0
+  isEquippable: 1
+  itemMods: []
+  numOfModSlots: 0
+  weaponType: 5
+  elementType: 0
+  fireMode: 0
+  hasFallOffDamage: 1
+  weaponLevel: 1
+  damageMultiplyer: 1
+  damage: 0
+  bulletVelocity: 0
+  rateOfFire: 0
+  burstRateOfFire: 0
+  reloadSpeed: 0
+  recoil: 0
+  accuracy: 0
+  bulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletRange: 0
+  burstNum: 3
+  magazine: 0
+  magazineSize: 0
+  ammoReserves: 0
+  maxAmmo: 0
+--- !u!1 &404667825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1013991872028110, guid: 417c3846e59f6af4ebd536e8956ea2b2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1529451622}
+--- !u!114 &404667826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404667823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &404667832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404667823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplierRange: {x: 1, y: 1}
+  damageRange: {x: 0, y: 0}
+  bulletVelocityRange: {x: 0, y: 0}
+  rateOfFireRange: {x: 0, y: 0}
+  burstRateOfFireRange: {x: 0, y: 0}
+  burstNumRange: {x: 3, y: 5}
+  reloadSpeedRange: {x: 0, y: 0}
+  recoilRange: {x: 0, y: 0}
+  accuracyRange: {x: 0, y: 0}
+  magazineSizeRange: {x: 0, y: 0}
+  minBulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeSettings:
+    semiAuto: 0
+    burst: 0
+    fullAutoBurst: 0
+    automatic: 0
+    semiAutoDropChance: 0%
+    burstDropChance: 0%
+    fullAutoBurstDropChance: 0%
+    automaticDropChance: 0%
+  elementalChanceSettings:
+    normal: 0
+    fire: 0
+    ice: 0
+    explosion: 0
+    acid: 0
+    electric: 0
+    normalDropChance: 0%
+    fireDropChance: 0%
+    iceBurstDropChance: 0%
+    explosionDropChance: 0%
+    acidBurstDropChance: 0%
+    electricDropChance: 0%
 --- !u!1 &413331003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1638,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4393877731825048, guid: 00f0ef8064f242e488d868eef628453c,
     type: 2}
   m_PrefabInternal: {fileID: 1796325992}
+--- !u!1 &426113145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1202355369509148, guid: ccd6deb4f94667c488c682ef4b2422da,
+    type: 2}
+  m_PrefabInternal: {fileID: 920548895}
 --- !u!1 &441560763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,6 +1727,87 @@ Transform:
   m_Father: {fileID: 901931975}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &495045847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 495045848}
+  - component: {fileID: 495045849}
+  - component: {fileID: 495045850}
+  m_Layer: 0
+  m_Name: spawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &495045848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 495045847}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.361, y: 1.32, z: -0.372}
+  m_LocalScale: {x: 1.0000036, y: 0.99999714, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 50325267}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &495045849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 495045847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd3388679c2de3499446dad63026093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemdropChance: 100
+  spawnItemSettings:
+    item: 0
+    weapon: 100
+    sheild: 100
+    weaponMod: 100
+    sheildMod: 100
+    itemDropChance: 0%
+    weaponDropChance: 100%
+    sheildDropChance: 0%
+    weaponModDropChance: 0%
+    sheildModDropChance: 0%
+  rarityChanceSettings:
+    common: 49
+    unCommon: 63
+    rare: 84
+    epic: 99
+    legendary: 100
+    commonDropChance: 49%
+    unCommonDropChance: 14%
+    rareDropChance: 21%
+    epicDropChance: 15%
+    legendaryDropChance: 1%
+  manufacturerSettings:
+    noxelCorpON: 1
+    dysfunctionalHqON: 0
+    midnightIntelligenceON: 0
+    ironPawON: 0
+    jerrysCakenBakeryON: 0
+--- !u!114 &495045850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 495045847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &508022383
 Prefab:
   m_ObjectHideFlags: 0
@@ -2145,9 +2563,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1280259270765340, guid: 241e3b1d993150a45a791e1e5df97856, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114353602216068230, guid: 241e3b1d993150a45a791e1e5df97856, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 241e3b1d993150a45a791e1e5df97856, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &616285196
@@ -2567,9 +2986,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1865765399217548, guid: f86afbcfb52fea4459363d5737cf1a11, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114649602386263286, guid: f86afbcfb52fea4459363d5737cf1a11, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: f86afbcfb52fea4459363d5737cf1a11, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &664353444
@@ -2869,6 +3289,107 @@ Transform:
   m_Father: {fileID: 1004234778}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &744157292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1727300192537448, guid: ccd6deb4f94667c488c682ef4b2422da,
+    type: 2}
+  m_PrefabInternal: {fileID: 920548895}
+--- !u!114 &744157293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 744157292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f5649ced4d4304cabc28fd1e37fe61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  rarityType: 0
+  manufacturer: 1
+  itemType: 0
+  itemCollider: {fileID: 426113145}
+  initOnStartUp: 0
+  isEquippable: 1
+  itemMods: []
+  numOfModSlots: 0
+  weaponType: 4
+  elementType: 0
+  fireMode: 3
+  hasFallOffDamage: 1
+  weaponLevel: 1
+  damageMultiplyer: 1
+  damage: 0
+  bulletVelocity: 0
+  rateOfFire: 0
+  burstRateOfFire: 0
+  reloadSpeed: 0
+  recoil: 0
+  accuracy: 0
+  bulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletRange: 0
+  burstNum: 3
+  magazine: 0
+  magazineSize: 0
+  ammoReserves: 0
+  maxAmmo: 0
+--- !u!114 &744157294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 744157292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplierRange: {x: 1, y: 1}
+  damageRange: {x: 0, y: 0}
+  bulletVelocityRange: {x: 0, y: 0}
+  rateOfFireRange: {x: 0, y: 0}
+  burstRateOfFireRange: {x: 0, y: 0}
+  burstNumRange: {x: 3, y: 5}
+  reloadSpeedRange: {x: 0, y: 0}
+  recoilRange: {x: 0, y: 0}
+  accuracyRange: {x: 0, y: 0}
+  magazineSizeRange: {x: 0, y: 0}
+  minBulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeSettings:
+    semiAuto: 0
+    burst: 0
+    fullAutoBurst: 0
+    automatic: 0
+    semiAutoDropChance: 0%
+    burstDropChance: 0%
+    fullAutoBurstDropChance: 0%
+    automaticDropChance: 0%
+  elementalChanceSettings:
+    normal: 0
+    fire: 0
+    ice: 0
+    explosion: 0
+    acid: 0
+    electric: 0
+    normalDropChance: 0%
+    fireDropChance: 0%
+    iceBurstDropChance: 0%
+    explosionDropChance: 0%
+    acidBurstDropChance: 0%
+    electricDropChance: 0%
+--- !u!114 &744157295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 744157292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &766580499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4070956425965006, guid: 99bd0e75dd094024bb9a862d7395756f,
@@ -2989,9 +3510,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1940467945821576, guid: cec20d0d809cf4548bae6be1cfe2f4c7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114676099954698470, guid: cec20d0d809cf4548bae6be1cfe2f4c7, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: cec20d0d809cf4548bae6be1cfe2f4c7, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &813585297
@@ -3334,9 +3856,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1727300192537448, guid: ccd6deb4f94667c488c682ef4b2422da, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114420563173840608, guid: ccd6deb4f94667c488c682ef4b2422da, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: ccd6deb4f94667c488c682ef4b2422da, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &935075541
@@ -3532,6 +4055,11 @@ Prefab:
     - target: {fileID: 4515635881352236, guid: da6bcffc92526ca41bf09fb21ba4275f, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114966570387682532, guid: da6bcffc92526ca41bf09fb21ba4275f,
+        type: 2}
+      propertyPath: initOnStartUp
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da6bcffc92526ca41bf09fb21ba4275f, type: 2}
@@ -3774,6 +4302,7 @@ MonoBehaviour:
   manufacturer: 0
   itemType: 1
   itemCollider: {fileID: 2097001033}
+  initOnStartUp: 1
   isEquippable: 1
   itemMods: []
   numOfModSlots: 0
@@ -3860,6 +4389,107 @@ MonoBehaviour:
   objectMat: {fileID: 0}
   numOfInstantiatedObjects: 5
   turnOffObjs: 0
+--- !u!1 &1009349033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1271346775635242, guid: 00f0ef8064f242e488d868eef628453c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1796325992}
+--- !u!114 &1009349034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1009349033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f5649ced4d4304cabc28fd1e37fe61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  rarityType: 0
+  manufacturer: 1
+  itemType: 0
+  itemCollider: {fileID: 153564819}
+  initOnStartUp: 0
+  isEquippable: 1
+  itemMods: []
+  numOfModSlots: 0
+  weaponType: 3
+  elementType: 0
+  fireMode: 0
+  hasFallOffDamage: 1
+  weaponLevel: 1
+  damageMultiplyer: 1
+  damage: 0
+  bulletVelocity: 0
+  rateOfFire: 0
+  burstRateOfFire: 0
+  reloadSpeed: 0
+  recoil: 0
+  accuracy: 0
+  bulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletRange: 0
+  burstNum: 3
+  magazine: 0
+  magazineSize: 0
+  ammoReserves: 0
+  maxAmmo: 0
+--- !u!114 &1009349035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1009349033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplierRange: {x: 1, y: 1}
+  damageRange: {x: 0, y: 0}
+  bulletVelocityRange: {x: 0, y: 0}
+  rateOfFireRange: {x: 0, y: 0}
+  burstRateOfFireRange: {x: 0, y: 0}
+  burstNumRange: {x: 3, y: 5}
+  reloadSpeedRange: {x: 0, y: 0}
+  recoilRange: {x: 0, y: 0}
+  accuracyRange: {x: 0, y: 0}
+  magazineSizeRange: {x: 0, y: 0}
+  minBulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeSettings:
+    semiAuto: 90
+    burst: 92
+    fullAutoBurst: 97
+    automatic: 100
+    semiAutoDropChance: 90%
+    burstDropChance: 2%
+    fullAutoBurstDropChance: 5%
+    automaticDropChance: 3%
+  elementalChanceSettings:
+    normal: 32
+    fire: 59
+    ice: 70
+    explosion: 92
+    acid: 100
+    electric: 100
+    normalDropChance: 32%
+    fireDropChance: 27%
+    iceBurstDropChance: 11%
+    explosionDropChance: 22%
+    acidBurstDropChance: 8%
+    electricDropChance: 0%
+--- !u!114 &1009349036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1009349033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1064942340
 GameObject:
   m_ObjectHideFlags: 0
@@ -3951,9 +4581,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1787253055710290, guid: 126a1a33bdeef6b488caf2417d96cf1b, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114362604188943484, guid: 126a1a33bdeef6b488caf2417d96cf1b, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 126a1a33bdeef6b488caf2417d96cf1b, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &1077864149 stripped
@@ -4898,9 +5529,100 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114405306424194182, guid: 99bd0e75dd094024bb9a862d7395756f,
+        type: 2}
+      propertyPath: initOnStartUp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99bd0e75dd094024bb9a862d7395756f, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1330419057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1330419058}
+  - component: {fileID: 1330419059}
+  - component: {fileID: 1330419060}
+  m_Layer: 0
+  m_Name: spawner (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1330419058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330419057}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.317, y: 1.32, z: 0.379}
+  m_LocalScale: {x: 1.0000036, y: 0.99999714, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 50325267}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1330419059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330419057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd3388679c2de3499446dad63026093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemdropChance: 100
+  spawnItemSettings:
+    item: 0
+    weapon: 100
+    sheild: 100
+    weaponMod: 100
+    sheildMod: 100
+    itemDropChance: 0%
+    weaponDropChance: 100%
+    sheildDropChance: 0%
+    weaponModDropChance: 0%
+    sheildModDropChance: 0%
+  rarityChanceSettings:
+    common: 49
+    unCommon: 63
+    rare: 84
+    epic: 99
+    legendary: 100
+    commonDropChance: 49%
+    unCommonDropChance: 14%
+    rareDropChance: 21%
+    epicDropChance: 15%
+    legendaryDropChance: 1%
+  manufacturerSettings:
+    noxelCorpON: 1
+    dysfunctionalHqON: 0
+    midnightIntelligenceON: 0
+    ironPawON: 0
+    jerrysCakenBakeryON: 0
+--- !u!114 &1330419060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330419057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1349505881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1154702728519750, guid: cec20d0d809cf4548bae6be1cfe2f4c7,
+    type: 2}
+  m_PrefabInternal: {fileID: 813151503}
 --- !u!1 &1359905623
 GameObject:
   m_ObjectHideFlags: 0
@@ -5094,6 +5816,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1374425128}
   m_CullTransparentMesh: 0
+--- !u!1 &1390686393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1854747754629656, guid: 126a1a33bdeef6b488caf2417d96cf1b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1077864148}
 --- !u!1 &1398336879
 GameObject:
   m_ObjectHideFlags: 0
@@ -5496,6 +6223,107 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1432276629}
   m_CullTransparentMesh: 0
+--- !u!1 &1436053291 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1865765399217548, guid: f86afbcfb52fea4459363d5737cf1a11,
+    type: 2}
+  m_PrefabInternal: {fileID: 661298976}
+--- !u!114 &1436053292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1436053291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f5649ced4d4304cabc28fd1e37fe61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  rarityType: 0
+  manufacturer: 1
+  itemType: 0
+  itemCollider: {fileID: 89751240}
+  initOnStartUp: 0
+  isEquippable: 1
+  itemMods: []
+  numOfModSlots: 0
+  weaponType: 2
+  elementType: 0
+  fireMode: 3
+  hasFallOffDamage: 1
+  weaponLevel: 1
+  damageMultiplyer: 1
+  damage: 0
+  bulletVelocity: 0
+  rateOfFire: 0
+  burstRateOfFire: 0
+  reloadSpeed: 0
+  recoil: 0
+  accuracy: 0
+  bulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletRange: 0
+  burstNum: 3
+  magazine: 0
+  magazineSize: 0
+  ammoReserves: 0
+  maxAmmo: 0
+--- !u!114 &1436053293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1436053291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplierRange: {x: 1, y: 1}
+  damageRange: {x: 0, y: 0}
+  bulletVelocityRange: {x: 0, y: 0}
+  rateOfFireRange: {x: 0, y: 0}
+  burstRateOfFireRange: {x: 0, y: 0}
+  burstNumRange: {x: 3, y: 5}
+  reloadSpeedRange: {x: 0, y: 0}
+  recoilRange: {x: 0, y: 0}
+  accuracyRange: {x: 0, y: 0}
+  magazineSizeRange: {x: 0, y: 0}
+  minBulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeSettings:
+    semiAuto: 59
+    burst: 73
+    fullAutoBurst: 87
+    automatic: 100
+    semiAutoDropChance: 59%
+    burstDropChance: 14%
+    fullAutoBurstDropChance: 14%
+    automaticDropChance: 13%
+  elementalChanceSettings:
+    normal: 0
+    fire: 0
+    ice: 0
+    explosion: 0
+    acid: 0
+    electric: 0
+    normalDropChance: 0%
+    fireDropChance: 0%
+    iceBurstDropChance: 0%
+    explosionDropChance: 0%
+    acidBurstDropChance: 0%
+    electricDropChance: 0%
+--- !u!114 &1436053294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1436053291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1441543567
 GameObject:
   m_ObjectHideFlags: 0
@@ -5690,6 +6518,208 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1450658456}
   m_CullTransparentMesh: 0
+--- !u!1 &1453991197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1787253055710290, guid: 126a1a33bdeef6b488caf2417d96cf1b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1077864148}
+--- !u!114 &1453991198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1453991197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f5649ced4d4304cabc28fd1e37fe61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  rarityType: 0
+  manufacturer: 1
+  itemType: 0
+  itemCollider: {fileID: 1390686393}
+  initOnStartUp: 0
+  isEquippable: 1
+  itemMods: []
+  numOfModSlots: 0
+  weaponType: 0
+  elementType: 0
+  fireMode: 0
+  hasFallOffDamage: 1
+  weaponLevel: 1
+  damageMultiplyer: 1
+  damage: 0
+  bulletVelocity: 0
+  rateOfFire: 0
+  burstRateOfFire: 0
+  reloadSpeed: 0
+  recoil: 0
+  accuracy: 0
+  bulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletRange: 0
+  burstNum: 3
+  magazine: 0
+  magazineSize: 0
+  ammoReserves: 0
+  maxAmmo: 0
+--- !u!114 &1453991199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1453991197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplierRange: {x: 1, y: 1}
+  damageRange: {x: 0, y: 0}
+  bulletVelocityRange: {x: 0, y: 0}
+  rateOfFireRange: {x: 0, y: 0}
+  burstRateOfFireRange: {x: 0, y: 0}
+  burstNumRange: {x: 3, y: 5}
+  reloadSpeedRange: {x: 0, y: 0}
+  recoilRange: {x: 0, y: 0}
+  accuracyRange: {x: 0, y: 0}
+  magazineSizeRange: {x: 0, y: 0}
+  minBulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeSettings:
+    semiAuto: 88
+    burst: 97
+    fullAutoBurst: 98
+    automatic: 100
+    semiAutoDropChance: 88%
+    burstDropChance: 9%
+    fullAutoBurstDropChance: 1%
+    automaticDropChance: 2%
+  elementalChanceSettings:
+    normal: 100
+    fire: 100
+    ice: 100
+    explosion: 100
+    acid: 100
+    electric: 100
+    normalDropChance: 100%
+    fireDropChance: 0%
+    iceBurstDropChance: 0%
+    explosionDropChance: 0%
+    acidBurstDropChance: 0%
+    electricDropChance: 0%
+--- !u!114 &1453991200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1453991197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1468883767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1280259270765340, guid: 241e3b1d993150a45a791e1e5df97856,
+    type: 2}
+  m_PrefabInternal: {fileID: 609029965}
+--- !u!114 &1468883768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1468883767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f5649ced4d4304cabc28fd1e37fe61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  rarityType: 0
+  manufacturer: 1
+  itemType: 0
+  itemCollider: {fileID: 2047289602}
+  initOnStartUp: 0
+  isEquippable: 1
+  itemMods: []
+  numOfModSlots: 0
+  weaponType: 6
+  elementType: 0
+  fireMode: 0
+  hasFallOffDamage: 1
+  weaponLevel: 1
+  damageMultiplyer: 1
+  damage: 0
+  bulletVelocity: 0
+  rateOfFire: 0
+  burstRateOfFire: 0
+  reloadSpeed: 0
+  recoil: 0
+  accuracy: 0
+  bulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletRange: 0
+  burstNum: 3
+  magazine: 0
+  magazineSize: 0
+  ammoReserves: 0
+  maxAmmo: 0
+--- !u!114 &1468883769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1468883767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplierRange: {x: 1, y: 1}
+  damageRange: {x: 0, y: 0}
+  bulletVelocityRange: {x: 0, y: 0}
+  rateOfFireRange: {x: 0, y: 0}
+  burstRateOfFireRange: {x: 0, y: 0}
+  burstNumRange: {x: 3, y: 5}
+  reloadSpeedRange: {x: 0, y: 0}
+  recoilRange: {x: 0, y: 0}
+  accuracyRange: {x: 0, y: 0}
+  magazineSizeRange: {x: 0, y: 0}
+  minBulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeSettings:
+    semiAuto: 0
+    burst: 0
+    fullAutoBurst: 0
+    automatic: 0
+    semiAutoDropChance: 0%
+    burstDropChance: 0%
+    fullAutoBurstDropChance: 0%
+    automaticDropChance: 0%
+  elementalChanceSettings:
+    normal: 0
+    fire: 0
+    ice: 0
+    explosion: 0
+    acid: 0
+    electric: 0
+    normalDropChance: 0%
+    fireDropChance: 0%
+    iceBurstDropChance: 0%
+    explosionDropChance: 0%
+    acidBurstDropChance: 0%
+    electricDropChance: 0%
+--- !u!114 &1468883770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1468883767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1496376318
 GameObject:
   m_ObjectHideFlags: 0
@@ -5884,9 +6914,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1363725826561222, guid: 417c3846e59f6af4ebd536e8956ea2b2, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114446965067255806, guid: 417c3846e59f6af4ebd536e8956ea2b2, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 417c3846e59f6af4ebd536e8956ea2b2, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1565621528
@@ -5937,25 +6968,30 @@ MonoBehaviour:
   manufacturer: 0
   itemType: 0
   itemCollider: {fileID: 1227480928}
+  initOnStartUp: 1
   isEquippable: 1
   itemMods: []
   numOfModSlots: 0
   weaponType: 0
   elementType: 0
   fireMode: 2
-  damageMultiplierRange: {x: 1, y: 1}
-  damageRange: {x: 0, y: 0}
-  bulletVelocityRange: {x: 0, y: 0}
-  rateOfFireRange: {x: 0, y: 0}
-  burstRateOfFireRange: {x: 0, y: 0}
-  burstNumRange: {x: 3, y: 5}
-  reloadSpeedRange: {x: 0, y: 0}
-  recoilRange: {x: 0, y: 0}
-  accuracyRange: {x: 0, y: 0}
-  magazineSizeRange: {x: 0, y: 0}
-  minBulletFallOffRange: {x: 0, y: 0, z: 0}
-  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
   hasFallOffDamage: 1
+  weaponLevel: 1
+  damageMultiplyer: 1
+  damage: 0
+  bulletVelocity: 0
+  rateOfFire: 0
+  burstRateOfFire: 0
+  reloadSpeed: 0
+  recoil: 0
+  accuracy: 0
+  bulletFallOffRange: {x: 0, y: 0, z: 0}
+  maxBulletRange: 0
+  burstNum: 3
+  magazine: 0
+  magazineSize: 0
+  ammoReserves: 0
+  maxAmmo: 0
 --- !u!65 &1565621531
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6044,6 +7080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1602318411}
   - component: {fileID: 1602318412}
+  - component: {fileID: 1602318413}
   m_Layer: 0
   m_Name: spawner
   m_TagString: Untagged
@@ -6078,32 +7115,43 @@ MonoBehaviour:
   itemdropChance: 100
   spawnItemSettings:
     item: 0
-    weapon: 100
-    sheild: 100
+    weapon: 56
+    sheild: 59
     weaponMod: 100
     sheildMod: 100
     itemDropChance: 0%
-    weaponDropChance: 100%
-    sheildDropChance: 0%
-    weaponModDropChance: 0%
+    weaponDropChance: 56%
+    sheildDropChance: 3%
+    weaponModDropChance: 41%
     sheildModDropChance: 0%
   rarityChanceSettings:
-    common: 49
-    unCommon: 63
-    rare: 84
-    epic: 99
+    common: 0
+    unCommon: 0
+    rare: 0
+    epic: 0
     legendary: 100
-    commonDropChance: 49%
-    unCommonDropChance: 14%
-    rareDropChance: 21%
-    epicDropChance: 15%
-    legendaryDropChance: 1%
+    commonDropChance: 0%
+    unCommonDropChance: 0%
+    rareDropChance: 0%
+    epicDropChance: 0%
+    legendaryDropChance: 100%
   manufacturerSettings:
     noxelCorpON: 1
     dysfunctionalHqON: 0
     midnightIntelligenceON: 0
     ironPawON: 0
     jerrysCakenBakeryON: 0
+--- !u!114 &1602318413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602318410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1606501398
 GameObject:
   m_ObjectHideFlags: 0
@@ -6296,6 +7344,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114006378144705282, guid: cb16965d91ef1ba4681121fa3b439104,
+        type: 2}
+      propertyPath: initOnStartUp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb16965d91ef1ba4681121fa3b439104, type: 2}
   m_IsPrefabAsset: 0
@@ -6456,9 +7509,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1271346775635242, guid: 00f0ef8064f242e488d868eef628453c, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114304831837120534, guid: 00f0ef8064f242e488d868eef628453c, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 00f0ef8064f242e488d868eef628453c, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1804014590
@@ -6728,6 +7782,11 @@ Prefab:
     - target: {fileID: 4967935265935764, guid: 767740bf96d658641a56f0e9c0e1f42a, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114339681181694340, guid: 767740bf96d658641a56f0e9c0e1f42a,
+        type: 2}
+      propertyPath: initOnStartUp
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 767740bf96d658641a56f0e9c0e1f42a, type: 2}
@@ -7238,6 +8297,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4515635881352236, guid: da6bcffc92526ca41bf09fb21ba4275f,
     type: 2}
   m_PrefabInternal: {fileID: 935097735}
+--- !u!1 &1969168944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1969168945}
+  - component: {fileID: 1969168946}
+  - component: {fileID: 1969168947}
+  m_Layer: 0
+  m_Name: spawner (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1969168945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1969168944}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.23700008, y: 1.32, z: 0.3020001}
+  m_LocalScale: {x: 1.0000036, y: 0.99999714, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 50325267}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1969168946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1969168944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd3388679c2de3499446dad63026093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemdropChance: 100
+  spawnItemSettings:
+    item: 0
+    weapon: 100
+    sheild: 100
+    weaponMod: 100
+    sheildMod: 100
+    itemDropChance: 0%
+    weaponDropChance: 100%
+    sheildDropChance: 0%
+    weaponModDropChance: 0%
+    sheildModDropChance: 0%
+  rarityChanceSettings:
+    common: 49
+    unCommon: 63
+    rare: 84
+    epic: 99
+    legendary: 100
+    commonDropChance: 49%
+    unCommonDropChance: 14%
+    rareDropChance: 21%
+    epicDropChance: 15%
+    legendaryDropChance: 1%
+  manufacturerSettings:
+    noxelCorpON: 1
+    dysfunctionalHqON: 0
+    midnightIntelligenceON: 0
+    ironPawON: 0
+    jerrysCakenBakeryON: 0
+--- !u!114 &1969168947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1969168944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1983118958
 GameObject:
   m_ObjectHideFlags: 0
@@ -7701,6 +8841,11 @@ MonoBehaviour:
   holdDownToEquipTime: 0.5
   throwItemForce: 200
   hitInteractable: 0
+--- !u!1 &2047289602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1123364068222980, guid: 241e3b1d993150a45a791e1e5df97856,
+    type: 2}
+  m_PrefabInternal: {fileID: 609029965}
 --- !u!1 &2047664473
 GameObject:
   m_ObjectHideFlags: 0

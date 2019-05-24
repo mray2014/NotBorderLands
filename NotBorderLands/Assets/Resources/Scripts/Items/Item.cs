@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mike4ruls.General.Player;
 using Mike4ruls.General.Items;
 
 namespace Mike4ruls.General
@@ -29,23 +30,16 @@ namespace Mike4ruls.General
         IronPaw, // A revolution is won through reliability, accuracy, and trust. I can give you 2 outta of the three tops.
         JerrysCakenBakery // I totally sell cakes and stuff
     }
-    public enum ElementType
+    public class Item : MonoBehaviour, IInteractable
     {
-        Normal,
-        Fire,
-        Ice,
-        Explosion,
-        Acid,
-        Electric
-    }
-    public class Item : MonoBehaviour
-    {
+        [Header("~Item Settings~")]
         // Public Vars 
         public string name = "";
         public RarityType rarityType = RarityType.Common;
         public Manufacturer manufacturer = Manufacturer.MotherNature;
         public ItemType itemType = ItemType.Weapon;
         public GameObject itemCollider;
+        public bool initOnStartUp = false;
         public bool isEquippable = false;
         public ModBase[] itemMods;
 
@@ -63,7 +57,10 @@ namespace Mike4ruls.General
 
         private void Start()
         {
-            Initialize();
+            if (initOnStartUp)
+            {
+                Initialize();
+            }        
         }
         // Use this for initialization
         public void Awake()
@@ -104,6 +101,15 @@ namespace Mike4ruls.General
                 }
                 initFinished = true;
             }
+        }
+        public void Interact(PlayerBase player)
+        {
+            if (!pullIn)
+            {
+                PlayerInventory playerInven = player.GetComponent<PlayerInventory>();
+                playerInven.PickUpItem(this);
+            }
+            
         }
 
         public void PickUp(GameObject target)

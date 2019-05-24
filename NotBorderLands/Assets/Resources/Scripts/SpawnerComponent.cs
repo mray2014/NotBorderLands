@@ -6,9 +6,9 @@ using Mike4ruls.General.Items;
 using UnityEditor;
 namespace Mike4ruls.General
 {
-    [ExecuteInEditMode]
-    public class SpawnerComponent : MonoBehaviour {
-
+    [RequireComponent(typeof(EditorUpdater))]
+    public class SpawnerComponent : MonoBehaviour, IUniqueEditorElement
+    {
         [Range(0, 100)]
         public float itemdropChance;
 
@@ -211,8 +211,7 @@ namespace Mike4ruls.General
 
         private void Update()
         {
-            spawnItemSettings.UpdatePossibleSpawnSettings();
-            rarityChanceSettings.UpdateRaritySettings();
+            
         }
 
         private void InitpossibleManufacturers()
@@ -425,6 +424,12 @@ namespace Mike4ruls.General
                         break;
                     }
             }
+        }
+
+        public void ExecuteInEditor()
+        {
+            spawnItemSettings.UpdatePossibleSpawnSettings();
+            rarityChanceSettings.UpdateRaritySettings();
         }
     }
 }
