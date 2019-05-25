@@ -580,12 +580,17 @@ MonoBehaviour:
     rareDropChance: 21%
     epicDropChance: 15%
     legendaryDropChance: 1%
-  manufacturerSettings:
-    noxelCorpON: 1
-    dysfunctionalHqON: 0
-    midnightIntelligenceON: 0
-    ironPawON: 0
-    jerrysCakenBakeryON: 0
+  manufacturerChanceSettings:
+    noxelCorp: 100
+    dysfunctionalHq: 100
+    midnightIntelligence: 100
+    ironPaw: 100
+    jerrysCakenBakery: 100
+    noxelCorpDropChance: 100%
+    dysfunctionalHqDropChance: 0%
+    midnightIntelligenceDropChance: 0%
+    ironPawDropChance: 0%
+    jerrysCakenBakeryDropChance: 0%
 --- !u!114 &94798356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -995,12 +1000,17 @@ MonoBehaviour:
     rareDropChance: 0%
     epicDropChance: 0%
     legendaryDropChance: 0%
-  manufacturerSettings:
-    noxelCorpON: 0
-    dysfunctionalHqON: 0
-    midnightIntelligenceON: 0
-    ironPawON: 0
-    jerrysCakenBakeryON: 0
+  manufacturerChanceSettings:
+    noxelCorp: 0
+    dysfunctionalHq: 0
+    midnightIntelligence: 0
+    ironPaw: 0
+    jerrysCakenBakery: 0
+    noxelCorpDropChance: 
+    dysfunctionalHqDropChance: 
+    midnightIntelligenceDropChance: 
+    ironPawDropChance: 
+    jerrysCakenBakeryDropChance: 
 --- !u!4 &157671368
 Transform:
   m_ObjectHideFlags: 0
@@ -1793,12 +1803,17 @@ MonoBehaviour:
     rareDropChance: 21%
     epicDropChance: 15%
     legendaryDropChance: 1%
-  manufacturerSettings:
-    noxelCorpON: 1
-    dysfunctionalHqON: 0
-    midnightIntelligenceON: 0
-    ironPawON: 0
-    jerrysCakenBakeryON: 0
+  manufacturerChanceSettings:
+    noxelCorp: 100
+    dysfunctionalHq: 100
+    midnightIntelligence: 100
+    ironPaw: 100
+    jerrysCakenBakery: 100
+    noxelCorpDropChance: 100%
+    dysfunctionalHqDropChance: 0%
+    midnightIntelligenceDropChance: 0%
+    ironPawDropChance: 0%
+    jerrysCakenBakeryDropChance: 0%
 --- !u!114 &495045850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5605,12 +5620,17 @@ MonoBehaviour:
     rareDropChance: 21%
     epicDropChance: 15%
     legendaryDropChance: 1%
-  manufacturerSettings:
-    noxelCorpON: 1
-    dysfunctionalHqON: 0
-    midnightIntelligenceON: 0
-    ironPawON: 0
-    jerrysCakenBakeryON: 0
+  manufacturerChanceSettings:
+    noxelCorp: 100
+    dysfunctionalHq: 100
+    midnightIntelligence: 100
+    ironPaw: 100
+    jerrysCakenBakery: 100
+    noxelCorpDropChance: 100%
+    dysfunctionalHqDropChance: 0%
+    midnightIntelligenceDropChance: 0%
+    ironPawDropChance: 0%
+    jerrysCakenBakeryDropChance: 0%
 --- !u!114 &1330419060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7142,12 +7162,17 @@ MonoBehaviour:
     rareDropChance: 0%
     epicDropChance: 0%
     legendaryDropChance: 100%
-  manufacturerSettings:
-    noxelCorpON: 1
-    dysfunctionalHqON: 0
-    midnightIntelligenceON: 0
-    ironPawON: 0
-    jerrysCakenBakeryON: 0
+  manufacturerChanceSettings:
+    noxelCorp: 100
+    dysfunctionalHq: 100
+    midnightIntelligence: 100
+    ironPaw: 100
+    jerrysCakenBakery: 100
+    noxelCorpDropChance: 100%
+    dysfunctionalHqDropChance: 0%
+    midnightIntelligenceDropChance: 0%
+    ironPawDropChance: 0%
+    jerrysCakenBakeryDropChance: 0%
 --- !u!114 &1602318413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8378,12 +8403,17 @@ MonoBehaviour:
     rareDropChance: 21%
     epicDropChance: 15%
     legendaryDropChance: 1%
-  manufacturerSettings:
-    noxelCorpON: 1
-    dysfunctionalHqON: 0
-    midnightIntelligenceON: 0
-    ironPawON: 0
-    jerrysCakenBakeryON: 0
+  manufacturerChanceSettings:
+    noxelCorp: 100
+    dysfunctionalHq: 100
+    midnightIntelligence: 100
+    ironPaw: 100
+    jerrysCakenBakery: 100
+    noxelCorpDropChance: 100%
+    dysfunctionalHqDropChance: 0%
+    midnightIntelligenceDropChance: 0%
+    ironPawDropChance: 0%
+    jerrysCakenBakeryDropChance: 0%
 --- !u!114 &1969168947
 MonoBehaviour:
   m_ObjectHideFlags: 0

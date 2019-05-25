@@ -177,18 +177,86 @@ namespace Mike4ruls.General
         [System.Serializable]
         public struct ManufacturerSettings
         {
-            public bool noxelCorpON;
-            public bool dysfunctionalHqON;
-            public bool midnightIntelligenceON;
-            public bool ironPawON;
-            public bool jerrysCakenBakeryON;
+            [Range(0, 100)]
+            public float noxelCorp;
+            [Range(0, 100)]
+            public float dysfunctionalHq;
+            [Range(0, 100)]
+            public float midnightIntelligence;
+            [Range(0, 100)]
+            public float ironPaw;
+            [Range(0, 100)]
+            public float jerrysCakenBakery;
+
+            public string noxelCorpDropChance;
+            public string dysfunctionalHqDropChance;
+            public string midnightIntelligenceDropChance;
+            public string ironPawDropChance;
+            public string jerrysCakenBakeryDropChance;
+
+            public void UpdateManufacturerSettings()
+            {
+
+                float nox = noxelCorp;
+                float dys = dysfunctionalHq;
+                float mid = midnightIntelligence;
+                float iron = ironPaw;
+                float jerry = jerrysCakenBakery;
+
+                if (noxelCorp > dysfunctionalHq)
+                {
+                    dys = noxelCorp;
+                }
+                if (dysfunctionalHq > midnightIntelligence)
+                {
+                    mid = dysfunctionalHq;
+                }
+                if (midnightIntelligence > ironPaw)
+                {
+                    iron = midnightIntelligence;
+                }
+
+                if (ironPaw > jerrysCakenBakery)
+                {
+                    jerry = ironPaw;
+                }
+
+                if (jerrysCakenBakery < ironPaw)
+                {
+                    iron = jerrysCakenBakery;
+                }
+                if (ironPaw < midnightIntelligence)
+                {
+                    mid = ironPaw;
+                }
+                if (midnightIntelligence < dysfunctionalHq)
+                {
+                    dys = midnightIntelligence;
+                }
+                if (dysfunctionalHq < noxelCorp)
+                {
+                    nox = dysfunctionalHq;
+                }
+
+                noxelCorp = nox;
+                dysfunctionalHq = dys;
+                midnightIntelligence = mid;
+                ironPaw = iron;
+                jerrysCakenBakery = jerry;
+
+                noxelCorpDropChance = noxelCorp + "%";
+                dysfunctionalHqDropChance = (dysfunctionalHq - noxelCorp) + "%";
+                midnightIntelligenceDropChance = (midnightIntelligence - dysfunctionalHq) + "%";
+                ironPawDropChance = (ironPaw - midnightIntelligence) + "%";
+                jerrysCakenBakeryDropChance = (jerrysCakenBakery - ironPaw) + "%";
+
+            }
         }
 
         public SpawnItemSettings spawnItemSettings;
         public RarityChanceSettings rarityChanceSettings;
-        public ManufacturerSettings manufacturerSettings;
+        public ManufacturerSettings manufacturerChanceSettings;
 
-        private List<Manufacturer> possibleManufacturers;
         private GameObject enviornment;
         private GameObject itemList;
         private float randomMaxNum = 10000;
@@ -204,7 +272,6 @@ namespace Mike4ruls.General
         {
             enviornment = GameObject.FindGameObjectWithTag("Enviornment");
             itemList = GameObject.FindGameObjectWithTag("ItemList");
-            InitpossibleManufacturers();
 
         }
 
@@ -214,39 +281,6 @@ namespace Mike4ruls.General
             
         }
 
-        private void InitpossibleManufacturers()
-        {
-            if (possibleManufacturers == null)
-            {
-                possibleManufacturers = new List<Manufacturer>();
-            }
-            else
-            {
-                possibleManufacturers.Clear();
-            }
-
-
-            if (manufacturerSettings.noxelCorpON)
-            {
-                possibleManufacturers.Add(Manufacturer.NoxelCorp);
-            }
-            if (manufacturerSettings.dysfunctionalHqON)
-            {
-                possibleManufacturers.Add(Manufacturer.DysfunctionalHQ);
-            }
-            if (manufacturerSettings.midnightIntelligenceON)
-            {
-                possibleManufacturers.Add(Manufacturer.MidnightIntelligence);
-            }
-            if (manufacturerSettings.ironPawON)
-            {
-                possibleManufacturers.Add(Manufacturer.IronPaw);
-            }
-            if (manufacturerSettings.jerrysCakenBakeryON)
-            {
-                possibleManufacturers.Add(Manufacturer.JerrysCakenBakery);
-            }
-        }
         public Item SpawnItem()
         {
             Item newItem = null;
@@ -331,23 +365,29 @@ namespace Mike4ruls.General
         }
         void DecideManufacturer()
         {
-            if (itemTypeToSpawn != ItemType.Item)
+            float manufacturerDropRanNum = (Random.Range(0, randomMaxNum + 1) / randomMaxNum) * 100;
+
+            if (manufacturerDropRanNum < manufacturerChanceSettings.noxelCorp)
             {
-                if (possibleManufacturers.Count > 0)
-                {
-                    int manufacturerRanNum = (int)(Random.Range(0, randomMaxNum + 1) / randomMaxNum) * possibleManufacturers.Count;
-                    manufacturerToSpawn = possibleManufacturers[manufacturerRanNum];
-                }
-                else
-                {
-                    itemTypeToSpawn = ItemType.Item;
-                    manufacturerToSpawn = Manufacturer.MotherNature;
-                }
+                manufacturerToSpawn = Manufacturer.NoxelCorp;
             }
-            else
+            else if (manufacturerDropRanNum < manufacturerChanceSettings.dysfunctionalHq)
             {
-                manufacturerToSpawn = Manufacturer.MotherNature;
+                manufacturerToSpawn = Manufacturer.DysfunctionalHQ;
             }
+            else if (manufacturerDropRanNum < manufacturerChanceSettings.midnightIntelligence)
+            {
+                manufacturerToSpawn = Manufacturer.MidnightIntelligence;
+            }
+            else if (manufacturerDropRanNum < manufacturerChanceSettings.ironPaw)
+            {
+                manufacturerToSpawn = Manufacturer.IronPaw;
+            }
+            else if (manufacturerDropRanNum < manufacturerChanceSettings.jerrysCakenBakery)
+            {
+                manufacturerToSpawn = Manufacturer.JerrysCakenBakery;
+            }
+
             GrabManufacturer();
         }
         void GrabManufacturer()
@@ -430,6 +470,7 @@ namespace Mike4ruls.General
         {
             spawnItemSettings.UpdatePossibleSpawnSettings();
             rarityChanceSettings.UpdateRaritySettings();
+            manufacturerChanceSettings.UpdateManufacturerSettings();
         }
     }
 }
