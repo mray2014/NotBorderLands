@@ -73,14 +73,21 @@ namespace Mike4ruls.General
             myRigidbody = GetComponent<Rigidbody>();
             enviornment = GameObject.FindGameObjectWithTag("Enviornment");
 
-
-            Items.RarityParticleEffectScript particleEffect = rarityParticleEffectPool.GetAvailableObj().GetComponent<Items.RarityParticleEffectScript>();
-            if (particleEffect != null)
+            GameObject particleffectObj = rarityParticleEffectPool.GetAvailableObj();
+            Items.RarityParticleEffectScript particleEffect = null;
+            if (particleffectObj != null)
             {
-                particleEffect.ActivateRarityEffect(this);
+                particleEffect = particleffectObj.GetComponent<Items.RarityParticleEffectScript>();
+                
             }
-           
-           
+            else
+            {
+                rarityParticleEffectPool.SpawnAmmount(100, true);
+                particleffectObj = rarityParticleEffectPool.GetAvailableObj();
+                particleEffect = particleffectObj.GetComponent<Items.RarityParticleEffectScript>();
+            }
+            particleEffect.ActivateRarityEffect(this);
+
         }
 
         public void Initialize()

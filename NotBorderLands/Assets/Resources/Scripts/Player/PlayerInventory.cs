@@ -79,6 +79,15 @@ namespace Mike4ruls.General.Player
 
         void CheckPlayerInput()
         {
+            if (Input.mouseScrollDelta.y > 0)
+            {
+                LeftToggleWeaponHolster();
+            }
+            else if (Input.mouseScrollDelta.y < 0)
+            {
+                RightToggleWeaponHolster();
+            }
+
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 LeftToggleWeaponHolster();
