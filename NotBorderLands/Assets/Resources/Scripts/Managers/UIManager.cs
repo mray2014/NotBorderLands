@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Mike4ruls.General.Player;
+using TMPro;
 
 namespace Mike4ruls.General.Managers
 {
@@ -54,7 +55,32 @@ namespace Mike4ruls.General.Managers
                     }
                 case GameState.Game:
                     {
+                        switch (player1.GetComponent<PlayerInventory>().currentInteractType)
+                        {
+                            case InteractType.Open:
+                                {
+                                    reticle.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Press 'F' to Open";
+                                    break;
+                                }
+                            case InteractType.PickUp:
+                                {
+                                    reticle.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Press 'F' to Pick up";
+                                    
+                                    break;
+                                }
+                            case InteractType.TalkTo:
+                                {
+                                    reticle.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Press 'F' to Talk to";
+                                    break;
+                                }
+                            case InteractType.Use:
+                                {
+                                    reticle.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Press 'F' to Use";
+                                    break;
+                                }
+                        }
                         reticle.gameObject.SetActive(player1.GetComponent<PlayerInventory>().hitInteractable);
+                        
                         if (!gameUI.activeInHierarchy)
                         {
                             HidePauseMenu();

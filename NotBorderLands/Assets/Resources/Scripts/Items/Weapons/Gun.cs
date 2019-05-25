@@ -85,6 +85,7 @@ namespace Mike4ruls.General.Items
             name += GetFireModeType_ToString();
             //name += GetWeaponName();
             name += GetWeaponType_ToString();
+            name += GetElementalType_ToString();
         }
 
         public string GetManucaturerName()
@@ -232,6 +233,41 @@ namespace Mike4ruls.General.Items
                         break;
                     }
             }
+            return text;
+        }
+        public string GetElementalType_ToString()
+        {
+            string text = "";
+
+            switch (elementType)
+            {
+                case ElementType.Fire:
+                    {
+                        text = "(Fire) ";
+                        break;
+                    }
+                case ElementType.Ice:
+                    {
+                        text = "(Ice) ";
+                        break;
+                    }
+                case ElementType.Explosion:
+                    {
+                        text = "(Explosion) ";
+                        break;
+                    }
+                case ElementType.Acid:
+                    {
+                        text = "(Acid) ";
+                        break;
+                    }
+                case ElementType.Electric:
+                    {
+                        text = "(Elecric) ";
+                        break;
+                    }
+            }
+
             return text;
         }
     }

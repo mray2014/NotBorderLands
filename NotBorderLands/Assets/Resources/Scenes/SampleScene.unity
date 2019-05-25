@@ -113,6 +113,161 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &10689359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 10689360}
+  - component: {fileID: 10689362}
+  - component: {fileID: 10689361}
+  m_Layer: 5
+  m_Name: TextMeshPro Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &10689360
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10689359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1160770961}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 127.2, y: -60.3}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &10689361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10689359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_text: Press 'F' to Open
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 20
+  m_fontSizeBase: 20
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 257
+  m_isAlignmentEnumConverted: 1
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 10689361}
+    characterCount: 17
+    spriteCount: 0
+    spaceCount: 3
+    wordCount: 4
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_havePropertiesChanged: 0
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_isInputParsingRequired: 0
+  m_inputSource: 0
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &10689362
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10689359}
+  m_CullTransparentMesh: 0
 --- !u!1 &39334122
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,157 +385,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 39334122}
   m_CullTransparentMesh: 0
---- !u!1 &50325266
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 50325267}
-  - component: {fileID: 50325270}
-  - component: {fileID: 50325269}
-  - component: {fileID: 50325268}
-  - component: {fileID: 50325271}
-  - component: {fileID: 50325272}
-  - component: {fileID: 50325273}
-  - component: {fileID: 50325274}
-  m_Layer: 0
-  m_Name: Itembox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &50325267
+--- !u!4 &50325267 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 50325266}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.6, y: 0.59, z: 8.61}
-  m_LocalScale: {x: 1.0763861, y: 0.31684092, z: 0.53671}
-  m_Children:
-  - {fileID: 1602318411}
-  - {fileID: 1969168945}
-  - {fileID: 495045848}
-  - {fileID: 1330419058}
-  - {fileID: 94798354}
-  m_Father: {fileID: 548849319}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &50325268
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 50325266}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.12, y: 1.27, z: 1.18}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &50325269
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 50325266}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &50325270
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 50325266}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &50325271
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 50325266}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &50325272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 50325266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00e1ddf628d218542b865a979dfe1158, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnerChanceSettings:
-    _4Spawners: 51
-    _2Spawners: 96
-    _1Spawners: 100
-    _4SpawnersDropChance: 51%
-    _2SpawnersDropChance: 45%
-    _1SpawnersDropChance: 4%
-  debugON: 1
---- !u!65 &50325273
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 50325266}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &50325274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 50325266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_CorrespondingSourceObject: {fileID: 4098947079297056, guid: d9ed577d0e965434ba25754b1b6a1eb5,
+    type: 2}
+  m_PrefabInternal: {fileID: 676363721}
 --- !u!1 &51344740
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,92 +525,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1629742889541200, guid: f86afbcfb52fea4459363d5737cf1a11,
     type: 2}
   m_PrefabInternal: {fileID: 661298976}
---- !u!1 &94798353
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 94798354}
-  - component: {fileID: 94798355}
-  - component: {fileID: 94798356}
-  m_Layer: 0
-  m_Name: spawner (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &94798354
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 94798353}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.33, y: 1.32, z: -0.35}
-  m_LocalScale: {x: 1.0000036, y: 0.99999714, z: 0.9999999}
-  m_Children: []
-  m_Father: {fileID: 50325267}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &94798355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 94798353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dd3388679c2de3499446dad63026093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemdropChance: 100
-  spawnItemSettings:
-    item: 0
-    weapon: 100
-    sheild: 100
-    weaponMod: 100
-    sheildMod: 100
-    itemDropChance: 0%
-    weaponDropChance: 100%
-    sheildDropChance: 0%
-    weaponModDropChance: 0%
-    sheildModDropChance: 0%
-  rarityChanceSettings:
-    common: 49
-    unCommon: 63
-    rare: 84
-    epic: 99
-    legendary: 100
-    commonDropChance: 49%
-    unCommonDropChance: 14%
-    rareDropChance: 21%
-    epicDropChance: 15%
-    legendaryDropChance: 1%
-  manufacturerChanceSettings:
-    noxelCorp: 100
-    dysfunctionalHq: 100
-    midnightIntelligence: 100
-    ironPaw: 100
-    jerrysCakenBakery: 100
-    noxelCorpDropChance: 100%
-    dysfunctionalHqDropChance: 0%
-    midnightIntelligenceDropChance: 0%
-    ironPawDropChance: 0%
-    jerrysCakenBakeryDropChance: 0%
---- !u!114 &94798356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 94798353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &95384845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,92 +1662,6 @@ Transform:
   m_Father: {fileID: 901931975}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &495045847
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 495045848}
-  - component: {fileID: 495045849}
-  - component: {fileID: 495045850}
-  m_Layer: 0
-  m_Name: spawner (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &495045848
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 495045847}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.361, y: 1.32, z: -0.372}
-  m_LocalScale: {x: 1.0000036, y: 0.99999714, z: 0.9999999}
-  m_Children: []
-  m_Father: {fileID: 50325267}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &495045849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 495045847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dd3388679c2de3499446dad63026093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemdropChance: 100
-  spawnItemSettings:
-    item: 0
-    weapon: 100
-    sheild: 100
-    weaponMod: 100
-    sheildMod: 100
-    itemDropChance: 0%
-    weaponDropChance: 100%
-    sheildDropChance: 0%
-    weaponModDropChance: 0%
-    sheildModDropChance: 0%
-  rarityChanceSettings:
-    common: 49
-    unCommon: 63
-    rare: 84
-    epic: 99
-    legendary: 100
-    commonDropChance: 49%
-    unCommonDropChance: 14%
-    rareDropChance: 21%
-    epicDropChance: 15%
-    legendaryDropChance: 1%
-  manufacturerChanceSettings:
-    noxelCorp: 100
-    dysfunctionalHq: 100
-    midnightIntelligence: 100
-    ironPaw: 100
-    jerrysCakenBakery: 100
-    noxelCorpDropChance: 100%
-    dysfunctionalHqDropChance: 0%
-    midnightIntelligenceDropChance: 0%
-    ironPawDropChance: 0%
-    jerrysCakenBakeryDropChance: 0%
---- !u!114 &495045850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 495045847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &508022383
 Prefab:
   m_ObjectHideFlags: 0
@@ -3111,6 +2948,48 @@ Transform:
   m_Father: {fileID: 548849319}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &676363721
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 548849319}
+    m_Modifications:
+    - target: {fileID: 4098947079297056, guid: d9ed577d0e965434ba25754b1b6a1eb5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098947079297056, guid: d9ed577d0e965434ba25754b1b6a1eb5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098947079297056, guid: d9ed577d0e965434ba25754b1b6a1eb5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 8.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098947079297056, guid: d9ed577d0e965434ba25754b1b6a1eb5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098947079297056, guid: d9ed577d0e965434ba25754b1b6a1eb5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098947079297056, guid: d9ed577d0e965434ba25754b1b6a1eb5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098947079297056, guid: d9ed577d0e965434ba25754b1b6a1eb5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098947079297056, guid: d9ed577d0e965434ba25754b1b6a1eb5, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d9ed577d0e965434ba25754b1b6a1eb5, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &679151026
 GameObject:
   m_ObjectHideFlags: 0
@@ -4821,7 +4700,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 10689360}
   m_Father: {fileID: 1398336880}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5556,92 +5436,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99bd0e75dd094024bb9a862d7395756f, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1330419057
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1330419058}
-  - component: {fileID: 1330419059}
-  - component: {fileID: 1330419060}
-  m_Layer: 0
-  m_Name: spawner (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1330419058
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1330419057}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.317, y: 1.32, z: 0.379}
-  m_LocalScale: {x: 1.0000036, y: 0.99999714, z: 0.9999999}
-  m_Children: []
-  m_Father: {fileID: 50325267}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1330419059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1330419057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dd3388679c2de3499446dad63026093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemdropChance: 100
-  spawnItemSettings:
-    item: 0
-    weapon: 100
-    sheild: 100
-    weaponMod: 100
-    sheildMod: 100
-    itemDropChance: 0%
-    weaponDropChance: 100%
-    sheildDropChance: 0%
-    weaponModDropChance: 0%
-    sheildModDropChance: 0%
-  rarityChanceSettings:
-    common: 49
-    unCommon: 63
-    rare: 84
-    epic: 99
-    legendary: 100
-    commonDropChance: 49%
-    unCommonDropChance: 14%
-    rareDropChance: 21%
-    epicDropChance: 15%
-    legendaryDropChance: 1%
-  manufacturerChanceSettings:
-    noxelCorp: 100
-    dysfunctionalHq: 100
-    midnightIntelligence: 100
-    ironPaw: 100
-    jerrysCakenBakery: 100
-    noxelCorpDropChance: 100%
-    dysfunctionalHqDropChance: 0%
-    midnightIntelligenceDropChance: 0%
-    ironPawDropChance: 0%
-    jerrysCakenBakeryDropChance: 0%
---- !u!114 &1330419060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1330419057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1349505881 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1154702728519750, guid: cec20d0d809cf4548bae6be1cfe2f4c7,
@@ -6622,17 +6416,17 @@ MonoBehaviour:
     fullAutoBurstDropChance: 0%
     automaticDropChance: 0%
   elementalChanceSettings:
-    normal: 100
-    fire: 100
-    ice: 100
-    explosion: 100
+    normal: 71
+    fire: 88
+    ice: 94
+    explosion: 97
     acid: 100
     electric: 100
-    normalDropChance: 100%
-    fireDropChance: 0%
-    iceBurstDropChance: 0%
-    explosionDropChance: 0%
-    acidBurstDropChance: 0%
+    normalDropChance: 71%
+    fireDropChance: 17%
+    iceBurstDropChance: 6%
+    explosionDropChance: 3%
+    acidBurstDropChance: 3%
     electricDropChance: 0%
 --- !u!114 &1453991200
 MonoBehaviour:
@@ -7098,92 +6892,6 @@ MonoBehaviour:
   healthText: {fileID: 1264378529}
   sheildText: {fileID: 1002702351}
   moneyText: {fileID: 1994744771}
---- !u!1 &1602318410
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1602318411}
-  - component: {fileID: 1602318412}
-  - component: {fileID: 1602318413}
-  m_Layer: 0
-  m_Name: spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1602318411
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1602318410}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.32, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 50325267}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1602318412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1602318410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dd3388679c2de3499446dad63026093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemdropChance: 100
-  spawnItemSettings:
-    item: 0
-    weapon: 56
-    sheild: 59
-    weaponMod: 100
-    sheildMod: 100
-    itemDropChance: 0%
-    weaponDropChance: 56%
-    sheildDropChance: 3%
-    weaponModDropChance: 41%
-    sheildModDropChance: 0%
-  rarityChanceSettings:
-    common: 0
-    unCommon: 0
-    rare: 0
-    epic: 0
-    legendary: 100
-    commonDropChance: 0%
-    unCommonDropChance: 0%
-    rareDropChance: 0%
-    epicDropChance: 0%
-    legendaryDropChance: 100%
-  manufacturerChanceSettings:
-    noxelCorp: 100
-    dysfunctionalHq: 100
-    midnightIntelligence: 100
-    ironPaw: 100
-    jerrysCakenBakery: 100
-    noxelCorpDropChance: 100%
-    dysfunctionalHqDropChance: 0%
-    midnightIntelligenceDropChance: 0%
-    ironPawDropChance: 0%
-    jerrysCakenBakeryDropChance: 0%
---- !u!114 &1602318413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1602318410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1606501398
 GameObject:
   m_ObjectHideFlags: 0
@@ -8339,92 +8047,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4515635881352236, guid: da6bcffc92526ca41bf09fb21ba4275f,
     type: 2}
   m_PrefabInternal: {fileID: 935097735}
---- !u!1 &1969168944
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1969168945}
-  - component: {fileID: 1969168946}
-  - component: {fileID: 1969168947}
-  m_Layer: 0
-  m_Name: spawner (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1969168945
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1969168944}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.23700008, y: 1.32, z: 0.3020001}
-  m_LocalScale: {x: 1.0000036, y: 0.99999714, z: 0.9999999}
-  m_Children: []
-  m_Father: {fileID: 50325267}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1969168946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1969168944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dd3388679c2de3499446dad63026093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemdropChance: 100
-  spawnItemSettings:
-    item: 0
-    weapon: 100
-    sheild: 100
-    weaponMod: 100
-    sheildMod: 100
-    itemDropChance: 0%
-    weaponDropChance: 100%
-    sheildDropChance: 0%
-    weaponModDropChance: 0%
-    sheildModDropChance: 0%
-  rarityChanceSettings:
-    common: 49
-    unCommon: 63
-    rare: 84
-    epic: 99
-    legendary: 100
-    commonDropChance: 49%
-    unCommonDropChance: 14%
-    rareDropChance: 21%
-    epicDropChance: 15%
-    legendaryDropChance: 1%
-  manufacturerChanceSettings:
-    noxelCorp: 100
-    dysfunctionalHq: 100
-    midnightIntelligence: 100
-    ironPaw: 100
-    jerrysCakenBakery: 100
-    noxelCorpDropChance: 100%
-    dysfunctionalHqDropChance: 0%
-    midnightIntelligenceDropChance: 0%
-    ironPawDropChance: 0%
-    jerrysCakenBakeryDropChance: 0%
---- !u!114 &1969168947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1969168944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1983118958
 GameObject:
   m_ObjectHideFlags: 0
@@ -8893,6 +8515,7 @@ MonoBehaviour:
   holdDownToEquipTime: 0.5
   throwItemForce: 200
   hitInteractable: 0
+  currentInteractType: 1
 --- !u!1 &2047289602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1123364068222980, guid: 241e3b1d993150a45a791e1e5df97856,

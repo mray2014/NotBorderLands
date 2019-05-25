@@ -59,7 +59,11 @@ namespace Mike4ruls.General
             }
 
         }
-
+        public float boxOpeningSpeed = 4;
+        public float boxOpeningradius = 1;
+        public GameObject spawners;
+        public GameObject leftSide;
+        public GameObject rightSide;
         public itemSpawnerChanceSettings spawnerChanceSettings;
         public bool debugON = false;
         private bool boxAnimationStarted = false;
@@ -67,6 +71,9 @@ namespace Mike4ruls.General
 
         private float randomMaxNum = 10000;
         private List<int> childrenSpawnersThatCanSpawn;
+
+        private InteractType interactionType = InteractType.Open;
+        private bool localCanInteract = true;
         // Use this for initialization
         void Start()
         {
@@ -83,13 +90,14 @@ namespace Mike4ruls.General
                 {
                     for (int i = 0; i < childrenSpawnersThatCanSpawn.Count; i++)
                     {
-                        Item newItem = transform.GetChild(childrenSpawnersThatCanSpawn[i]).GetComponent<SpawnerComponent>().SpawnItem();
+                        Item newItem = spawners.transform.GetChild(childrenSpawnersThatCanSpawn[i]).GetComponent<SpawnerComponent>().SpawnItem();
                     }
                     
                     if (debugON)
                     {
                         boxAnimationStarted = false;
                         boxAnimationFinished = false;
+                        localCanInteract = true;
                     }
                 }
             }
@@ -100,6 +108,7 @@ namespace Mike4ruls.General
             {
                 DecideSpawnAmmount();
                 boxAnimationStarted = true;
+                localCanInteract = false;
             }
             
         }
@@ -134,12 +143,48 @@ namespace Mike4ruls.General
         }
         void BoxOpeningAnim()
         {
-            boxAnimationFinished = true;
+            float leftSideDist = (leftSide.transform.position - transform.position).magnitude;
+            float rightSideDist = (rightSide.transform.position - transform.position).magnitude;
+
+            if (leftSideDist >= boxOpeningradius && rightSideDist >= boxOpeningradius)
+            {
+                boxAnimationFinished = true;
+            }
+            else
+            {
+                leftSide.transform.position += transform.right * -boxOpeningSpeed * Time.deltaTime;
+                rightSide.transform.position += transform.right * boxOpeningSpeed * Time.deltaTime;
+            }
+           
         }
 
         public void ExecuteInEditor()
         {
             spawnerChanceSettings.UpdateItemSpawnerChanceSettings();
+        }
+        public InteractType interactType
+        {
+            get
+            {
+                return interactionType;
+            }
+
+            set
+            {
+                interactionType = value;
+            }
+        }
+
+        public bool canInteract
+        {
+            get
+            {
+                return localCanInteract;
+            }
+            set
+            {
+                localCanInteract = value;
+            }
         }
     }
 }

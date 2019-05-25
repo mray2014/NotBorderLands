@@ -33,7 +33,7 @@ namespace Mike4ruls.General
     public class Item : MonoBehaviour, IInteractable
     {
         [Header("~Item Settings~")]
-        // Public Vars 
+        // Public Vars        
         public string name = "";
         public RarityType rarityType = RarityType.Common;
         public Manufacturer manufacturer = Manufacturer.MotherNature;
@@ -54,6 +54,9 @@ namespace Mike4ruls.General
         private bool itemPickedUp = false;
         private bool pullIn = false;
         private bool initFinished = false;
+
+        private InteractType interactionType = InteractType.PickUp;
+        private bool localCanInteract = true;
 
         private void Start()
         {
@@ -325,6 +328,30 @@ namespace Mike4ruls.General
             }
 
             return finalText + name;
+        }
+        public InteractType interactType
+        {
+            get
+            {
+                return interactionType;
+            }
+
+            set
+            {
+                interactionType = value;
+            }
+        }
+
+        public bool canInteract
+        {
+            get
+            {
+                return localCanInteract;
+            }
+            set
+            {
+                localCanInteract = value;
+            }
         }
     }
 }

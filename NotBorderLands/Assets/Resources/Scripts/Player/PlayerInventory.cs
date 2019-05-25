@@ -18,6 +18,7 @@ namespace Mike4ruls.General.Player
         public float holdDownToEquipTime = 1;
         public float throwItemForce = 4;
         public bool hitInteractable = false;
+        public InteractType currentInteractType = InteractType.PickUp;
 
         // Private Vars 
         private Gun[] weaponHolster;
@@ -111,10 +112,11 @@ namespace Mike4ruls.General.Player
 
             if (Physics.Raycast(newRay, out hit, 500))
             {
-                if (hit.transform.gameObject.GetComponent<IInteractable>() != null)
+                if (hit.transform.gameObject.GetComponent<IInteractable>() != null && hit.transform.gameObject.GetComponent<IInteractable>().canInteract)
                 {
                     hitInteractable = true;
-                   
+                    currentInteractType = hit.transform.gameObject.GetComponent<IInteractable>().interactType;
+
                     if (Input.GetKeyDown(KeyCode.F))
                     {
                         unHoverStillPressingECheck = true;
