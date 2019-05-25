@@ -14,6 +14,19 @@ namespace Mike4ruls.General
 
     public class GameManager : MonoBehaviour
     {
+        [SerializeField]
+        public static Color _CommonRarityColor;
+        public static Color _UnCommonRarityColor;
+        public static Color _RareRarityColor;
+        public static Color _EpicRarityColor;
+        public static Color _LegendaryRarityColor;
+
+
+        public Color commonRarityColor;
+        public Color unCommonRarityColor;
+        public Color rareRarityColor;
+        public Color epicRarityColor;
+        public Color legendaryRarityColor;
         // Public Vars 
         public bool pauseEntireGame = false;
 
@@ -24,8 +37,12 @@ namespace Mike4ruls.General
         // Use this for initialization
         void Start()
         {
+            _CommonRarityColor = commonRarityColor;
+            _UnCommonRarityColor = unCommonRarityColor;
+            _RareRarityColor = rareRarityColor;
+            _EpicRarityColor = epicRarityColor;
+            _LegendaryRarityColor = legendaryRarityColor;
             player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBase>();
-
         }
 
         // Update is called once per frame

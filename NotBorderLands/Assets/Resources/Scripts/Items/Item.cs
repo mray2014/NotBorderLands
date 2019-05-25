@@ -99,6 +99,7 @@ namespace Mike4ruls.General
                             break;
                         }
                 }
+                GenerateName();
                 initFinished = true;
             }
         }
@@ -277,6 +278,11 @@ namespace Mike4ruls.General
         {
             return pullIn;
         }
+        virtual protected void GenerateName()
+        {
+
+        }
+
         public string ItemToString()
         {
             string finalText = "";

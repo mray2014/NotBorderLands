@@ -90,10 +90,13 @@ namespace Mike4ruls.General.UI
 
             if (myItem != null)
             {
+                Color textColor = GetColor();
+                myText.color = textColor;
                 myText.text = myItem.ItemToString();
             }
             else
             {
+                myText.color = Color.white;
                 myText.text = emptyText;
             }
         }
@@ -152,6 +155,43 @@ namespace Mike4ruls.General.UI
             {
                 clicked = true;
             }
+        }
+        Color GetColor()
+        {
+            Color newColor = Color.white;
+
+            switch (myItem.rarityType)
+            {
+                case RarityType.Common:
+                    {
+                        newColor = GameManager._CommonRarityColor;
+                        break;
+                    }
+                case RarityType.Uncommon:
+                    {
+                        newColor = GameManager._UnCommonRarityColor;
+                        break;
+                    }
+                case RarityType.Rare:
+                    {
+                        newColor = GameManager._RareRarityColor;
+                        break;
+                    }
+                case RarityType.Epic:
+                    {
+                        newColor = GameManager._EpicRarityColor;
+                        break;
+                    }
+                case RarityType.Legendary:
+                    {
+                        newColor = GameManager._LegendaryRarityColor;
+                        break;
+                    }
+            }
+
+            newColor = new Color(newColor.r, newColor.g, newColor.b, 1.0f);
+
+            return newColor;
         }
     }
 }

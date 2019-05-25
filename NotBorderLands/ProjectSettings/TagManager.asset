@@ -8,6 +8,7 @@ TagManager:
   - RarityParticleEffectPool
   - Enviornment
   - ItemList
+  - GameManager
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,14 @@ namespace Mike4ruls.General.Items
     public class WeaponStatManager : MonoBehaviour, IUniqueEditorElement
     {
         [System.Serializable]
+        public struct WeaponStatsGenerationSettings
+        {
+            public Vector2 damageMultiplierRange, damageRange, bulletVelocityRange, rateOfFireRange, burstRateOfFireRange,
+                burstNumRange, reloadSpeedRange, recoilRange, accuracyRange, magazineSizeRange;
+            public Vector3 minBulletFallOffRange, maxBulletFallOffRange;
+        }
+
+        [System.Serializable]
         public struct ElementalChanceSettings
         {
             [Range(0, 100)]
@@ -169,20 +177,12 @@ namespace Mike4ruls.General.Items
 
         }
 
-        public Vector2 damageMultiplierRange = new Vector2(1, 1);
-        public Vector2 damageRange, bulletVelocityRange, rateOfFireRange, burstRateOfFireRange,
-            burstNumRange = new Vector2(3, 5), reloadSpeedRange, recoilRange, accuracyRange, magazineSizeRange;
-        public Vector3 minBulletFallOffRange, maxBulletFallOffRange;
 
-        public FireModeChanceSettings fireModeSettings;
+        public WeaponStatsGenerationSettings weaponStatsGenerationSettings;
+        public FireModeChanceSettings fireModeChanceSettings;
         public ElementalChanceSettings elementalChanceSettings;
         private float randomMaxNum = 10000;
 
-        private void OnGUI()
-        {
-            fireModeSettings.UpdateFireChanceSettings();
-            elementalChanceSettings.UpdateElementalChanceSettings();
-        }
 
         // Update is called once per frame
         void Update()
@@ -232,20 +232,20 @@ namespace Mike4ruls.General.Items
 
             float fireModeRanNum = (Random.Range(0, randomMaxNum + 1) / randomMaxNum) * 100;
 
-            if (fireModeRanNum < fireModeSettings.semiAuto)
+            if (fireModeRanNum < fireModeChanceSettings.semiAuto)
             {
                 myGun.fireMode = FireMode.SemiAuto;
             }
-            else if (fireModeRanNum < fireModeSettings.burst)
+            else if (fireModeRanNum < fireModeChanceSettings.burst)
             {
                 myGun.fireMode = FireMode.Burst;
             }
 
-            else if (fireModeRanNum < fireModeSettings.fullAutoBurst)
+            else if (fireModeRanNum < fireModeChanceSettings.fullAutoBurst)
             {
                 myGun.fireMode = FireMode.FullAutoBurst;
             }
-            else if(fireModeRanNum < fireModeSettings.automatic)
+            else if(fireModeRanNum < fireModeChanceSettings.automatic)
             {
                 myGun.fireMode = FireMode.Automatic;
             }
@@ -253,41 +253,41 @@ namespace Mike4ruls.General.Items
 
         void DecideGunStats(Gun myGun)
         {
-           myGun.damage = Random.Range((damageRange.x * myGun.weaponLevel), (damageRange.y * myGun.weaponLevel));
-           myGun.damageMultiplyer = (int)Random.Range(damageMultiplierRange.x, damageMultiplierRange.y);
-           myGun.bulletVelocity = Random.Range(bulletVelocityRange.x, bulletVelocityRange.y);
-           myGun.rateOfFire = Random.Range(rateOfFireRange.x, rateOfFireRange.y);
-           myGun.burstRateOfFire = Random.Range(burstRateOfFireRange.x, burstRateOfFireRange.y);
-           myGun.burstNum = (int)Random.Range(burstNumRange.x, burstNumRange.y);
-           myGun.reloadSpeed = Random.Range(reloadSpeedRange.x, reloadSpeedRange.y);
-           myGun.recoil = Random.Range(recoilRange.x, recoilRange.y);
-           myGun.accuracy = Random.Range(accuracyRange.x, accuracyRange.y);
-           myGun.magazineSize = (int)Random.Range(magazineSizeRange.x, magazineSizeRange.y);
-            myGun.bulletFallOffRange.x = Random.Range(minBulletFallOffRange.x, maxBulletFallOffRange.x);
+           myGun.damage = Random.Range((weaponStatsGenerationSettings.damageRange.x * myGun.weaponLevel), (weaponStatsGenerationSettings.damageRange.y * myGun.weaponLevel));
+           myGun.damageMultiplyer = (int)Random.Range(weaponStatsGenerationSettings.damageMultiplierRange.x, weaponStatsGenerationSettings.damageMultiplierRange.y);
+           myGun.bulletVelocity = Random.Range(weaponStatsGenerationSettings.bulletVelocityRange.x, weaponStatsGenerationSettings.bulletVelocityRange.y);
+           myGun.rateOfFire = Random.Range(weaponStatsGenerationSettings.rateOfFireRange.x, weaponStatsGenerationSettings.rateOfFireRange.y);
+           myGun.burstRateOfFire = Random.Range(weaponStatsGenerationSettings.burstRateOfFireRange.x, weaponStatsGenerationSettings.burstRateOfFireRange.y);
+           myGun.burstNum = (int)Random.Range(weaponStatsGenerationSettings.burstNumRange.x, weaponStatsGenerationSettings.burstNumRange.y);
+           myGun.reloadSpeed = Random.Range(weaponStatsGenerationSettings.reloadSpeedRange.x, weaponStatsGenerationSettings.reloadSpeedRange.y);
+           myGun.recoil = Random.Range(weaponStatsGenerationSettings.recoilRange.x, weaponStatsGenerationSettings.recoilRange.y);
+           myGun.accuracy = Random.Range(weaponStatsGenerationSettings.accuracyRange.x, weaponStatsGenerationSettings.accuracyRange.y);
+           myGun.magazineSize = (int)Random.Range(weaponStatsGenerationSettings.magazineSizeRange.x, weaponStatsGenerationSettings.magazineSizeRange.y);
+           myGun.bulletFallOffRange.x = Random.Range(weaponStatsGenerationSettings.minBulletFallOffRange.x, weaponStatsGenerationSettings.maxBulletFallOffRange.x);
 
-            if (myGun.bulletFallOffRange.x > minBulletFallOffRange.y)
+            if (myGun.bulletFallOffRange.x > weaponStatsGenerationSettings.minBulletFallOffRange.y)
             {
-                myGun.bulletFallOffRange.y = Random.Range(myGun.bulletFallOffRange.x, maxBulletFallOffRange.y);
+                myGun.bulletFallOffRange.y = Random.Range(myGun.bulletFallOffRange.x, weaponStatsGenerationSettings.maxBulletFallOffRange.y);
             }
             else
             {
-                myGun.bulletFallOffRange.y = Random.Range(minBulletFallOffRange.y, maxBulletFallOffRange.y);
+                myGun.bulletFallOffRange.y = Random.Range(weaponStatsGenerationSettings.minBulletFallOffRange.y, weaponStatsGenerationSettings.maxBulletFallOffRange.y);
             }
 
-            if (myGun.bulletFallOffRange.y > minBulletFallOffRange.z)
+            if (myGun.bulletFallOffRange.y > weaponStatsGenerationSettings.minBulletFallOffRange.z)
             {
-                myGun.bulletFallOffRange.z = Random.Range(myGun.bulletFallOffRange.y, maxBulletFallOffRange.z);
+                myGun.bulletFallOffRange.z = Random.Range(myGun.bulletFallOffRange.y, weaponStatsGenerationSettings.maxBulletFallOffRange.z);
             }
             else
             {
-                myGun.bulletFallOffRange.z = Random.Range(minBulletFallOffRange.z, maxBulletFallOffRange.z);
+                myGun.bulletFallOffRange.z = Random.Range(weaponStatsGenerationSettings.minBulletFallOffRange.z, weaponStatsGenerationSettings.maxBulletFallOffRange.z);
             }
             myGun.maxBulletRange = Random.Range(myGun.bulletFallOffRange.z + 50, myGun.bulletFallOffRange.z + 150);
         }
 
         public void ExecuteInEditor()
         {
-            fireModeSettings.UpdateFireChanceSettings();
+            fireModeChanceSettings.UpdateFireChanceSettings();
             elementalChanceSettings.UpdateElementalChanceSettings();
         }
     }

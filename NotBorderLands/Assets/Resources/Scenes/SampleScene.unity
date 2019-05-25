@@ -465,27 +465,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplierRange: {x: 1, y: 1}
-  damageRange: {x: 0, y: 0}
-  bulletVelocityRange: {x: 0, y: 0}
-  rateOfFireRange: {x: 0, y: 0}
-  burstRateOfFireRange: {x: 0, y: 0}
-  burstNumRange: {x: 3, y: 5}
-  reloadSpeedRange: {x: 0, y: 0}
-  recoilRange: {x: 0, y: 0}
-  accuracyRange: {x: 0, y: 0}
-  magazineSizeRange: {x: 0, y: 0}
-  minBulletFallOffRange: {x: 0, y: 0, z: 0}
-  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
-  fireModeSettings:
+  weaponStatsGenerationSettings:
+    damageMultiplierRange: {x: 1, y: 1}
+    damageRange: {x: 0, y: 0}
+    bulletVelocityRange: {x: 0, y: 0}
+    rateOfFireRange: {x: 0, y: 0}
+    burstRateOfFireRange: {x: 0, y: 0}
+    burstNumRange: {x: 3, y: 5}
+    reloadSpeedRange: {x: 0, y: 0}
+    recoilRange: {x: 0, y: 0}
+    accuracyRange: {x: 0, y: 0}
+    magazineSizeRange: {x: 0, y: 0}
+    minBulletFallOffRange: {x: 0, y: 0, z: 0}
+    maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeChanceSettings:
     semiAuto: 0
     burst: 0
     fullAutoBurst: 0
-    automatic: 100
+    automatic: 0
     semiAutoDropChance: 0%
     burstDropChance: 0%
     fullAutoBurstDropChance: 0%
-    automaticDropChance: 100%
+    automaticDropChance: 0%
   elementalChanceSettings:
     normal: 0
     fire: 0
@@ -1349,17 +1350,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1013991872028110, guid: 417c3846e59f6af4ebd536e8956ea2b2,
     type: 2}
   m_PrefabInternal: {fileID: 1529451622}
---- !u!114 &404667826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 404667823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &404667832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1371,19 +1361,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplierRange: {x: 1, y: 1}
-  damageRange: {x: 0, y: 0}
-  bulletVelocityRange: {x: 0, y: 0}
-  rateOfFireRange: {x: 0, y: 0}
-  burstRateOfFireRange: {x: 0, y: 0}
-  burstNumRange: {x: 3, y: 5}
-  reloadSpeedRange: {x: 0, y: 0}
-  recoilRange: {x: 0, y: 0}
-  accuracyRange: {x: 0, y: 0}
-  magazineSizeRange: {x: 0, y: 0}
-  minBulletFallOffRange: {x: 0, y: 0, z: 0}
-  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
-  fireModeSettings:
+  weaponStatsGenerationSettings:
+    damageMultiplierRange: {x: 1, y: 1}
+    damageRange: {x: 0, y: 0}
+    bulletVelocityRange: {x: 0, y: 0}
+    rateOfFireRange: {x: 0, y: 0}
+    burstRateOfFireRange: {x: 0, y: 0}
+    burstNumRange: {x: 3, y: 5}
+    reloadSpeedRange: {x: 0, y: 0}
+    recoilRange: {x: 0, y: 0}
+    accuracyRange: {x: 0, y: 0}
+    magazineSizeRange: {x: 0, y: 0}
+    minBulletFallOffRange: {x: 0, y: 0, z: 0}
+    maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeChanceSettings:
     semiAuto: 0
     burst: 0
     fullAutoBurst: 0
@@ -1405,6 +1396,17 @@ MonoBehaviour:
     explosionDropChance: 0%
     acidBurstDropChance: 0%
     electricDropChance: 0%
+--- !u!114 &404667833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404667823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae279176ebcf3c94aa04280ec210336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &413331003
 GameObject:
   m_ObjectHideFlags: 0
@@ -3345,19 +3347,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplierRange: {x: 1, y: 1}
-  damageRange: {x: 0, y: 0}
-  bulletVelocityRange: {x: 0, y: 0}
-  rateOfFireRange: {x: 0, y: 0}
-  burstRateOfFireRange: {x: 0, y: 0}
-  burstNumRange: {x: 3, y: 5}
-  reloadSpeedRange: {x: 0, y: 0}
-  recoilRange: {x: 0, y: 0}
-  accuracyRange: {x: 0, y: 0}
-  magazineSizeRange: {x: 0, y: 0}
-  minBulletFallOffRange: {x: 0, y: 0, z: 0}
-  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
-  fireModeSettings:
+  weaponStatsGenerationSettings:
+    damageMultiplierRange: {x: 1, y: 1}
+    damageRange: {x: 0, y: 0}
+    bulletVelocityRange: {x: 0, y: 0}
+    rateOfFireRange: {x: 0, y: 0}
+    burstRateOfFireRange: {x: 0, y: 0}
+    burstNumRange: {x: 3, y: 5}
+    reloadSpeedRange: {x: 0, y: 0}
+    recoilRange: {x: 0, y: 0}
+    accuracyRange: {x: 0, y: 0}
+    magazineSizeRange: {x: 0, y: 0}
+    minBulletFallOffRange: {x: 0, y: 0, z: 0}
+    maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeChanceSettings:
     semiAuto: 0
     burst: 0
     fullAutoBurst: 0
@@ -4445,27 +4448,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplierRange: {x: 1, y: 1}
-  damageRange: {x: 0, y: 0}
-  bulletVelocityRange: {x: 0, y: 0}
-  rateOfFireRange: {x: 0, y: 0}
-  burstRateOfFireRange: {x: 0, y: 0}
-  burstNumRange: {x: 3, y: 5}
-  reloadSpeedRange: {x: 0, y: 0}
-  recoilRange: {x: 0, y: 0}
-  accuracyRange: {x: 0, y: 0}
-  magazineSizeRange: {x: 0, y: 0}
-  minBulletFallOffRange: {x: 0, y: 0, z: 0}
-  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
-  fireModeSettings:
-    semiAuto: 90
-    burst: 92
-    fullAutoBurst: 97
-    automatic: 100
-    semiAutoDropChance: 90%
-    burstDropChance: 2%
-    fullAutoBurstDropChance: 5%
-    automaticDropChance: 3%
+  weaponStatsGenerationSettings:
+    damageMultiplierRange: {x: 1, y: 1}
+    damageRange: {x: 0, y: 0}
+    bulletVelocityRange: {x: 0, y: 0}
+    rateOfFireRange: {x: 0, y: 0}
+    burstRateOfFireRange: {x: 0, y: 0}
+    burstNumRange: {x: 3, y: 5}
+    reloadSpeedRange: {x: 0, y: 0}
+    recoilRange: {x: 0, y: 0}
+    accuracyRange: {x: 0, y: 0}
+    magazineSizeRange: {x: 0, y: 0}
+    minBulletFallOffRange: {x: 0, y: 0, z: 0}
+    maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeChanceSettings:
+    semiAuto: 0
+    burst: 0
+    fullAutoBurst: 0
+    automatic: 0
+    semiAutoDropChance: 0%
+    burstDropChance: 0%
+    fullAutoBurstDropChance: 0%
+    automaticDropChance: 0%
   elementalChanceSettings:
     normal: 32
     fire: 59
@@ -6279,27 +6283,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplierRange: {x: 1, y: 1}
-  damageRange: {x: 0, y: 0}
-  bulletVelocityRange: {x: 0, y: 0}
-  rateOfFireRange: {x: 0, y: 0}
-  burstRateOfFireRange: {x: 0, y: 0}
-  burstNumRange: {x: 3, y: 5}
-  reloadSpeedRange: {x: 0, y: 0}
-  recoilRange: {x: 0, y: 0}
-  accuracyRange: {x: 0, y: 0}
-  magazineSizeRange: {x: 0, y: 0}
-  minBulletFallOffRange: {x: 0, y: 0, z: 0}
-  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
-  fireModeSettings:
-    semiAuto: 59
-    burst: 73
-    fullAutoBurst: 87
-    automatic: 100
-    semiAutoDropChance: 59%
-    burstDropChance: 14%
-    fullAutoBurstDropChance: 14%
-    automaticDropChance: 13%
+  weaponStatsGenerationSettings:
+    damageMultiplierRange: {x: 1, y: 1}
+    damageRange: {x: 0, y: 0}
+    bulletVelocityRange: {x: 0, y: 0}
+    rateOfFireRange: {x: 0, y: 0}
+    burstRateOfFireRange: {x: 0, y: 0}
+    burstNumRange: {x: 3, y: 5}
+    reloadSpeedRange: {x: 0, y: 0}
+    recoilRange: {x: 0, y: 0}
+    accuracyRange: {x: 0, y: 0}
+    magazineSizeRange: {x: 0, y: 0}
+    minBulletFallOffRange: {x: 0, y: 0, z: 0}
+    maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeChanceSettings:
+    semiAuto: 0
+    burst: 0
+    fullAutoBurst: 0
+    automatic: 0
+    semiAutoDropChance: 0%
+    burstDropChance: 0%
+    fullAutoBurstDropChance: 0%
+    automaticDropChance: 0%
   elementalChanceSettings:
     normal: 0
     fire: 0
@@ -6574,27 +6579,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplierRange: {x: 1, y: 1}
-  damageRange: {x: 0, y: 0}
-  bulletVelocityRange: {x: 0, y: 0}
-  rateOfFireRange: {x: 0, y: 0}
-  burstRateOfFireRange: {x: 0, y: 0}
-  burstNumRange: {x: 3, y: 5}
-  reloadSpeedRange: {x: 0, y: 0}
-  recoilRange: {x: 0, y: 0}
-  accuracyRange: {x: 0, y: 0}
-  magazineSizeRange: {x: 0, y: 0}
-  minBulletFallOffRange: {x: 0, y: 0, z: 0}
-  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
-  fireModeSettings:
-    semiAuto: 88
-    burst: 97
-    fullAutoBurst: 98
-    automatic: 100
-    semiAutoDropChance: 88%
-    burstDropChance: 9%
-    fullAutoBurstDropChance: 1%
-    automaticDropChance: 2%
+  weaponStatsGenerationSettings:
+    damageMultiplierRange: {x: 4, y: 8}
+    damageRange: {x: 10, y: 15}
+    bulletVelocityRange: {x: 0, y: 0}
+    rateOfFireRange: {x: 0, y: 0}
+    burstRateOfFireRange: {x: 0, y: 0}
+    burstNumRange: {x: 3, y: 5}
+    reloadSpeedRange: {x: 0, y: 0}
+    recoilRange: {x: 0, y: 0}
+    accuracyRange: {x: 0, y: 0}
+    magazineSizeRange: {x: 0, y: 0}
+    minBulletFallOffRange: {x: 0, y: 0, z: 0}
+    maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeChanceSettings:
+    semiAuto: 0
+    burst: 0
+    fullAutoBurst: 0
+    automatic: 0
+    semiAutoDropChance: 0%
+    burstDropChance: 0%
+    fullAutoBurstDropChance: 0%
+    automaticDropChance: 0%
   elementalChanceSettings:
     normal: 100
     fire: 100
@@ -6675,19 +6681,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e03b828bd0ee844b531a2cd5d7cf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplierRange: {x: 1, y: 1}
-  damageRange: {x: 0, y: 0}
-  bulletVelocityRange: {x: 0, y: 0}
-  rateOfFireRange: {x: 0, y: 0}
-  burstRateOfFireRange: {x: 0, y: 0}
-  burstNumRange: {x: 3, y: 5}
-  reloadSpeedRange: {x: 0, y: 0}
-  recoilRange: {x: 0, y: 0}
-  accuracyRange: {x: 0, y: 0}
-  magazineSizeRange: {x: 0, y: 0}
-  minBulletFallOffRange: {x: 0, y: 0, z: 0}
-  maxBulletFallOffRange: {x: 0, y: 0, z: 0}
-  fireModeSettings:
+  weaponStatsGenerationSettings:
+    damageMultiplierRange: {x: 1, y: 1}
+    damageRange: {x: 0, y: 0}
+    bulletVelocityRange: {x: 0, y: 0}
+    rateOfFireRange: {x: 0, y: 0}
+    burstRateOfFireRange: {x: 0, y: 0}
+    burstNumRange: {x: 3, y: 5}
+    reloadSpeedRange: {x: 0, y: 0}
+    recoilRange: {x: 0, y: 0}
+    accuracyRange: {x: 0, y: 0}
+    magazineSizeRange: {x: 0, y: 0}
+    minBulletFallOffRange: {x: 0, y: 0, z: 0}
+    maxBulletFallOffRange: {x: 0, y: 0, z: 0}
+  fireModeChanceSettings:
     semiAuto: 0
     burst: 0
     fullAutoBurst: 0
@@ -7349,6 +7356,11 @@ Prefab:
       propertyPath: initOnStartUp
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114006378144705282, guid: cb16965d91ef1ba4681121fa3b439104,
+        type: 2}
+      propertyPath: name
+      value: Sheild Battery
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb16965d91ef1ba4681121fa3b439104, type: 2}
   m_IsPrefabAsset: 0
@@ -7787,6 +7799,11 @@ Prefab:
         type: 2}
       propertyPath: initOnStartUp
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114339681181694340, guid: 767740bf96d658641a56f0e9c0e1f42a,
+        type: 2}
+      propertyPath: name
+      value: Health Pot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 767740bf96d658641a56f0e9c0e1f42a, type: 2}
@@ -8390,7 +8407,7 @@ GameObject:
   - component: {fileID: 1983118960}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8438,6 +8455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7586ac37c4d38d49896a716a9fcd823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  commonRarityColor: {r: 1, g: 1, b: 1, a: 0.5882353}
+  unCommonRarityColor: {r: 0.023529412, g: 1, b: 0, a: 0.5882353}
+  rareRarityColor: {r: 0, g: 0.07058824, b: 1, a: 0.5882353}
+  epicRarityColor: {r: 0.62352943, g: 0, b: 1, a: 0.5882353}
+  legendaryRarityColor: {r: 1, g: 0.44313726, b: 0, a: 0.5882353}
   pauseEntireGame: 0
 --- !u!1 &1992836729
 GameObject:

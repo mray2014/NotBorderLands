@@ -4,13 +4,6 @@ using UnityEngine;
 namespace Mike4ruls.General.Items
 {
     public class RarityParticleEffectScript : MonoBehaviour {
-
-        public Color commonRarityColor;
-        public Color unCommonRarityColor;
-        public Color rareRarityColor;
-        public Color epicRarityColor;
-        public Color legendaryRarityColor;
-
         private ParticleSystem particleSystem;
         private Item myItem;
         // Use this for initialization
@@ -23,28 +16,28 @@ namespace Mike4ruls.General.Items
         {
             if (myItem != null)
             {
-                Color myRarity = commonRarityColor;
+                Color myRarity = GameManager._CommonRarityColor;
 
                 switch (myItem.rarityType)
                 {
                     case RarityType.Uncommon:
                         {
-                             myRarity = unCommonRarityColor;
+                             myRarity = GameManager._UnCommonRarityColor;
                             break;
                         }
                     case RarityType.Rare:
                         {
-                            myRarity = rareRarityColor;
+                            myRarity = GameManager._RareRarityColor;
                             break;
                         }
                     case RarityType.Epic:
                         {
-                            myRarity = epicRarityColor;
+                            myRarity = GameManager._EpicRarityColor;
                             break;
                         }
                     case RarityType.Legendary:
                         {
-                            myRarity = legendaryRarityColor;
+                            myRarity = GameManager._LegendaryRarityColor;
                             break;
                         }
                 }
