@@ -536,15 +536,15 @@ MonoBehaviour:
     weaponModDropChance: 0%
     sheildModDropChance: 0%
   rarityChanceSettings:
-    common: 49
-    unCommon: 63
-    rare: 84
+    common: 40.4
+    unCommon: 67.7
+    rare: 88.1
     epic: 99
     legendary: 100
-    commonDropChance: 49%
-    unCommonDropChance: 14%
-    rareDropChance: 21%
-    epicDropChance: 15%
+    commonDropChance: 40.4%
+    unCommonDropChance: 27.3%
+    rareDropChance: 20.4%
+    epicDropChance: 10.9%
     legendaryDropChance: 1%
   manufacturerChanceSettings:
     noxelCorp: 100
@@ -581,15 +581,15 @@ MonoBehaviour:
     weaponModDropChance: 0%
     sheildModDropChance: 0%
   rarityChanceSettings:
-    common: 49
-    unCommon: 63
-    rare: 84
+    common: 40.4
+    unCommon: 67.7
+    rare: 88.1
     epic: 99
     legendary: 100
-    commonDropChance: 49%
-    unCommonDropChance: 14%
-    rareDropChance: 21%
-    epicDropChance: 15%
+    commonDropChance: 40.4%
+    unCommonDropChance: 27.3%
+    rareDropChance: 20.4%
+    epicDropChance: 10.9%
     legendaryDropChance: 1%
   manufacturerChanceSettings:
     noxelCorp: 100
@@ -637,15 +637,15 @@ MonoBehaviour:
     weaponModDropChance: 0%
     sheildModDropChance: 0%
   rarityChanceSettings:
-    common: 49
-    unCommon: 63
-    rare: 84
+    common: 40.4
+    unCommon: 67.7
+    rare: 88.1
     epic: 99
     legendary: 100
-    commonDropChance: 49%
-    unCommonDropChance: 14%
-    rareDropChance: 21%
-    epicDropChance: 15%
+    commonDropChance: 40.4%
+    unCommonDropChance: 27.3%
+    rareDropChance: 20.4%
+    epicDropChance: 10.9%
     legendaryDropChance: 1%
   manufacturerChanceSettings:
     noxelCorp: 100
@@ -806,15 +806,15 @@ MonoBehaviour:
     weaponModDropChance: 0%
     sheildModDropChance: 0%
   rarityChanceSettings:
-    common: 49
-    unCommon: 63
-    rare: 84
+    common: 40.4
+    unCommon: 67.7
+    rare: 88.1
     epic: 99
     legendary: 100
-    commonDropChance: 49%
-    unCommonDropChance: 14%
-    rareDropChance: 21%
-    epicDropChance: 15%
+    commonDropChance: 40.4%
+    unCommonDropChance: 27.3%
+    rareDropChance: 20.4%
+    epicDropChance: 10.9%
     legendaryDropChance: 1%
   manufacturerChanceSettings:
     noxelCorp: 100

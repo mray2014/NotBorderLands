@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
@@ -14,7 +15,7 @@ namespace Mike4ruls.General.UI
         static public ItemIconScript swap2;
         static public bool rdyToSwap = false;
         static public bool dragEnded = false;
-        static public bool clicked = false;
+        static public bool inspect = false;
 
         static public void SwapItemIconsContents()
         {
@@ -43,6 +44,8 @@ namespace Mike4ruls.General.UI
 
                 swap1.transform.localScale = swap2Scale;
                 swap2.transform.localScale = swap1Scale;
+
+                GameObject.FindGameObjectWithTag("UIEventSystem").GetComponent<EventSystem>().SetSelectedGameObject(swap1.gameObject);
             }
 
             WipeSwap();
@@ -54,9 +57,14 @@ namespace Mike4ruls.General.UI
             rdyToSwap = false;
         }
 
+
+        public Color highLightColor;
         [HideInInspector]
         public string emptyText = "NONE";
 
+        private Color unHighLightedColor;
+        [HideInInspector]
+        public Image backgroundColor;
         private Item myItem = null;
         private TextMeshProUGUI myText;
         private Image buttonImage;
@@ -74,6 +82,8 @@ namespace Mike4ruls.General.UI
 
             buttonImage = transform.GetChild(0).GetComponent<Image>();
             myText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+            backgroundColor = GetComponent<Image>();
+            unHighLightedColor = backgroundColor.color;
         }
 
         // Update is called once per frame
@@ -150,11 +160,35 @@ namespace Mike4ruls.General.UI
         }
         public void IsClicking()
         {
-            swap1 = this;
             if (transform.position == lastPosition)
             {
-                clicked = true;
-            }
+                if (swap1 == null)
+                {
+                    swap1 = this;
+                    
+                    backgroundColor.color = new Color(highLightColor.r, highLightColor.g, highLightColor.b, 1);
+                }
+                else
+                {
+                    swap2 = this;
+
+                    if (swap1 == swap2)
+                    {
+                        inspect = true;
+                    }
+                    else
+                    {
+                        rdyToSwap = true;
+                    }
+                    swap1.backgroundColor.color = new Color(unHighLightedColor.r, unHighLightedColor.g, unHighLightedColor.b, 1); 
+                    backgroundColor.color = new Color(unHighLightedColor.r, unHighLightedColor.g, unHighLightedColor.b, 1);
+                }
+        }
+            
+            //if (transform.position == lastPosition)
+            //{
+            //    clicked = true;
+            //}
         }
         Color GetColor()
         {

@@ -58,7 +58,7 @@ namespace Mike4ruls.General
                     }
                 case GameState.Game:
                     {
-                        if (Input.GetKeyDown(KeyCode.Escape))
+                        if (Input.GetButtonDown("Cancel"))
                         {
                             if (pauseEntireGame)
                             {
@@ -71,7 +71,7 @@ namespace Mike4ruls.General
                     }
                 case GameState.GamePause:
                     {
-                        if (Input.GetKeyDown(KeyCode.Escape))
+                        if (Input.GetButtonDown("Cancel"))
                         {
                             if (pauseEntireGame)
                             {

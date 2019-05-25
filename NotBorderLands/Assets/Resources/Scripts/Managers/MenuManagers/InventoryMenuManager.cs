@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using Mike4ruls.General.Items;
 using Mike4ruls.General.Player;
 using Mike4ruls.General.UI;
@@ -44,6 +45,7 @@ namespace Mike4ruls.General.Managers
         {
             if (initFinished)
             {
+                
                 if (ItemIconScript.dragEnded)
                 {
 
@@ -104,10 +106,32 @@ namespace Mike4ruls.General.Managers
                     }
                     ItemIconScript.dragEnded = false;
                 }
-                if (ItemIconScript.clicked)
+                if (ItemIconScript.inspect)
                 {
-                    ToggleInspectEquipment(ItemIconScript.swap1);
-                    ItemIconScript.clicked = false;
+                    if (ItemIconScript.swap1.GetItem() != null && ItemIconScript.swap2.GetItem() != null)
+                    {
+
+
+                        if (inspectionON)
+                        {
+                            GameObject.FindGameObjectWithTag("UIEventSystem").GetComponent<EventSystem>().SetSelectedGameObject(referenceToOriginalIcon.gameObject);
+
+                        }
+
+                        ToggleInspectEquipment(ItemIconScript.swap1);
+
+                        if (inspectionON)
+                        {
+                            GameObject.FindGameObjectWithTag("UIEventSystem").GetComponent<EventSystem>().SetSelectedGameObject(itemBeingInspectedIcon.gameObject);
+
+                        }
+                    }
+
+                    ItemIconScript.swap1 = null;
+                    ItemIconScript.swap2 = null;
+
+                    ItemIconScript.rdyToSwap = false;
+                    ItemIconScript.inspect = false;
                 }
                 if (ItemIconScript.rdyToSwap)
                 {
@@ -129,7 +153,7 @@ namespace Mike4ruls.General.Managers
                     {
                         isSameItemType = item1.itemType == item2.itemType;
 
-                        if (inspectionON && itemBeingInspectedIcon == ItemIconScript.swap2)
+                        if (inspectionON && (itemBeingInspectedIcon == ItemIconScript.swap2 || itemBeingInspectedIcon.GetItem() == ItemIconScript.swap2.GetItem()))
                         {
                             if (itemBeingInspectedIcon.GetItem() != item1)
                             {
@@ -335,7 +359,7 @@ namespace Mike4ruls.General.Managers
                 Item newItem = equipmentPoolManager.transform.GetChild(i).GetComponent<ItemIconScript>().GetItem();
                 _playerInventory.EquipWeapon((Gun)newItem, i);
             }
-            if (inspectionON)
+            if (inspectionON && referenceToOriginalIcon.GetItem() != null)
             {
                 for (int i = 0; i < referenceToOriginalIcon.GetItem().numOfModSlots; i++)
                 {
@@ -387,6 +411,7 @@ namespace Mike4ruls.General.Managers
             }
             Vector3 centerPosition = inspectionPoolManager.transform.position;
 
+
             itemBeingInspectedIcon.SetLastPosition(centerPosition);
             itemBeingInspectedIcon.StoreItem(item);
 
@@ -419,6 +444,11 @@ namespace Mike4ruls.General.Managers
         }
         public void TurnOffInspection()
         {
+            if (referenceToOriginalIcon != null)
+            {
+                GameObject.FindGameObjectWithTag("UIEventSystem").GetComponent<EventSystem>().SetSelectedGameObject(referenceToOriginalIcon.gameObject);
+
+            }
             inspectionON = false;
             inspectionPoolManager.gameObject.SetActive(inspectionON);
             equipmentPoolManager.gameObject.SetActive(!inspectionON);

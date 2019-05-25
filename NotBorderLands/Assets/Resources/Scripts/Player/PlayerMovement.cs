@@ -35,34 +35,53 @@ namespace Mike4ruls.General.Player
         }
         void CheckKeyboardInput()
         {
+            Vector3 dir = Vector3.zero;
+
+            if (Input.GetAxis("LeftStickX") != 0 || Input.GetAxis("LeftStickY") != 0)
+            {
+                dir += transform.right * Input.GetAxis("LeftStickX");
+                dir += transform.forward * Input.GetAxis("LeftStickY");
+            }
+
             if (Input.GetKey(KeyCode.W))
             {
-                transform.position += (transform.forward * speed * Time.deltaTime);
+                dir += transform.forward;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                transform.position += (-transform.right * speed * Time.deltaTime);
+                dir += -transform.right;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                transform.position += (-transform.forward * speed * Time.deltaTime);
+                dir += -transform.forward;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                transform.position += (transform.right * speed * Time.deltaTime);
+                dir += transform.right;
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetButtonDown("Jump"))
             {
                 if (Physics.Raycast(transform.position, Vector3.up * -1, transform.localScale.x + 0.4f))
                 {
                     myRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 }
             }
+
+            transform.position += dir * speed *Time.deltaTime;
         }
         void TrackMouse()
         {
             float xAxis = Input.GetAxis("Mouse X");
             float yAxis = Input.GetAxis("Mouse Y") * -1;
+
+            if (xAxis == 0)
+            {
+                xAxis = Input.GetAxis("RightStickX");
+            }
+            if (yAxis == 0)
+            {
+                yAxis = Input.GetAxis("RightStickY") * -1;
+            }
 
             transform.Rotate(0, xAxis * xAxisSensitivity, 0);
             playerCamera.transform.Rotate(yAxis * yAxisSensitivity, 0, 0);

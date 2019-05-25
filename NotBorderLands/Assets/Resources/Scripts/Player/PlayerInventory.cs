@@ -92,7 +92,7 @@ namespace Mike4ruls.General.Player
             {
                 LeftToggleWeaponHolster();
             }
-            else if (Input.GetKeyDown(KeyCode.E))
+            else if (Input.GetButtonDown("ToggleWeaponHolster"))
             {
                 RightToggleWeaponHolster();
             }
@@ -126,12 +126,12 @@ namespace Mike4ruls.General.Player
                     hitInteractable = true;
                     currentInteractType = hit.transform.gameObject.GetComponent<IInteractable>().interactType;
 
-                    if (Input.GetKeyDown(KeyCode.F))
+                    if (Input.GetButtonDown("Interact"))
                     {
                         unHoverStillPressingECheck = true;
                         startEquipTimeCheck = true;
                     }
-                    else if (Input.GetKeyUp(KeyCode.F) && unHoverStillPressingECheck)
+                    else if (Input.GetButtonUp("Interact") && unHoverStillPressingECheck)
                     {
                         hit.transform.GetComponent<IInteractable>().Interact(_playerBase);
                         startEquipTimeCheck = false;
